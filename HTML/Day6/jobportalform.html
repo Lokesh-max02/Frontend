@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>Job Portal Form</title>
+        </head>
+    <body>
+        <center>
+            <main>
+        <h1>Job Portal Form</h1>
+        <form >
+            <label >Enter a Name:</label>
+            <br/>
+            <input type ="text" name="name" required>
+            <br/>
+            <label>Enter a Last Name:</label>
+            <br/>
+            <input type="text" name="lastName" required>
+            <br/>
+            <label>Enter a Email:</label>
+            <br/>
+            <input type="email" name="email" required>
+            <br/>
+            <label> Enter a Phone Number:</label>
+            <br/>
+            <input type="tel" name="phone" required placeholder="10 digit only" minlength="10" maxlength="10">
+            <br/>
+            <label>Date of Birth:</label>
+            <br/>
+            <input type="date" name="dob" required>
+            <br/>
+            <label>Age:</label>
+            <br/>
+            <input type="number" name="age" required placeholder="Above 18yr only">
+            <br/>
+            <label>Gender:</label>
+            <br/>
+            <input type="radio" name="gender" value="male" required>Male
+            <input type="radio" name="gender" value="female" required>Female
+            <input type="radio" name="gender" value="other" required>Other
+            <br>
+            <label>Enter a Address:</label>
+            <br/>
+            <input type="text" name="address" required placeholder="Enter your address" >
+            <br>
+            <label>Qualification:</label>
+            <br/>
+            <input type="text" name="qualification" required placeholder="Enter your qualification" >
+            <br>
+            <label>Specialization:</label>
+            <br/>
+            <input type="text" name="specialization" required placeholder="Enter your specialization" >
+            <br>
+            <label>Experience:</label>
+            <br/>
+            <input type="text" name="experience" required placeholder="Freshers/Experienced" >
+
+            <br>
+            <label>Skills:</label>
+            <br/>
+            <input type="checkbox" name="skills" value="java">Java
+            <input type="checkbox" name="skills" value="python">Python
+            <input type="checkbox" name="skills" value="javascript">JavaScript
+            <input type="checkbox" name="skills" value="c++">C++
+            <br>
+            <label>Passedout Year:</label>
+            <br/>
+            <input type="year" name="passedoutYear" required  >
+            <br>
+            <label>Upload Resume:</label>
+            <br/>
+            <input type="file" name="resume" required>
+            <br>
+            <br/>
+            <input type="reset" value="Reset">
+            <input type="submit" value="Submit">
+            
+        </form>
+        </main>
+        </center>
+    </body>
+</html>
