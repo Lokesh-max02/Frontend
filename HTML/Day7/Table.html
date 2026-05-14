@@ -1,0 +1,103 @@
+<html>
+<head>
+    <title>Product Table & Form</title>
+    </head> 
+<body>
+    <center>
+        <section>
+    <h1>Product Form</h1>
+    <form>
+    <label >Product Name:</label>
+    <br/>
+    <input type="text" id="productName" name="productName"><br><br>
+    <label> Product Category:</label>
+    <br/>
+   <select name="category" id="category">
+     <option disabled selected="">Select Category </option>
+    <option value="Electronics">Electronics</option>
+    <option value="Clothing">Clothing</option>
+    <option value="Home Appliances">Home Appliances</option>
+    <option value="Food">Food</option>
+</select><br><br>
+    <image src="../Logo/cloth.jpg"  width="100" height="100">
+    <img src="../Logo/ele.jpg" width="100" height="100">
+    <img src="../Logo/home.jpg" width="100" height="100">
+    <img src="../Logo/food.jpg" width="100" height="100">
+    <br/><br>
+    <label>Price:</label>
+    <br/>
+    <input type="number" name="price"><br><br>
+    <label>Quantity:</label>
+    <br/>
+    <input type="number" name="quantity"><br><br>
+<label>city: </label>
+<br/>
+<select name="city" id ="city">
+    <option disabled selected="">Select City</option>
+    <option value="chennai">Chennai</option>
+    <option value="mumbai">Mumbai</option>
+    <option value="bangalore">Bangalore</option>
+</select><br><br>
+<label>Product Shippment id</label>
+<br/>
+<input type="number" name="shipmentId"><br><br>
+<label>Product weight</label>
+<br/>
+<input type="number" name="weight" step="0.01"><br><br>
+<label >Product Licence</label>
+<input type="radio" name="licence" value="yes"> Yes
+<input type="radio" name="licence" value="no"> No<br><br>
+<label>Approved Product</label>
+<input type="checkbox" name="approved" value="yes"> FSSI
+<input type="checkbox" name="approved" value="yes"> GST
+<input type="checkbox" name="approved" value="yes"> FOOT
+
+    </form>
+    </section>
+    <section>
+    <h1>Product Table</h1>
+    <table border="1">  
+        <tr>  
+            <th>Product Name</th>  
+            <th>Category</th>  
+            <th>Price</th>  
+            <th>Quantity</th>  
+            <th>City</th>
+             <th>Weight</th>
+             </tr>
+        <tr>  
+            <td>Smartphone</td> 
+            <td>Electronics</td>
+            <td>50000</td>    
+            <td>10</td>
+            <td>Chennai</td>
+            <td>0.5 kg</td>
+        </tr>
+         <tr>  
+            <td>Redmi</td> 
+            <td>Electronics</td>
+            <td>50000</td>    
+            <td>10</td>
+            <td>Chennai</td>
+            <td>0.5 kg</td>
+        </tr>
+         <tr>  
+            <td>POCO</td> 
+            <td>Electronics</td>
+            <td>50000</td>    
+            <td>10</td>
+            <td>Chennai</td>
+            <td>0.5 kg</td>
+        </tr>
+         <tr>  
+            <td>IPhone</td> 
+            <td>Electronics</td>
+            <td>50000</td>    
+            <td>10</td>
+            <td>Chennai</td>
+            <td>0.5 kg</td>
+        </tr>
+    </table>
+    </section>
+    </center>
+</html>
