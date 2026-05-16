@@ -1,0 +1,54 @@
+<html>
+    <head>
+    <title>Resume</title>
+    </head>
+    <body>
+        <section>
+            <h1>Resume Builder Form</h1>
+            <form >
+                <label >Name:</label><br>
+                <input type="text" id="name" name="name"><br><br>
+                <label >Email:</label><br>
+                <input type="email" id="email" name="email"><br><br>
+                <label >Phone Number:</label><br>
+                <input type="tel" id="phone" name="phone"><br><br>
+                <label >Address:</label><br>
+                <textarea id="address" name="address"></textarea><br><br>
+                <label >Highest Qualification:</label><br>
+                <select name="Education" id ="education">
+                     <option value="" disabled selected>High School</option>
+                    <option value="highschool">High School</option>
+                    <option value="bachelor">Bachelor's Degree</option>
+                    <option value="master">Master's Degree</option>
+                    <option value="phd">PhD</option>
+                </select>
+                <br/><br>
+                 <label >Education Details:</label><br>
+                <label>College/University:</label><br>
+                <input type="text" name="college" placeholder="Enter a college name"><br><br>
+                <label>Degree:</label><br>
+                <input type="text" name="degree" placeholder="Enter a degree"><br><br>
+                <label>Field of Study:</label><br>
+                <input type="text" name="field" placeholder="Enter a field of study"><br><br>
+                <label>Graduation Year:</label><br>
+                <input type="number" name="graduation" placeholder="Enter a graduation year"><br><br>
+                 <label>CGPA:</label>
+                 <br/>
+                <input type="number" name="cgpa" minlength="0" maxlength="10"><br><br>
+                <label >Work Experience:</label><br>
+                <textarea id="experience" name="experience"></textarea><br><br>
+                <label >Skills:</label><br>
+                <input type="checkbox" name="skills">HTML<br>
+                <input type="checkbox" name="skills">CSS<br>
+                <input type="checkbox" name="skills">JavaScript<br>
+                <input type="checkbox" name="skills">Python<br><br>
+                <label>Certifications:</label><br>
+                <textarea id="certifications" name="certifications"></textarea><br><br>
+                <label>Upload file:</label>
+                <input type="file" name="file"><br><br>
+
+                <input type="submit" value="Submit">
+        </section>
+        </form>
+    </body>
+</html>

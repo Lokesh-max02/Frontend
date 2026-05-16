@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>Admission Form</title>
+</head>
+<body>
+    <section>
+        <h1>Admission Form</h1>
+        <form >
+            <fieldset>
+                <legend>Personal Information</legend>
+            <label >Name:</label><br>
+            <input type="text" name="name"><br><br>
+            <label>Last Name:</label><br>
+            <input type="text" name="lastName"><br><br>
+            <label>Father's Name:</label><br>
+            <input type="text" name="fatherName"><br><br>
+            <label>Mother's Name:</label><br>
+            <input type="text" name="motherName"><br><br>
+            <label >Email:</label><br>
+            <input type="email" name="email"><br><br>
+            <label >Phone Number:</label><br>
+            <input type="tel"  name="phone"><br><br>
+            <label >Address:</label><br>
+            <textarea id="address" name="address"></textarea><br><br>
+            <label >Date of Birth:</label><br>
+            <input type="date"  name="dob"><br><br>
+             </fieldset>
+                <fieldset>
+                    <legend>Academic Information</legend>
+                    <label>Highest Qualification:</label><br>
+                    <select name="Education" id ="education">
+                         <optgroup label="High School">
+                            <option value="highschool">High School</option>
+                        </optgroup>
+                        <optgroup label="Undergraduate">
+                            <option value="bachelor">Bachelor's Degree</option>
+                        </optgroup>
+                        <optgroup label="Graduate">
+                            <option value="master">Master's Degree</option>
+                            <option value="phd">PhD</option>
+                        </optgroup>
+                    </select><br><br>
+                        <label>12th Grade:</label>
+                        <br/>
+                        <input type="number"  min="0" max="100" >
+                        <br><br>
+                        <label>Required Documents:</label>
+                        <br/>
+                        <input type="checkbox" name="documents">10th Mark Sheet<br>
+                        <input type="checkbox" name="documents">12th Mark Sheet<br>
+                        <input type="checkbox" name="documents">TC<br>
+                        <input type="checkbox" name="documents">Income Certificate<br>
+                        <input type="checkbox" name="documents">Caste Certificate<br>
+                    </select>
+                </fieldset>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </body>
+</html>

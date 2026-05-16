@@ -1,0 +1,140 @@
+1.What is html:
+
+* HTML is stand for hyper text markup language and it is used to create and structure the webpage
+
+*Html contain the data or information in the tags and elements that are Root element,container element(head,body),child element(tags)
+
+*Markup language
+*Html is a markup language because the structure content using elements enclosed in tags.
+
+*Tags are tell the browser  how to display the text and media.
+
+2.What is the difference between HTML and HTML5?
+
+*HTML  
+1.Older version 
+2.Less API support     
+3.Doctype large
+4.Limited Multimedia
+5.No semantic Tags
+6.Limited Inputtype   
+
+*HTML5
+1.New version
+2.Doctype Small
+3.Large API support
+4.Unlimited Multimedia
+5.Semantic Tags are used
+6.Unlimited Inputtype
+
+3. What is the purpose of <!DOCTYPE html> in HTML?       
+* <!DOCTYPE html> is used to declaration the Document  type amd tell browser the webpage is create in HTML5
+*If the Doctype is given the browser go to Quirk mode and it caustion render problem
+
+4.What is the difference between tags and elements in HTML?
+
+*Tags
+1.Tags are predefined keyword  in Html .Enclosed in angle bracket (<>).
+*single marker 
+*Angle bracket and a keyword
+2.Element that are contain opening tags and closing tags and center content in element
+*Full structure and content
+*start tags +content +end tags
+
+5.What are semantic tags? Give examples.
+
+*Semantic are meaningful tags and describe the prepose and meaning of the content.
+*It mainly used to SEO related and browser find easily in the semantic tags.
+Example:
+<html>
+    <head>
+        <title>Semantic Tags</title>
+    </head>
+    <header>Semantic Tags</header>
+    <body>
+        <main>
+        <article>
+<p>Semantic tags are HTML elements that clearly describe their purpose and the content they contain to both the browser and the developer. Unlike generic tags like /div or span, which tell you nothing about the information inside, semantic tags provide a meaningful structure to a webpage.</p>
+<nav>
+            <img src="../Logo/semantic-tags.png" width="500"></a>
+        </nav>       
+<h2>Common Sementic Tags</h2>
+        
+        </article>
+        <ol>
+            <!--  <header>:-->
+           <li> Contains introductory content or navigation links, often including a logo or title.</li>
+        <!-- <nav> -->
+            <li> Specifically used for a block of navigation links.</li>
+            <!-- <main> -->
+                <li> Defines the primary, unique content of the document.</li>
+        <!-- <section> -->
+            <li>Groups related content together into a thematic section.</li>
+            <!--<article>  -->
+                <li> Encloses self-contained content that could be distributed independently, like a blog post or news story.</li>
+                <!-- <aside> -->
+                    <li> Holds content that is indirectly related to the main text, often used for sidebars.</li>
+            <!-- <footer> -->
+                <li>Contains information about the page creator, copyright data, or contact links.</li>
+                <!--  <figure> & <figcaption>-->
+                    <li>Used to wrap an image (figure) and its descriptive caption together.</li>
+               <!-- <time> -->
+                <li>: Represents a specific period in time or a date.</li>
+                </ol>
+                
+</section>
+        </main>
+        <footer>
+            @This is a sample semantic tags webpage
+        </footer>
+</section>
+    </body>
+</html>
+
+6.What is the difference between semantic and non-semantic tags?
+
+*Semantic tags
+1.It has meaning
+2.It describe the prepose and meaning of content
+3.It have specific attribute in structure
+
+*Non Semantic tags
+1.It not have any meaning
+2.It contain anything
+3.It has "class" attribute to work in structure
+
+7.What are meta tags and why are they used?
+
+*Meta tags are provide information about the webpage into the browser and not display directly in webpage and show browser and search engine
+*It is introduced in HTML5
+*It mainly used for SEO related prepose and they understand the browser easily.
+*Social sharing is play an important role and like (OG)tags are used to share the platform
+
+8.Why do we use the <source> tag inside audio and video tags?
+
+*<source> tags are used to support different audio and video format like mp4,webm,ogg and it allow you to list multiple file version
+*And use control in this process to show audio and video file in webpage it contain source,src,type.
+
+9.What is iframe and where is it used in real-time applications?
+
+*The IFrame tags are specifies the inline frame
+*The inline frame is used to embed another document within the current HTML document.
+*In a webpage some content are given but not understand the user that time Some Embed Youtube video on your webpage it easy to understand. 
+
+10.What is the difference between block-level elements and inline elements? 
+
+*Block-level Element
+1.It always start in new line 
+2.It like a container to hold the many content or tags inside the block level.
+3.It always take a full width of screen
+4.Block level are building your basic  structure
+
+*Inline level Element
+1.It not start in new line 
+2.It take content width
+3.Inside a inline you can will add any inline tags
+4.You can not add inside inline never add a block level element
+
+
+
+*
