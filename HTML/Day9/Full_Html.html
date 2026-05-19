@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="device-width" initial-size="1.0">
+        <meta name="description" content="Full html webpage">
+        <meta name="keywords" content="html">
+        <meta name="author" content="Lokesh">
+        <meta property=" og.title" content="Full Webpage">
+        <meta property="og.description" content="Create a Full webpage using Html">
+        <meta property="og.image" content="Html">
+        <meta property="og.url" content="">
+        <link rel="icon" type="image/icon" href="../Assets/Favicon/favicon/web-app-manifest-192x192.png">
+        <title>Full Html Webpage</title>
+    </head>
+    <body>
+        <main>
+            <h1>HTML Webpage</h1>
+            <h2>what is html?</h2>
+            <p>html is stand for hyper text markup language and it is standard markup language to create a structure of webpage.</p>
+            <h2>What is tags?</h2>
+            <p>A tags is predefined keyword in html.and enclosed with angle bracket <>.<br/>They tell to browser what type of content should display on the webpage.<br/>Normally tags act as a instructor.</p>
+        <h2>Type of tags:</h2>
+        <p>closing tags-opening and closing tags<br/>selfclosingtags-single tags end with backslash </p>
+            <!-- eg:<input type="name"/> -->
+        <h2>What are element?</h2>
+        <p>An element is complete structure format.It contain opening tags and closing tags between content <br/>
+        Root element(Html)<br/>
+        Container element 1.head 2.body<br/>
+        Child element (tags)
+    </p>
+        </main>
+        <section>
+            <div>
+                <h2>What is block level element?</h2>
+                <p>It always start a new line.It is container to hold the many content or tags inside the block level.<br/>
+                It always take full width of screen.block level are building your basic structure.<br/>
+            </p>
+            <ol>
+                <li>h1 to h6</li>
+                 <li>p</li>
+                  <li>form</li>
+                   <li>div</li>
+                    <li>section</li>
+                     <li>nav</li>
+            </ol>
+            <h2>What are inline element?</h2>
+            <p>It is not start with new line.It take content width.<br/>
+            Inside a inline you add n number of inline element.But you can not add inside inline never add block level<br/></p>
+            <ol>
+                <li>span</li>
+<li>a</li>
+<li>img</li>
+<li>b</li>
+            </ol>
+            <h2>What are semantiv tags?</h2>
+            <p>Semantic tags are meaningful tags that describe the prepose and meaning of content.
+                <br/>
+
+            </p>
+            <ol>
+                <li>header</li>
+                 <li>footer</li>
+                  <li>nav</li>
+                   <li>main</li>
+                    <li>address</li>
+            </ol>
+            <h2>What is non semantic tags?</h2>
+            <p>Non semantic tags doesnot describe the content and they generic container styling and layout prepose.<br/>
+            Those tags does not give any meaning about whatcontent.(div,span)</p>
+            <img src="../Assets/semantic-tags.png" width="500"></a>
+           <h2>What is formatting and interactive tags?</h2>
+        <p>1.formatting tags:<br/>
+            Formatting tags are used to change the appearance of text in a webpage. These tags help make content bold, italic, underlined, highlighted, and more.
+<br/>
+Readability
+Design
+User attention<br/>
+2.Interactive tags:<br/>
+Interactive tags allow users to interact with webpages.<br/>
+
+Users can:<br/>
+
+1.Click<br/>
+2.Type<br/>
+3.Select<br/>
+4.Submit data<br/>
+        </p>
+        <h2>What  is Attribute?</h2>
+        <p>Html attribute are add extra information inside a html tags.<br/>
+        They  help to control the behaviour,appearance or data of an element.
+    Eg:tagname attribute="value" content closing tags</p>
+    <h2>Two type of attribute:</h2>
+   <p> 1.Global attribute:<br/>
+    Global attributes can be used with almost all HTML tags(id,class,style,hidden,lang).<br/>
+    2.Local attribute:<br/>
+Local attributes work only with specific HTML elements.(href,src,alt,type)<br/>
+<b>key point:</b><br/>
+1.attributeare written inside a opening tags<br/>
+2.Most attribute have value .<br/>
+3.attribute value are usually written in quotes " "
+   </p>
+ </div>
+        </section>
+        <section>
+            <div>
+                <h2>What is the form tag?</h2>
+                <p>The form tag is used to create an HTML form for user input. It can contain input elements like text fields, checkboxes, radio buttons, submit buttons, etc.</p>
+          <p>Input-attribute are type -text,checkbox,number,tel,combobox,email,password,file,date,time,year,month<br/>
+        1.name-what ever you want type here<br/>
+    2.value-It is the exact value of your input. If you enter the value it allocated to the input.<br/>
+3.placeholder-water mark if you touch or enter the input value is hide automatically.</p>
+                <!-- <form >
+            <label >Enter a Name:</label>
+            <br/>
+            <input type ="text" name="name" required>
+            <br/>
+            <label>Enter a Last Name:</label>
+            <br/>
+            <input type="text" name="lastName" required>
+            <br/>
+            <label>Enter a Email:</label>
+            <br/>
+            <input type="email" name="email" required>
+            <br/>
+            <label> Enter a Phone Number:</label>
+            <br/>
+            <input type="tel" name="phone" required placeholder="10 digit only" minlength="10" maxlength="10">
+            <br/>
+            <label>Date of Birth:</label>
+            <br/>
+            <input type="date" name="dob" required>
+            <br/>
+            <label>Age:</label>
+            <br/>
+            <input type="number" name="age" required placeholder="Above 18yr only">
+            <br/>
+            <label>Gender:</label>
+            <br/>
+            <input type="radio" name="gender" value="male" required>Male
+            <input type="radio" name="gender" value="female" required>Female
+            <input type="radio" name="gender" value="other" required>Other
+            <br>
+            <label>Enter a Address:</label>
+            <br/>
+            <textarea name="address" required placeholder="Enter your address"></textarea>
+            <br>
+            <label>Qualification:</label>
+            <br/>
+            <input type="text" name="qualification" required placeholder="Enter your qualification" >
+            <br>
+            <label>Specialization:</label>
+            <br/>
+            <input type="text" name="specialization" required placeholder="Enter your specialization" >
+            <br>
+            <label>Experience:</label>
+            <br/>
+            <input type="text" name="experience" required placeholder="Freshers/Experienced" >
+
+            <br>
+            <label>Skills:</label>
+            <br/>
+            <input type="checkbox" name="skills" value="java">Java
+            <input type="checkbox" name="skills" value="python">Python
+            <input type="checkbox" name="skills" value="javascript">JavaScript
+            <input type="checkbox" name="skills" value="c++">C++
+            <br>
+            <label>Passedout Year:</label>
+            <br/>
+            <input type="year" name="passedoutYear" required  >
+            <br>
+            <label>Upload Resume:</label>
+            <br/>
+            <input type="file" name="resume" required>
+            <br>
+            <br/>
+            <input type="reset" value="Reset">
+            <input type="submit" value="Submit">
+            
+            
+        </form> -->
+<h2>What is the table tag?</h2>
+<p>The table tag is used to create a table with rows and columns. It works with tr (table row), th (table header), td (table data).
+</p>
+<!-- <table border="1">  
+        <tr>  
+            <th>Product Name</th>  
+            <th>Category</th>  
+            <th>Price</th>  
+            <th>Quantity</th>  
+            <th>City</th>
+             <th>Weight</th>
+             </tr>
+        <tr>  
+            <td>Smartphone</td> 
+            <td>Electronics</td>
+            <td>50000</td>    
+            <td>10</td>
+            <td>Chennai</td>
+            <td>0.5 kg</td>
+        </tr>
+         <tr>  
+            <td>Redmi</td> 
+            <td>Electronics</td>
+            <td>50000</td>    
+            <td>10</td>
+            <td>Chennai</td>
+            <td>0.5 kg</td>
+        </tr>
+         <tr>  
+            <td>POCO</td> 
+            <td>Electronics</td>
+            <td>50000</td>    
+            <td>10</td>
+            <td>Chennai</td>
+            <td>0.5 kg</td>
+        </tr>
+         <tr>  
+            <td>IPhone</td> 
+            <td>Electronics</td>
+            <td>50000</td>    
+            <td>10</td>
+            <td>Chennai</td>
+            <td>0.5 kg</td>
+        </tr>
+    </table> -->
+    <h2>Fieldset:</h2>
+    <p>fieldset you can use one legend it mean large size box</p>
+            </div>
+        </section>
+        <section>
+            <div>
+                <h2>Media tags:</h2>
+                <h2>What are audio and media tags?</h2>
+                <p>*Directly insert your media file like video,audio,image.<br/>
+                *It is a unstructured data but it give the more detail to user.<br/>
+            *audio tags are used to embedded sound or music into user.</p>
+<nav>
+<audio controls>
+  <source src="../Assets/Audio/life_of_ram.mp3" type="audio/mpeg">
+</audio><br/>
+
+
+<video width="320" height="240" controls>
+  <source src="../Assets/Videos/kashmir.mp4" type="video/mp4">-->
+</video>
+<h2>Meta tags:</h2>
+<p>Meta tags are provide a information about the webpage into browser.<br/>
+It is introduced in html5.<br/>
+meta charset=UTF-8(UTF-unicoe transformation format-8bit)</p>
+ <h2>!DOCtype html</h2>
+ <p>Document type declaration is tell browser that the  webpage written in html5<br/>
+without DOCtype browser to go quirk mode it caution render problem.</p>
+<h2>Difference Between HTML and HTML5</h2>
+1.HTML
+<ol>
+    <li>Older version of HTML</li>
+    <li>Limited multimedia </li>
+    <li>No local storage</li>
+    <li>Limited form controls</li>
+    <li>Limited meta tags</li>
+    <li>less API support</li>
+</ol> 
+1.HTML5
+<ol>
+    <li>New version of HTML</li>
+    <li>unLimited multimedia </li>
+    <li>It have local storage</li>
+    <li>unLimited form controls</li>
+    <li>unLimited meta tags</li>
+    <li>large API support</li>
+</ol>                     
+</div>
+        </section>
+    </body>
+</html>
