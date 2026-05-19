@@ -1,0 +1,194 @@
+Inline CSS
+1.<div style="property:val">
+<h1 style="property:val;property:val ;property:val">content</h1>
+2.<div style="property:val">
+<h1 style="property:val;property:val;property:val">content</h1>
+3.<div style="property:val">
+<h1 style="property:val;property:val ;property:val">content</h1>
+4.<div style="property:val">
+<h1 style="property:val;property:val;property:val">content</h1>
+5.<div style="property:val">
+<h1 style="property:val;property:val;property:val">content</h1>
+6.<div style=" property:val">
+<h1 style="property:val ;property:val;property:val" >content</h1>
+7.<div style="property:val">
+<h1 style="property:val;property:val;property:val">content</h1>
+8.<div style="property:val">
+<h1 style="prop erty:val;property:val;property :val"> content</h1>
+9.<div style="property:val">
+<h1 style="property:val;property:val;property:val">content</h1>
+10.<div style="property:val">
+<h1 style=" property:val;property:val;property:val">content</h1>
+11.<div style="property:val">
+<h1 style="property:val;property:val;property:val">content</h1>
+12.<div style="property:val">
+<h1 style=" property:val;property:val;property:val"> content</h1>
+13.<div style="property:val">
+<h1 style="property:val;property:val;property:val">content</h1>
+14.<div style="property:val">
+<h1 style="property:val;property:val;property:val">content</h1>
+15.<div style="property:val">
+<h1 style="property:val;property : val;property:val">content</h1>
+16.<div style="property:val">
+<h1 style="property:val;property:val;property:val" >content</h1>
+17.<div style="property:val">
+<h1 style="property:val;property:val;property:val">content</h1>
+18.<div style="property:val">
+<h1 style="property:val;property:val;property:val"> content</h1>
+19.<div style="property:val">
+<h1 style="property:val;property:val;property:val">content</h1>
+20.<div style="property:val">
+<h1 style="property:val;property:val;property:val"> content</h1>
+
+
+External CSS:
+1.h1{
+property:val;
+property:val;
+property:val;
+}
+h1{
+ property:val;
+property:val;
+property:val;
+}
+2.h1{
+property:val;
+property:val;
+ property:val;
+}
+h1{
+property:val;
+property:val;
+property:val;
+}
+3.h1{
+property:val;
+property:val;
+property:val;
+}
+h1{
+property:val;
+property:val;
+property:val;
+}
+4.h1{
+property:val;
+property:val;
+property:val;
+}
+h1{
+property:val;
+property:val;
+property:val;
+}
+5.h1{
+property:val;
+property:val;
+property:val;
+}
+h1{
+ property:val;
+property:val;
+property:val;
+}
+6.h1{
+property:val;
+property:val;
+property:val;
+}
+h1{
+ property:val;
+property:val;
+property:val;
+}
+7.h1{
+property:val;
+property:val;
+property:val;
+}
+h1{
+property:val;
+property:val;
+property:val;
+}
+8.h1{
+property:val;
+property:val;
+property:val;
+}
+h1{
+property:val;
+property:val;
+property :val;
+}
+9.h1{
+property:val;
+property:val;
+property:val;
+}
+h1{
+property: val;
+property:val;
+property:val;
+}
+10.h1{
+property:val;
+property:val;
+property:val;
+}
+h1{
+property:val;
+property:val;
+property:val;
+}
+11.h1{
+property:val;
+property:val;
+property:val;
+}
+h1{
+property:val;
+property:val;
+property:val;
+}
+12.h1{
+property:val;
+property:val;
+property: val;
+}
+h1{
+property:val;
+property:val;
+property:val;
+}
+13.h1{
+property:val;
+property:val;
+property:val;
+}
+h1{
+property:val;
+property:val;
+property: val;
+}
+14.h1{
+property:val;
+property:val;
+property:val;
+}
+h1{
+property:val;
+property:val;
+property:val;
+}
+15.h1{
+property:val;
+property:val;
+property:val;
+}
+h1{
+property:val;
+property:val;
+property:val;
+}
