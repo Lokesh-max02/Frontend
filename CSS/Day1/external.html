@@ -4,17 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>External CSS</title>
-    <link rel="stylesheet" href="External.css">
+    <link rel="stylesheet" href="../Assets/CSS/External.css">
 </head>
 <body>
+    <div>
     <h1>External CSS</h1>
     <p>External CSS involves storing your styling rules in a separate file (typically with a .css extension) and linking it to your HTML documents. This is the standard "best practice" for web development because it allows you to manage the look of an entire website from a single file</p>
-<h2>Key Benefits</h2>
+    </div>
+    <section>
+        <div>
+    <h2>Key Benefits</h2>
 <ul>
     <li>Maintainability: Change one CSS file to update the design of hundreds of pages at once.</li>
 <li>Clean Code: Keeps your HTML files smaller and focused purely on content and structure.</li>
 <li>Performance: Browsers can cache the external CSS file, meaning it only needs to be downloaded once, which speeds up loading for subsequent pages.</li>
 <li>Reusability: Multiple HTML pages can reference the exact same stylesheet.</li>
 </ul>
+        </div>
+    </section>
+    <section>
+        <div>
+            <h2>Key Components of the link Tag</h2>
+            <p>rel="stylesheet": Tells the browser that the linked file is a stylesheet.href="style.css": Specifies the path to the CSS file. If the file is in a folder, use a path like css/style.css</p>
+        </div>
+    </section>
+    <section>
+        <div>
+            <h2>Why Use External CSS?</h2>
+            <p>Consistency: Change one file to update the look of an entire website.<br/>Cleaner Code: Keeps HTML files smaller and easier to read by separating content from design.Faster Loading: Browsers cache external CSS files. After the first page load, the browser doesn't need to re-download the styles for subsequent pages.</p>
+        </div>
+    </section>
 </body>
 </html>

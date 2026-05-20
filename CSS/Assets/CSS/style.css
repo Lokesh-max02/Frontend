@@ -1,0 +1,30 @@
+*{
+    background-color: black;
+}
+.ex{
+    color: aliceblue;
+}
+#para{
+    color: rgb(50, 203, 203);
+}
+h2{
+    color: rgb(223, 195, 158);
+}
+div p{
+    color: rgb(162, 162, 151);
+}
+div > ul{
+    color: rgb(38, 202, 70);
+}
+.key{
+    color: aquamarine;
+}
+#rel{
+    color: rgb(83, 83, 227);
+}
+.sty{
+    color: blueviolet;
+}
+#p{
+    color: brown;
+}
