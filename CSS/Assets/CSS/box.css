@@ -1,0 +1,15 @@
+*{
+    padding: 0;
+    border: 0;
+    
+}
+h1{
+    background-color: rgb(121, 50, 187);
+    color: aliceblue;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    border: 10px;
+}

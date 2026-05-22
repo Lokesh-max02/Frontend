@@ -1,0 +1,19 @@
+*{
+    padding: 0;
+    border: 0;
+}
+.parent{
+    background-color: brown;
+    padding: 20px;
+    margin: auto;
+    height: 300px;
+    width: 300px;
+}
+h1{
+    background-color: azure;
+    padding: 20px;
+    margin: 30px;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+}
