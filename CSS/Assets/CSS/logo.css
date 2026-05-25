@@ -1,0 +1,32 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.parent{
+    background-color: yellow;
+    color: rgb(9, 9, 183);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: auto;
+    height: 800px;;
+    padding: 20px;
+   
+   
+}
+.navbar{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+    
+}
+.child{
+    display: flex;
+    justify-content: center;
+}
+
+    

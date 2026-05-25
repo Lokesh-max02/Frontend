@@ -1,0 +1,146 @@
+1.What is CSS and why is it used?
+
+* CSS stand for cascading style sheet in design your webpage layout and style.
+*css helping for making a webpage looking good and user friendly design.
+*Basically layout is a design of your websites.It decide which content  in which place.
+
+2.What are the three types of CSS?
+
+1.Inline CSS
+*Inline is to design specific element using style attribute inside html file in thehtml tags or element.
+ex:<h1 style="color:blue";>head</h1>
+2.Internal CSS
+*Internal are used inside style tags,which is placed inside head section of html document .
+ex:<head>
+  <style>
+    body { 
+background-color: linen; 
+}
+    p { 
+color: maroon; 
+}
+  </style>
+</head>
+3.External CSS
+*Create a external file using .css extension file and  the file contain selectors.
+*and create a html file link two file like <link rel="stylesheet" href="file name">
+ex:h1{
+properties:value;
+}
+
+3.What is the difference between Inline CSS, Internal CSS, and External CSS?
+
+1.Inline CSS
+*Inside an individual html tags
+*only specific element its on
+*priority is highest
+
+2.Internal CSS
+*use style tags in the head
+*single html page it reside in 
+*priority medium
+
+3.External CSS
+*separate .css file
+*html page that links to it
+*priority lowest
+
+4. Which CSS type has highest priority
+
+*Inline CSS is the highest priority that style applied directly inside the html element using the style attribute
+
+5.Which CSS method is mostly used in real-time projects?
+
+There are three most widely used CSS methods are Utility-First CSS, BEM (Block, Element, Modifier) Methodology, and CSS Modules. The exact choice depends on the framework and scale of the project.
+
+6.What are CSS selectors?
+
+1.(*)-Universal selectors
+2.(.)-class selectors
+3.(#)-id selectors
+4.(h1,h2,p)-Group selectors
+5.(div p)-Descendant selectors
+6.(div > p>-child selectors
+
+7.What is the difference between class selector and ID selector?
+
+1.class selectors
+*dot
+*can be reused on many element
+*one element can have multiple class
+*Lower specificity
+
+2.Id selectors
+*# hash
+*Must be unique
+*one element can have only one id
+*highest specificity
+
+8.What is the purpose of universal selector in CSS?
+
+*The purpose of the universal selector in CSS, represented by an asterisk (*), is to target and apply styles to every single element on a web page. It acts as a wildcard that matches any element type within its specified scope.
+
+9.What is cascading in CSS?
+
+*Multiple style can aply to same element and browser decide which style should win.
+*first priority is inline
+*Next is id selectors
+*Next is class selectors
+*Next is element selectors
+*Next is universal selectors
+
+10.What is specificity in CSS?
+
+*specificity is the priority calculation is used to browser to determine which  should apply when multiple style and rules.
+
+*Inline : 1000point
+*id  : 100point
+*class :  10point
+*attributes : 10point
+*element : 1point
+*universal : -1point
+
+11.What is the difference between block and inline elements?
+
+*Block-level Element
+1.It always start in new line 
+2.It like a container to hold the many content or tags inside the block level.
+3.It always take a full width of screen
+4.Block level are building your basic  structure
+
+*Inline level Element
+1.It not start in new line 
+2.It take content width
+3.Inside a inline you can will add any inline tags
+4.You can not add inside inline never add a block level element
+
+
+12.What is Flexbox and why is it used?
+
+*Flexbox is the one dimensional layout it words row or column to make a responsive layout.
+*And flex is helping to split the webpage and align the content row or column .
+*Flex is the most used layout system IN CSS.
+
+13.What is the difference between justify-content and align-items?
+
+*justify-content align item horizontal and first activate flex (flex start,flex end,center etc...)
+*align items -align item vertically (stretch,start,end,center..)
+
+14.What is the difference between px, em, rem, and percentage units?
+
+1.em(element based):Is used for Component-specific sizing (e.g., padding inside a button that scales with its text size).
+
+2.px is mainly used for Borders, shadows, exact spacing, or fixed-size images.
+
+3.rem(root element):font size of root element or mainly typography and layout.
+
+4.% :the size of parent element property .fluid layout dimension like width or height.
+
+15.What is the difference between RGB, RGBA, and HEX color values in CSS?
+
+1.RGB-uses decimal number(0-255)for red,green and blue
+
+2.RGBA-adds an alpha channel for transparency (0.0 to 1.0)
+
+3.HEX-use hexadecimal shorthand(0-9,A-F) to represent  RGB values.
+
