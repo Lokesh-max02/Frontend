@@ -2,11 +2,25 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color:;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   
+}
+.parent1{
+    background-color:#FEEFDD;
+}
+html{
+    scroll-behavior: smooth;
+}
+a{
+    text-decoration: none;
+}
+input{
+    outline: none;
+}
+
 .parent{
     padding: 20px;
-   background-color: black;
+    
     color: white;
     display: flex;
     justify-content: space-between;
@@ -22,6 +36,10 @@
     border: 10px;
     margin-left: 10px;
 }
+.banner{
+    text-align: center;
+    padding: 30px;
+}
 .navbar{
     padding: 20px;
 display: flex;
@@ -31,6 +49,7 @@ display: flex;
    height: 50px;
     width: 550px;
     border-radius: 20px;
+    border: none;
 }
 .name{
     margin-left: 50px;
@@ -55,6 +74,7 @@ display: flex;
     justify-content: column;
     align-items: center;
     margin-right: 50px;
+    
 
 }
 .box1{
@@ -66,11 +86,24 @@ display: flex;
     
 }
 .foot{
-    
-   display: flex;
+    background-color: rgb(177, 93, 93);
    
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
     
 }
 .service{
-   padding: 20px;  
+    padding: 20px;
+   
+}
+.style{
+     background-color:  rgb(177, 93, 93);
+    padding: 20px;
+    display: flex;
+    justify-content: left;
+}
+.box1:hover{
+transform: translate(-10px);
 }
