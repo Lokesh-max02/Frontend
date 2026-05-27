@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.parent1{
+background-color: black;
+
+display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.parent{
+    background-color:white;
+    padding: 20px;
+    margin: 50px;
+   border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.child{
+    padding: 20px;
+}
+.name{
+    padding: 20px;
+}
