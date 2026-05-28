@@ -1,0 +1,39 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow-x: hidden;
+}
+section{
+    min-height: 100vh;
+   
+
+}
+.parent{
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+   
+}
+img{
+   border-radius: 20px;
+    width: 400px;
+    height: 300px;
+}
+p{
+    padding: 20px;
+    text-align: center;
+    background-color: brown;
+    width: 250px;
+}
