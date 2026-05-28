@@ -1,0 +1,29 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow-x: hidden;
+}
+.parent{
+    padding: 20px;
+    background-color: brown;
+    color: white;
+    transition: 1s ease;
+}
+.child{
+    padding: 20px;
+    background-color: white;
+    color: black;
+
+}
+.button:hover{
+    background-color: blue;
+    scale: ();
+}
