@@ -1,0 +1,78 @@
+:root {
+  --primary: #6366f1;
+  --bg: #f8fafc;
+  --text: hsl(217, 33%, 17%);
+}
+
+body {
+  background-color: var(--bg);
+  font-family: 'Inter', sans-serif;
+  padding: 40px;
+}
+
+/* Grid Layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card Base & Hover Animation */
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Typography */
+.card h3 {
+  margin-top: 0;
+  color: var(--text);
+  font-size: 1.25rem;
+  position: relative;
+  display: inline-block;
+}
+
+/* Animated Underline Effect */
+.card h3::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.card:hover h3::after {
+  width: 100%;
+}
+
+ 
+.btn-action {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-action:hover {
+  background: var(--primary);
+  color: white;
+}
