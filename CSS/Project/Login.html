@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../Assets/CSS/Login.css">
+    <link rel="shortcut icon" href="../../HTML/Assets/JK_Bikes/logo-removebg-preview.png" type="image/x-icon">
+</head>
+<body>
+    <div class="login">
+        <h1> GET AN ESTIMATE</h1><br/>
+        <p>Get an estimate for your bike service by filling out the form below. Our team will review your information and provide you with a personalized quote for the services you require.</p><br/>
+        <select  id="select" name="select">
+            <option value="select part" disabled selected>select part</option>
+             <option value="Engine">Engine</option>
+              <option value="Spare parts">Spare parts</option>
+               <option value="Disk Break">Disk Breakt</option>
+                <option value="Piston">Piston</option>
+        </select>
+        <br/><br/>
+        
+    <select>
+        <option value="Total Kms Run" disabled selected>Total Kms Run</option>
+        <option value="0-5000">0-5000</option>
+        <option value="5000-10000">5000-10000</option>
+        <option value="10000-15000">10000-15000</option>
+        <option value="15000-20000">15000-20000</option>
+        <option value="20000+">20000+</option>
+    </select><br/><br/>
+    <input type="radio" name="Engine" value="Yes" > Engine Problem
+    <input type="radio" name="Accidental" value="yes"> Accidental Damage<br/><br/>
+    <input type="checkbox" name="Pickup" value="yes"> Pickup / Drop<br/><br/>
+    <input textarea name="message" placeholder="Additional Information"></textarea><br/><br/>
+    <a class="submit" href="../Project/JK_Bike.html">Submit</a>
+    </div>
+</body>
+</html>
