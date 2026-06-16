@@ -1,0 +1,99 @@
+<script>
+//missing number
+let arr=[1,2,3,5]
+let n=arr.length+1
+let actualNum=0
+let expectedNum=0
+for(let i=1;i<=n;i++){
+   expectedNum +=i  
+}
+    for(let j=0;j<arr.length;j++){
+       actualNum +=arr[j]    
+}
+ 
+let missingNum=expectedNum-actualNum
+console.log(missingNum);
+
+//non repeat
+let name="programming"
+let count=0
+for(let i=0;i<name.length;i++){
+    for(let j=0;j< name.length;j++){
+      if(name[i]==name[j]){
+        count++;
+      }
+        
+    }
+    if(count==1){
+        console.log(name[i]);
+        
+    }
+}
+
+//first repeat
+let name1="javascript"
+let count1=0
+for(let i=0;i<name1.length;i++){
+    for(let j=0;j< name1.length;j++){
+      if(name1[i]==name1[j]){
+        count1++;
+      }
+        
+    }
+    if(count1==3){
+        console.log(name1[i]);
+        
+    }
+}
+
+//zero
+let number=[1,0,2,0,3,4,0]
+number.sort((a,b)=>b-a)
+console.log(number);
+
+//count occurance
+let heros=["Vijay","Ajith","Vijay","SK"]
+for(let i=0;i < heros.length;i++){
+    let num=0
+    for(let j=0;j< heros.length;j++){
+        if(heros[i]===heros[j]){
+            num++;
+        }
+    }
+    console.log(heros[i] +" + "+num);
+}
+ 
+// Find Most Frequent Element
+let numbers=[1,2,2,3,2,4,1]
+let count3=0
+for(let i=0;i<numbers.length;i++){
+    for(let j=0;j< numbers.length;j++){
+      if(numbers[i]==numbers[j]){
+        count3++;
+      }
+        
+    }
+    if(count3==5){
+        console.log(numbers[i]);
+        
+    }
+}
+
+//odd or even
+let arr1 = [1, 2, 3, 4, 5, 6];
+
+let even = [];
+let odd = [];
+
+for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] % 2 === 0) {
+        even.push(arr1[i]);
+    } else {
+        odd.push(arr1[i]);
+    }
+}
+
+console.log("Even:", even);
+console.log("Odd:", odd);
+
+    </script>
