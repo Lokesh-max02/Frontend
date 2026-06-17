@@ -1,10 +1,66 @@
 <script>
-    let names=[1,2,3,4,5,6]
-    let slice=names.slice(2,5)
-    console.log(slice);
-    console.log(names);
+
+    //task-1
+    let movie=["HTML","CSS","JavaScript"]
+    movie.push("React","Node.js")
+    console.log(movie);
     
-    let check=names.includes(8)
-    console.log(check);
+    //task-2
+    let lang=["HTML","CSS","JavaScript","React"]
+    let remove=lang.pop()
+    console.log(remove);
+    console.log(lang);
     
+    //task-3
+    let fruit=["Apple","Mango","Orange","Banana"]
+    let removed=fruit.shift()
+    console.log(removed);
+    console.log(fruit);
+    
+    //task-4
+    let actor=["Ajith","Suriya","SK"]
+    let insert=actor.unshift("vijay","Dhanush")
+    console.log(actor);
+    
+    //task-5
+    let frontend=["HTML","CSS","Bootstrap","React"]
+    frontend.splice(2,1,"Javascript")
+    console.log(frontend);
+   
+    //task-6
+    let arr=["HTML","CSS","JavaScript","React","Node"]
+    let newarr=arr.slice(2,4)
+    console.log(newarr);
+
+    //task-7
+    let detail={name:"John",course:"MERN",city:"chennai",age:21}
+    for (const key in detail) {
+        console.log(key+" : "+detail[key]);
+    }
+
+    //task-8
+    let collection=[{name:"vijay",movie:"GOAT"},{name:"Ajith",movie:"Vidaamuyarchi"},{name:"Suriya",movie:"Kanguva"}]
+    for (const elements of collection) {
+        console.log(elements.name+"-"+elements.movie);
+        
+    }
+   
+   //task-9
+   let heros=["Vijay","Ajith","Suriya","SK"]
+   let result=heros.join(" | ")
+   console.log(result);
+   
+   //task-10
+   let language=["HTML","CSS","JavaScript","React"]
+   let output= language.includes("React")
+   console.log(output);
+   
+   if(output==true){
+   
+    console.log("course Found");
+    
+   }else{
+    console.log("course not Found");
+    
+   }
 </script>
