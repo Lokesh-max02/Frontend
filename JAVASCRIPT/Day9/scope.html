@@ -1,0 +1,19 @@
+<script>
+    const Mainbranch =(add)=>{
+        let name="Gokul"
+        let saving=1000
+
+        const branch =()=>{
+        saving +=3000
+        saving +=add
+        console.log(name);
+        
+        console.log(saving);
+        
+        }
+        return branch
+    }
+    const closure=Mainbranch(5000)
+    closure()
+     closure()
+</script>
