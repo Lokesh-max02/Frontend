@@ -1,0 +1,98 @@
+<script>
+    //task-1
+    const hero=["Vijay","Ajith","Suriya"]
+   const capital= hero.map((e,i)=>e.toUpperCase(e))
+    console.log(capital);
+    
+    //task-2
+    const collection=[100,200,300,400];
+    const total=collection.map((e,i)=>e*10)
+    console.log(total);
+    
+    //task-3
+    const movies=["GOAT","LEO","Master"]
+    const mix=movies.map((e,i)=>{
+        console.log("Movies :",e);
+        
+    })
+
+    //task-4
+    const collections=[100,500,800,200,900]
+    const greater=collections.filter((e,i)=>e>=500)
+    console.log(greater);
+    
+    //task-5
+    const marks=[35,80,20,90,45]
+    const result=marks.filter((e,i)=>e>=35)
+    console.log("Passed :",result);
+    
+    //task-6
+    const actor=["vijay","Ajith","SK","Suriya"]
+    const letters=actor.filter((e,i)=>e.length > 4)    
+    console.log(letters);
+    
+    //task-7
+    const actors=["vijay","Ajith","SK","Suriya"]
+    const find =actors.find((e,i)=>e==="Ajith")
+    console.log("Found:",find);
+    
+    //task-8
+    const amount=["vijay","Ajith","SK","Suriya"]
+    const greats =amount.find((e,i)=>e> 400)
+    console.log("Found:",greater);
+
+    //task-9
+    const heroes=["vijay","Ajith","Suriya"]
+    const equals=heroes.findIndex((e,i)=>e==="Suriya")
+    console.log(equals);
+    
+      //task-10
+    const movie=["GOAT","LEO","Master"]
+    const equal=movie.findIndex((e,i)=>e==="LEO")
+    console.log(equal);
+
+    //task-11
+    const mark=[35,80,20,90]
+    const results=mark.some((e,i)=>e> 35)
+    console.log(results);
+
+    //task-12
+    const collect=[100,200,900]
+    const passed=collect.some((e,i)=>e > 800)
+    console.log(passed);
+    
+    //task-13
+    const score=[50,70,90,40]
+    const check=score.every((e,i)=>e >=35)
+    console.log(check);
+
+    //task-14
+     const score1=[20,25,30,35]
+    const check1=score1.every((e,i)=>e >=18)
+    console.log(check);
+    
+    //task-15
+    const collects=[100,200,300,400]
+    const records=collects.reduce((acc,current)=>{
+        return acc+current
+    },0)
+    console.log(records);
+    
+    //task-16
+    const student=[{id:1,name:"sudhan"},{id:9,name:"gokul"},{id:8,name:"rahul"}]
+    const stName=student.map((e,i)=>e.name)
+    console.log(stName);
+    
+    //task-17
+    const student1=[{id:1,age:7},{id:9,age:98},{id:8,age:65}]
+   const temp=  student1.filter((e,i)=>e.age > 20)
+    console.log(temp);
+    //task 18
+    const student2 = [{id:1,name:"sudhan"},{id:2,name:"sundhar"}];
+    const temp1 = student2.find((e,i)=>e.id == 2)
+    console.log(temp1);
+    //tsk 19
+    const numbers = [100,500,800,200];
+    const num = numbers.reduce((e,i)=> max() )
+    console.log(num);
+</script>
