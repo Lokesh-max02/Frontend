@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+</head>
+<body>
+    <h1 id="title">welcome</h1>
+    <p class="course">react</p>
+    <input id="name"  type="text"><br/><br/>
+    <div>
+        <img id="image" src="../../HTML/Assets/v.jpg">
+    </div>
+    <a href="#" id="website">Link</a>
+    
+    <section>
+        <h1 id="titles"> Hello</h1>
+        <p class="content">Learning DOM</p>
+        <input id="names" type="text"/>
+    </section>
+
+
+
+
+
+
+    <script>
+        //task-1
+       const data= document.getElementById("title")
+      title.innerText="welcome to Javascript DOM"
+      console.log(data);
+      //task-2
+       const selector=document.querySelector(".course")
+       selector.innerText="Mern stack"
+       console.log(selector);
+       //task-3
+       const input=document.getElementById("name").value="Lokesh"
+       console.log(input);
+       //task-4
+       const img=document.querySelector("#image").src="../../HTML/Assets/i.jpg"
+       console.log(img);
+       
+       //task-5
+       const sites=document.getElementById("website").href="https://google.com"
+       console.log(sites);
+       
+       //bonus
+
+       const heading=document.getElementById("titles")
+       heading.innerText="welcome"
+       const para=document.querySelector(".content")
+       para.innerText="Learning Java"
+       const datas=document.querySelector("#names").value="Jack"
+      
+      
+       
+       
+
+    </script>
+</body>
+</html>
