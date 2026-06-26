@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+    <style>
+        .hide{
+            display: none;
+        }
+        .heading{
+            background-color: brown;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- task-1 -->
+   <input type="text" id="input">
+   <button  onclick="hero()">Click</button>
+   <h2 id="value"></h2>
+    <!-- task-2 -->
+    
+    <p id="parag">vijay is the cm of Tamilnadu and the party name is TVK  and party is start in 2 year before and now is cm of tamilnadu.</p>
+   <button onclick="hide()">click</button>
+
+   <!-- task-3 -->
+    <p id="paragr">vijay is the cm of Tamilnadu and the party name is TVK  and party is start in 2 year before and now is cm of tamilnadu.</p>
+   <button onclick="show()">click</button>
+
+   <!-- task-4 -->
+    <p id="paragra">Number of materials you can submit for this assignment: 1The permissible size limit for the assignment file: 100 MBThis assignment can be submitted only once Grade points for this assignment: 10</p>
+   <button onclick="toggle()">show</button>
+
+   <div>
+   <!-- task-5 -->
+    <input type="text" id="check">
+    <button onclick="names()" >click</button>
+    <h2 id="join"></h2>
+    </div>
+    <div>
+        <!-- task-6 -->
+         <input type="text" id="pass">
+         <button onclick="password()">summit</button>
+         <h2 id="weak"></h2>
+    </div>
+
+    <div>
+        <!-- task-7 -->
+         <input type="text" id="first">
+         <input type="text" id="second">
+         <button onclick="peru()">click</button>
+         <h2 id="full"></h2>
+    </div>
+
+    <div>
+        <!-- task-8 -->
+         <img src="../../HTML/Assets/v.jpg" alt="img" id="image">
+         <button onclick="animation()">change</button>
+    </div>
+
+    <div>
+        <!-- task-9 -->
+         <h2 class="heading">DOM in Javascript</h2>
+         <button onclick="color()">click</button>
+    </div>
+
+    <div>
+        <!-- task-10 -->
+         <input type="text" id="valid">
+         <button onclick="invalid()">summit</button>
+         <h2 id="indicate"></h2>
+    </div>
+
+    <div>
+        <!-- task-11 -->
+         <button onclick="clicks()">click</button>
+         <h2 id="limit"></h2>
+    </div>
+   <script>
+    function hero(){
+     const inputs=document.getElementById("input").value
+     document.getElementById("value").innerText=inputs
+     
+    }
+    
+    function hide(){
+    let hide=document.getElementById("parag").style.display="none"
+    }
+
+    function show(){
+        document.getElementById("paragr")
+        if(paragr.style.display==="none"){
+           paragr. style.display="Block"
+        }else{
+           paragr. style.display="none"
+        }
+    }
+
+    const toggle=()=>{
+    document.querySelector("#paragra").classList.toggle("hide")
+    }
+
+    const names=()=>{
+   const admin=document.getElementById("check").value
+   if(admin==="admin"){
+    document.querySelector("#join").innerText="login success"
+   }else{
+     document.querySelector("#join").innerText="invalid user"
+   }
+    }
+
+    const password=()=>{
+        const strong=document.getElementById("pass").value
+        if(strong.length >=8){
+            document.querySelector("#weak").innerText="strong password"
+        }else{
+             document.querySelector("#weak").innerText="weak password"
+        }
+        }
+    
+        const peru=()=>{
+            const firstName=document.getElementById("first").value
+            const secondName=document.getElementById("second").value
+             let  add= firstName+ ""+secondName
+             let result=document.querySelector("#full").innerText=add
+             console.log(result);
+             
+        }
+
+        const animation=()=>{
+            document.getElementById("image").src="../../HTML/Assets/i.jpg"
+        }
+         
+        const color=()=>{
+            document.querySelector(".heading").style.color="black"
+            document.querySelector(".heading").innerText="Java"
+        }
+
+        const invalid=()=>{
+            const values=document.getElementById("valid").value
+            if(values===""){
+                document.getElementById("indicate").innerText="please Enter value"
+
+            }else{
+                document.getElementById("indicate").innerText="Form summited"
+            }
+        }
+        
+         let count=0
+        const clicks=()=>{
+           
+            count++
+            document.getElementById("limit").innerText=count
+        }
+   </script>
+</body>
+</html>
