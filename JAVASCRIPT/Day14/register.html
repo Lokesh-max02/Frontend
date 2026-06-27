@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+</head>
+<body>
+    <form id="formdata">
+        <input type="text" placeholder="Enter your Name" id="name">
+        <br/><br/>
+        <input type="email" placeholder="Enter the Email" id="email">
+        <br/><br/>
+        <input id="num"    type="tel" maxlength="10" placeholder="Enter Mobile number">
+           <br/><br/>
+        <input id="pass" type="password" placeholder="Enter a password">
+        <br/><br/>
+         <input id="repass" type="password" placeholder="ReEnter a password">
+        <br/><br/>
+        <h3 id="message"></h3>
+        <button onclick="registerForm(event)">Register</button>
+    </form>
+
+
+
+
+
+
+    <script>
+        let data=[]
+        const registerForm=(e)=>{
+         e.preventDefault()
+         const userName=document.getElementById("name").value
+         const useremail=document.getElementById("email").value
+         const userNum=document.getElementById("num").value
+         const userPassword=document.getElementById("pass").value
+         const userrePassword=document.getElementById("repass").value
+         let totalValue={userName,useremail,userNum,userPassword,userrePassword}
+          data.push(totalValue)
+           if(userPassword===userrePassword){
+            console.log(totalValue);
+        }else{
+           
+            document.getElementById("message").innerText="Enter a correct password"
+            
+        }
+          
+          document.getElementById("name").value=""
+           document.getElementById("email").value=""
+           document.getElementById("num").value=""
+           document.getElementById("pass").value=""
+        if(userName===""){
+            alert('please enter a name')
+        }
+
+       localStorage.setItem(totalValue,JSON.stringify("data"))
+       alert("Register successfully")
+       formdata.reset()
+        }
+
+    </script>
+</body>
+</html>

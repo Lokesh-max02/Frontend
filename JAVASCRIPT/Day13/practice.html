@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="idtity">
+        <button onclick="view()">click</button>
+        <h2 id="name"></h2>
+</div>
+<div>
+    <!-- task-2 -->
+     <p id="showed">ladhak is the best place to visit in the india</p>
+     <button onclick="para()">click</button>
+</div>
+
+
+
+
+
+        <script>
+            const view=()=>{
+                const names=document.getElementById("idtity").value
+               document.getElementById("name").innerText=names
+                
+            }
+             const para=()=>{
+            const hide=document.getElementById("showed").style.display="none"
+             }
+            </script>
+    </div>
+</body>
+</html>
