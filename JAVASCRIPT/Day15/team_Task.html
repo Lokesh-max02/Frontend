@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Task</title>
+    <style>
+        .dark{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body id="colrs">
+    <!-- task-1 -->
+    <textarea  id="area" onmouseout="valuecount()" ></textarea>
+    <h2 id="counts"></h2>
+
+<div>
+    <!-- task-2 -->
+     <input type="age" id="data">
+     <button onclick="ageGenerate()">click</button>
+     <h2 id="ageIndicate"></h2>
+</div>
+<div>
+    <!-- task-3 -->
+     <button onclick="color()" >click</button>
+</div>
+
+<div>
+    <!-- task-4 -->
+     <input type="text" id="person" placeholder="number of person">
+      <button onclick="ticket()">click</button>
+      <h2>$150 per ticket</h2>
+      <h2 id="total"></h2>
+    </div>
+
+
+
+    <script>
+        let value=""
+        const valuecount=(e)=>{
+            
+           let count=0
+            const data=document.getElementById("area").value
+             const amount=Array.from(data)
+            for(let i=0;i<amount.length;i++){
+                count++
+            }
+             
+           
+            document.getElementById("counts").innerText=count
+        }
+
+        const ageGenerate=()=>{
+            const number=document.getElementById("data").value
+            if(number >=0 && number <=12){
+                 document.getElementById("ageIndicate").innerText="child"
+            }else if (number>=13 && number<=19) {
+                 document.getElementById("ageIndicate").innerText="Teenager"
+            }else if (number>=20 && number<=59) {
+                 document.getElementById("ageIndicate").innerText="Adult"
+            }else if (number>=60 && number<=100) {
+                 document.getElementById("ageIndicate").innerText="Senior Citizen"
+            }
+           
+        }
+
+        const color=()=>{
+            document.body.classList.toggle("dark")
+        }
+
+        const ticket=()=>{
+            const value=document.getElementById("person").value
+            const multi=150*value;
+            document.getElementById("total").innerText="Total Amount: "+multi
+        }
+    </script>
+</body>
+</html>
