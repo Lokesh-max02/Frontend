@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+<body>
+    <table >
+    <thead>
+        <tr>
+            <th>S.No</th>
+            <th>Category</th>
+            <th>Stock</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+
+    <tbody id="datas">
+
+    </tbody>
+</table>
+</body>
+</html>
+
+
+
+<script>
+
+    //closure function
+    const data=()=>{
+        let goods=500
+        let quantity=90
+    
+    function delivery(){
+        let total=0
+        total=goods*quantity
+        quantity++
+        console.log(total);
+        
+    }
+    return delivery
+}
+    let result=data()
+    result()
+    result()
+
+//callback function
+//Javascript is asyncronous so sometask take time .instead of waiting it executethe other other code and call when line execution completed.
+const call=()=>{
+    console.log("run second");
+}
+    const secondCall=(callback)=>{
+        console.log("run first");
+        callback()
+        
+    }
+    
+
+secondCall(call)
+
+
+    //promise
+    //promise are used to handle asynchronous operation in JS.they make asynchronous code easy to read and avoid callback hell.In mainly promise we use then(it successful run the code ),catch(is used to catch the error handling)
+    const booking=new   Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("Booking confirm")
+            },2000)
+            
+        })
+    
+    booking.then(datas=>{
+        console.log(datas);
+        
+    })
+
+    //promise with catch
+    const bookings=new Promise((resolve,rej)=>{
+    console.log("start booking");
+     setTimeout(()=>{
+    resolve("payment successfull")
+},3000)
+
+    })
+    bookings.then((result)=>{
+        console.log(result);
+        
+        console.log("book suceess");
+       
+        
+    })
+     bookings .catch(error=>{
+        console.log(error);
+        console.log("error");
+        
+        
+       })
+       //Async/await
+       //Async/Await is a asynchronous process,it improve code readability.And async /await handling asynchronous operation
+     
+        const sending=new Promise((resolve)=>{
+            console.log("Message");
+            setTimeout(()=>{
+              resolve("Typing")
+            },2000)
+        })
+      const messages=async()=>{
+       const funct= await sending;
+       console.log(funct);
+       
+        console.log("Sending a Message sucessful");
+        
+    }
+    messages()
+
+//fetch api
+//Fetch API is used to communicate frontend and backend to send and receive data.fetch is return a promise,which handle using .then() or Async /await.
+const displays = async () => {
+    try {
+        const apis = await fetch("https://dummyjson.com/products");
+
+        const store = await apis.json();
+
+        const output = store.products;
+
+        let data = document.getElementById("datas");
+
+        output.forEach((e, i) => {
+            data.innerHTML += `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${e.category}</td>
+                    <td>${e.stock}</td>
+                    <td>${e.rating}</td>
+                </tr>
+            `;
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+displays();
+</script>

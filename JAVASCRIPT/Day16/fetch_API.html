@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch_APIs</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Category</th>
+            <th>price</th>
+            <th>stock</th>
+            </thead>
+            <tbody id="datas">
+            </tbody>
+    </table>
+
+
+    <script>
+        const displays=async()=>{
+            const apis=await fetch("https://dummyjson.com/products")
+            const store=await apis.json()
+            const output=store.products
+           let data=document.getElementById("datas")
+            output.forEach((e,i)=>
+             data.innerHTML +=  `
+           <tr>
+            <td>${id+1}</td>
+             <td>${category}</td>
+              <td>${stock}</td>
+               <td>${rating}</td>
+            </tr>`
+            )}
+           
+            
+          displays()
+    </script>
+</body>
+</html>
