@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="p-5">
+
+    <h1 class="text-2xl font-bold mb-5">Student Form</h1>
+
+    <input type="text" id="name" placeholder="Enter Name"
+        class="border p-2 mb-2 block">
+
+    <input type="email" id="email" placeholder="Enter Email"
+        class="border p-2 mb-2 block">
+
+    <button onclick="saveData()"
+        class="bg-blue-500 text-white px-4 py-2 rounded">
+        Save
+    </button>
+
+    <table class="border-collapse border border-black mt-5 w-full">
+        <thead>
+            <tr>
+                <th class="border border-black p-2">Name</th>
+                <th class="border border-black p-2">Email</th>
+            </tr>
+        </thead>
+        <tbody id="tableData"></tbody>
+    </table>
+
+    <script>
+        function saveData() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+
+            const student = {
+                name,
+                email
+            };
+
+            let students =
+                JSON.parse(localStorage.getItem("students")) || [];
+
+            students.push(student);
+
+            localStorage.setItem(
+                "students",
+                JSON.stringify(students)
+            );
+
+            displayData();
+
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+        }
+
+        function displayData() {
+            let students =
+                JSON.parse(localStorage.getItem("students")) || [];
+
+            let output = "";
+
+            students.forEach((student) => {
+                output += `
+                    <tr>
+                        <td class="border border-black p-2">
+                            ${student.name}
+                        </td>
+                        <td class="border border-black p-2">
+                            ${student.email}
+                        </td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById("tableData").innerHTML = output;
+        }
+
+        displayData();
+    </script>
+
+</body>
+</html>
