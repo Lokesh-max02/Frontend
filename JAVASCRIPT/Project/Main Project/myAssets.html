@@ -251,11 +251,264 @@ body{
     </select>
 </div>
     </div>
-<div>
-    <div>
-        
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 my-6">
+
+    <div class="bg-white rounded-xl shadow p-5 border-l-4 border-blue-600">
+        <h3 class="text-gray-500">Assigned Assets</h3>
+        <p class="text-3xl font-bold mt-2">12</p>
     </div>
+
+    <div class="bg-white rounded-xl shadow p-5 border-l-4 border-green-500">
+        <h3 class="text-gray-500">Active</h3>
+        <p class="text-3xl font-bold mt-2 text-green-600">10</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-5 border-l-4 border-yellow-500">
+        <h3 class="text-gray-500">Under Repair</h3>
+        <p class="text-3xl font-bold mt-2 text-yellow-600">1</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-5 border-l-4 border-red-500">
+        <h3 class="text-gray-500">Return Pending</h3>
+        <p class="text-3xl font-bold mt-2 text-red-600">1</p>
+    </div>
+
 </div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-8">
+
+<div class="bg-white rounded-xl shadow hover:shadow-xl transition p-5">
+
+<div class="flex justify-between items-center">
+
+<div>
+<h2 class="font-bold text-xl">💻 Dell Latitude 5420</h2>
+<p class="text-gray-500">AST-1001</p>
+</div>
+
+<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+Active
+</span>
+
+</div>
+
+<hr class="my-4">
+
+<div class="space-y-2">
+
+<div class="flex justify-between">
+<span>Category</span>
+<span>Laptop</span>
+</div>
+
+<div class="flex justify-between">
+<span>Assigned</span>
+<span>20 Jul 2026</span>
+</div>
+
+<div class="flex justify-between">
+<span>Condition</span>
+<span>Excellent</span>
+</div>
+
+<div class="flex justify-between">
+<span>Warranty</span>
+<span>2028</span>
+</div>
+
+</div>
+
+<button
+onclick="showDetails('Dell Latitude 5420','AST-1001','Laptop','20 Jul 2026','Excellent','2028','Active')"
+class="mt-5 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+View Details
+</button>
+
+</div>
+
+<div class="bg-white rounded-xl shadow hover:shadow-xl transition p-5">
+
+<div class="flex justify-between items-center">
+
+<div>
+<h2 class="font-bold text-xl">🖥 Dell Monitor</h2>
+<p class="text-gray-500">AST-1002</p>
+</div>
+
+<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+Active
+</span>
+
+</div>
+
+<hr class="my-4">
+
+<div class="space-y-2">
+
+<div class="flex justify-between">
+<span>Category</span>
+<span>Monitor</span>
+</div>
+
+<div class="flex justify-between">
+<span>Assigned</span>
+<span>15 Jul 2026</span>
+</div>
+
+<div class="flex justify-between">
+<span>Condition</span>
+<span>Good</span>
+</div>
+
+<div class="flex justify-between">
+<span>Warranty</span>
+<span>2027</span>
+</div>
+
+</div>
+
+<button
+onclick="showDetails('Dell Latitude 5420','AST-1001','Laptop','20 Jul 2026','Excellent','2028','Active')"
+class="mt-5 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+View Details
+</button>
+
+</div>
+
+<div class="bg-white rounded-xl shadow hover:shadow-xl transition p-5">
+
+<div class="flex justify-between items-center">
+
+<div>
+<h2 class="font-bold text-xl">⌨ Logitech Keyboard</h2>
+<p class="text-gray-500">AST-1003</p>
+</div>
+
+<span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">
+Repair
+</span>
+
+</div>
+
+<hr class="my-4">
+
+<div class="space-y-2">
+
+<div class="flex justify-between">
+<span>Category</span>
+<span>Keyboard</span>
+</div>
+
+<div class="flex justify-between">
+<span>Assigned</span>
+<span>12 Jul 2026</span>
+</div>
+
+<div class="flex justify-between">
+<span>Condition</span>
+<span>Needs Service</span>
+</div>
+
+<div class="flex justify-between">
+<span>Warranty</span>
+<span>2026</span>
+</div>
+
+</div>
+
+<button
+onclick="showDetails('Dell Latitude 5420','AST-1001','Laptop','20 Jul 2026','Excellent','2028','Active')"
+class="mt-5 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+View Details
+</button>
+
+</div>
+
+</div>
+<div id="detailsModal"
+class="fixed inset-0 bg-black/50 hidden justify-center items-center z-50">
+
+    <div class="bg-white w-[450px] rounded-xl p-6 relative">
+
+        <button
+        onclick="closeModal()"
+        class="absolute top-3 right-4 text-3xl">
+            &times;
+        </button>
+
+        <h2 id="mName" class="text-2xl font-bold mb-5"></h2>
+
+        <table class="w-full">
+
+            <tr>
+                <td class="font-semibold py-2">Asset ID</td>
+                <td id="mId"></td>
+            </tr>
+
+            <tr>
+                <td class="font-semibold py-2">Category</td>
+                <td id="mCategory"></td>
+            </tr>
+
+            <tr>
+                <td class="font-semibold py-2">Assigned</td>
+                <td id="mAssigned"></td>
+            </tr>
+
+            <tr>
+                <td class="font-semibold py-2">Condition</td>
+                <td id="mCondition"></td>
+            </tr>
+
+            <tr>
+                <td class="font-semibold py-2">Warranty</td>
+                <td id="mWarranty"></td>
+            </tr>
+
+            <tr>
+                <td class="font-semibold py-2">Status</td>
+                <td id="mStatus"></td>
+            </tr>
+
+        </table>
+
+        <button
+        onclick="closeModal()"
+        class="w-full mt-6 bg-blue-600 text-white py-2 rounded-lg">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+
+
+
+
+<script>
+
+function showDetails(name,id,category,assigned,condition,warranty,status){
+
+    document.getElementById("mName").innerHTML=name;
+    document.getElementById("mId").innerHTML=id;
+    document.getElementById("mCategory").innerHTML=category;
+    document.getElementById("mAssigned").innerHTML=assigned;
+    document.getElementById("mCondition").innerHTML=condition;
+    document.getElementById("mWarranty").innerHTML=warranty;
+    document.getElementById("mStatus").innerHTML=status;
+
+    document.getElementById("detailsModal").classList.remove("hidden");
+    document.getElementById("detailsModal").classList.add("flex");
+}
+
+function closeModal(){
+
+    document.getElementById("detailsModal").classList.remove("flex");
+    document.getElementById("detailsModal").classList.add("hidden");
+
+}
+
+</script>
 </main>
 </body>
 </html>
