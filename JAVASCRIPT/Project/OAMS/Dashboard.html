@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+<body class="bg-gray-100">
+    <!-- Left side -->
+    <div class="flex h-screen">
+        <div class="bg-blue-800 text-white">
+            <div>
+                <img  src="../assets/newlogo.png" alt="img" width="200">
+            </div>
+            <ul>
+                 <li class="bg-blue-600 mx-3 rounded-lg">
+                <a href="#" class="flex items-center justify-center gap-3 p-3 mb-3">
+                    <img src="../assets/icons/dashboard.png" alt="img" width="20">   Dashboard</a>
+                </li>
+                <li class="bg-blue-600 mx-3 rounded-lg">
+                 <a href="#" class="flex items-center justify-center gap-3 p-3 hover:bg-blue-700  rounded-lg mb-3">
+                    <img src="../assets/icons/bell.png" alt="img" width="20">Assets</a>
+                </li>
+               <li class="bg-blue-600 mx-3 rounded-lg">
+                   <a href="#" class="flex items-center justify-center gap-3 p-3 hover:bg-blue-700  rounded-lg mb-3">
+                    <img src="../assets/icons/user.png" alt="img" width="20">Employees</a>
+                </li>
+                <li class="bg-blue-600 mx-3 rounded-lg">
+         <a href="#" class="flex items-center justify-center gap-3 p-3 hover:bg-blue-700  rounded-lg mb-3">
+            <img src="../assets/icons/assignment.png" alt="img" width="20">Assignments</a>
+                </li>
+                <li class="bg-blue-600 mx-3 rounded-lg">
+   <a href="#" class="flex items-center justify-center gap-3 p-3 hover:bg-blue-700  rounded-lg mb-3">
+    <img src="../assets/icons/renovation.png" alt="img" width="20">Maintenance</a>
+                </li>
+                <li class="bg-blue-600 mx-3 rounded-lg">
+                <a href="#" class="flex items-center justify-center gap-3 p-3 hover:bg-blue-700  rounded-lg mb-3">
+                    <img src="../assets/icons/report.png" alt="img" width="20">Reports</a>
+                </li>
+               <li class="bg-blue-600 mx-3 rounded-lg">
+               <a href="#" class="flex items-center justify-center gap-3 p-3 hover:bg-blue-700  rounded-lg mb-3">
+                <img src="../assets/icons/notifications.png" alt="img" width="20">Notifications</a>
+                </li>
+                <li class="bg-blue-600 mx-3 rounded-lg">
+         <a href="#" class="flex items-center justify-center gap-3 p-3 hover:bg-blue-700  rounded-lg mb-3">
+            <img src="../assets/icons/setting.png" alt="img" width="20">Settings</a>
+                </li>
+            </ul>
+        </div>
+         <!-- Navbar -->
+        <div class="flex-1">
+        <div class="bg-white shadow p-5 flex justify-between items-center">
+        <div class="relative">
+             <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+
+        <!-- Search Input -->
+        <input
+            type="text"
+            placeholder="Search assets, employees..."
+            class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 bg-white focus:outline-none "
+        >
+        </div>
+        <div class="flex gap-6 items-center">
+
+               
+        <img src="../assets/icons/bell.png" alt="" width="30">
+        <a class="bg-blue-800 text-white p-1 rounded-lg" href="#">+Add Assets</a>
+                <img src="../assets/lokesh.jpg" width="30"
+                class="rounded-full">
+             <nav>
+    <select onchange="location = this.value;">
+        <option selected disabled>Login</option>
+        <option value="Login.html">User</option>
+        <option value="Login.html">Admin</option>
+    </select>
+</nav>
+
+            </div>
+    </div>
+    <div class="flex justify-center align-center mt-5">
+    <div class="bg-white mt-5 mx-5 p-3 w-60 h-20 flex justify-center align-center gap-6 shadow rounded-xl">
+        <div >
+            <img src="../assets/icons/workplace.png" alt="img" width="50">
+        </div>
+        <div class="bold">
+            <h1 class="font-bold">Total Assets</h1>
+            <p class="font-semibold">2,228</p>
+        </div>
+    </div>
+     <div class="bg-white mt-5 mx-5 p-3 w-60 h-20 flex justify-center align-center gap-6 shadow rounded-xl">
+        <div >
+            <img src="../assets/icons/group.png" alt="img" width="50">
+        </div>
+        <div class="bold">
+            <h1 class="font-bold">Assigned Assets</h1>
+            <p class="font-semibold">928</p>
+        </div>
+    </div>
+     <div class="bg-white mt-5 mx-5 p-3 w-60 h-20 flex justify-center align-center gap-6 shadow rounded-xl">
+        <div >
+            <img src="../assets/icons/cube.png" alt="img" width="50">
+        </div>
+        <div class="bold">
+            <h1 class="font-bold">Available Assets</h1>
+            <p class="font-semibold">828</p>
+        </div>
+    </div>
+     <div class="bg-white mt-5 mx-5 p-3 w-60 h-20 flex justify-center align-center gap-6 shadow rounded-xl">
+        <div >
+            <img src="../assets/icons/maintenance.png" alt="img" width="50">
+        </div>
+        <div class="bold">
+            <h1 class="font-bold">Maintenance</h1>
+            <p class="font-semibold">28</p>
+        </div>
+    </div>
+    </div>
+   
+   <div class="grid grid-cols-2 gap-6 px-8 mt-8">
+
+    <!-- Recent Asset Requests -->
+    <div class="bg-white rounded-2xl shadow p-6">
+
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-lg font-bold">📄 Recent Asset Requests</h2>
+            <a href="#" class="text-blue-600 text-sm">View All</a>
+        </div>
+
+        <div class="space-y-5">
+
+            <div class="flex justify-between items-center  pb-3">
+                <div class="flex gap-4">
+                    <img src="../assets/icons/desktop-computer.png" class="w-12 h-12">
+
+                    <div>
+                        <h3 class="font-semibold">Dell Latitude 5420</h3>
+                        <p class="text-sm text-gray-500">Requested by Rahul Kumar</p>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs">
+                        Pending
+                    </span>
+
+                    <p class="text-xs text-gray-500 mt-2">
+                        18 May 2025
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center  pb-3">
+                <div class="flex gap-4">
+                    <img src="../assets/icons/printer (1).png" class="w-12 h-12">
+
+                    <div>
+                        <h3 class="font-semibold">HP LaserJet Printer</h3>
+                        <p class="text-sm text-gray-500">Requested by Priya Sharma</p>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs">
+                        Approved
+                    </span>
+
+                    <p class="text-xs text-gray-500 mt-2">
+                        17 May 2025
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center  pb-3">
+                <div class="flex gap-4">
+                    <img src="../assets/icons/technology.png" class="w-12 h-12">
+
+                    <div>
+                        <h3 class="font-semibold">LG Monitor</h3>
+                        <p class="text-sm text-gray-500">Requested by Amit Verma</p>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs">
+                        Pending
+                    </span>
+
+                    <p class="text-xs text-gray-500 mt-2">
+                        17 May 2025
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center">
+                <div class="flex gap-4">
+                    <img src="../assets/icons/arrow.png" class="w-12 h-12">
+
+                    <div>
+                        <h3 class="font-semibold">Wireless Mouse</h3>
+                        <p class="text-sm text-gray-500">Requested by Sneha Reddy</p>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs">
+                        Rejected
+                    </span>
+
+                    <p class="text-xs text-gray-500 mt-2">
+                        16 May 2025
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Recent Assigned Assets -->
+
+    <div class="bg-white rounded-2xl shadow p-6">
+
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-lg font-bold">💻 Recent Assigned Assets</h2>
+            <a href="#" class="text-blue-600 text-sm">View All</a>
+        </div>
+
+        <div class="space-y-5">
+
+            <div class="flex justify-between items-center  pb-3">
+                <div>
+                    <h3 class="font-semibold">HP Pavilion Laptop</h3>
+                    <p class="text-sm text-gray-500">Assigned to Rahul Kumar</p>
+                </div>
+
+                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs">
+                    IT Department
+                </span>
+
+            </div>
+
+            <div class="flex justify-between items-center  pb-3">
+                <div>
+                    <h3 class="font-semibold">Lenovo Desktop</h3>
+                    <p class="text-sm text-gray-500">Assigned to Priya Sharma</p>
+                </div>
+
+                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs">
+                    HR Department
+                </span>
+
+            </div>
+
+            <div class="flex justify-between items-center  pb-3">
+                <div>
+                    <h3 class="font-semibold">Dell Monitor</h3>
+                    <p class="text-sm text-gray-500">Assigned to Amit Verma</p>
+                </div>
+
+                <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs">
+                    IT Department
+                </span>
+
+            </div>
+
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="font-semibold">Dell Keyboard</h3>
+                    <p class="text-sm text-gray-500">Assigned to Sneha Reddy</p>
+                </div>
+
+                <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs">
+                    Finance
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+<div class="bg-white flex justify-around align-center p-2 gap-6 mt-2 ">
+    <div class="flex gap-6 ">
+    <img src="../assets/icons/group.png" alt="" width="50">
+    <div>
+        <h1 class="font-bold">IT Department</h1>
+        <h1 class="font-semibold">245</h1>
+        Assets
+    </div>
+    </div>
+    <div class="flex gap-6">
+    <img src="../assets/icons/group (1).png" alt="" width="50">
+    <div>
+        <h1 class="font-bold">HR Department</h1>
+        <h1 class="font-semibold">85</h1>
+        Assets
+    </div>
+    </div>
+     <div class="flex  gap-6 ">
+    <img src="../assets/icons/group (2).png" alt="" width="50">
+    <div>
+        <h1 class="font-bold">Finance Department</h1>
+        <h1 class="font-semibold">96</h1>
+        Assets
+    </div>
+    </div>
+    <div class="flex gap-6">
+    <img src="../assets/icons/user.png" alt="" width="50">
+    <div>
+        <h1 class="font-bold">Marketing Department</h1>
+        <h1 class="font-semibold">52</h1>
+        Assets
+    </div>
+    </div>
+</div>
+    </div>
+   
+
+    
+</body>
+</html>

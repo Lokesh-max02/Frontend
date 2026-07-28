@@ -1,0 +1,90 @@
+<script>
+    const obj=[{name:"lokesh" ,age:21,course:"FS Java"},
+               {name:"rahul" ,age:26,course:"FS python"},
+               {name:"Gokul" ,age:29,course:"FS Mern"}
+    ]
+
+    const {name,age,course}=obj[1]
+    console.log(name,age,course);
+    console.log(obj[2]);
+    
+    const result=obj.map((e)=>{
+        console.log(e);
+       
+        
+        
+    })
+   
+    const arr={names:"guyy",gender:"Male",age:43}
+    const {names}=arr
+    console.log(names);
+    
+    //task1
+    const student = {
+  name: "Lokesh",
+  age: 21,
+  course: "FS Java"
+};
+console.log(student.name);
+
+//task2
+const colors = ["Red", "Blue", "Green", "Yellow"];
+let [first,second]=colors
+console.log(first,second);
+
+//task3
+const numbers = [10, 20, 30, 40, 50];
+let [a,,b,,c]=numbers
+console.log(a,b,c);
+
+//task4
+const fruits = ["Apple", "Banana", "Orange", "Mango", "Grapes"];
+let [fir,...other]=fruits
+console.log(fir,other);
+
+//task8
+const students = [
+  { name1: "Lokesh", age: 21 },
+  { name1: "Rahul", age: 22 }
+];
+const [{name1}]=students
+console.log(name1);
+
+//task9
+const person = {
+  name: "Lokesh",
+  address: {
+    city: "Chennai",
+    state: "Tamil Nadu"
+  }
+};
+
+const {address:{city,state}}=person
+console.log(city,state);
+
+//interview qx
+const products = [
+  {
+    id: 1,
+    nam: "Laptop",
+    price: 50000
+  },
+  {
+    id: 2,
+    nam: "Mouse",
+    price: 800
+  },
+  {
+    id: 3,
+    nam: "Keyboard",
+    price: 1500
+  }
+];
+
+let data=products.map(({nam,price})=>{
+    console.log(nam+"-"+price);
+})
+
+
+
+</script>
