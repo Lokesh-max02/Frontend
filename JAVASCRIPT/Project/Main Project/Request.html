@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Request Assets</title>
+<title>Employee Dashboard</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
@@ -29,22 +29,26 @@ body{
 
     <!-- Logo -->
 
-    <div class="flex items-center gap-3">
+     <div class="flex items-center gap-3">
 
-       
+        <div class="w-12 h-12 rounded-xl bg-blue-600 flex justify-center items-center text-white text-2xl">
+            <i class="fa-solid fa-boxes-stacked"></i>
+        </div>
+
         <div>
 
-            <h1 class="font-bold text-xl text-slate-800">
+            <h1 class="text-3xl font-bold text-blue-700">
                 AssetsHub
             </h1>
 
-            <p class="text-xs text-slate-500">
+            <p class="text-gray-500">
                 Employee Dashboard
             </p>
 
         </div>
 
     </div>
+
 
     <!-- Search -->
 
@@ -105,7 +109,7 @@ body{
 
         <li>
 
-            <a href="#"
+            <a href="../Main Project/employee_Dashboard.html"
             class="flex items-center gap-4 px-6 py-4 bg-blue-600">
 
                 <i class="fa-solid fa-house"></i>
@@ -131,7 +135,7 @@ body{
 
         <li>
 
-            <a href="#"
+            <a href="../Main Project/Request.html"
             class="flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
 
                 <i class="fa-solid fa-plus"></i>
@@ -197,39 +201,600 @@ body{
     </ul>
 
 </aside>
-    <!-- Main section -->
-     <main class="ml-64 mt-16 p-3">
-        <div>
-        <div>
-            <h1 class="text-4xl font-bold">Request Asset</h1>
-            <p>Request a new company asset</p>
-        </div>
-     </div>
 
-     <div class="flex justify-center items-center gap-8 mt-4">
-        <div class="flex gap-2 bg-white w-60 p-3 rounded-lg">
-            <img class="bg-blue-200 rounded-full w-10" src="" alt="img">
-            <div>
-                <h2>Pending Requests</h2>
-                <p class="text-blue-800">2</p>
-            </div>
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="ml-64 mt-20 p-8">
+
+    <!-- Page Header -->
+
+    <div class="flex justify-between items-center">
+
+        <div>
+
+            <h1 class="text-5xl font-bold text-slate-800">
+                Request Asset
+            </h1>
+
+            <p class="text-gray-500 mt-2 text-xl">
+                Request a new company asset
+            </p>
+
         </div>
-        <div class="flex gap-2 bg-white w-60 p-3 rounded-lg">
-            <img class="bg-green-200 rounded-full w-10" src="" alt="img">
-            <div>
-                <h2>Approved Requests</h2>
-                <p class="text-green-800">5</p>
-            </div>
+
+    </div>
+
+    <!-- Statistics Cards -->
+
+    <div class="grid grid-cols-3 gap-8 mt-10">
+
+        <!-- Pending -->
+      <!-- Pending Card -->
+<div class="bg-white rounded-2xl shadow-lg p-6 border border-blue-100 flex items-center justify-between hover:shadow-xl duration-300">
+
+    <div class="flex items-center gap-4">
+
+        <div class="w-16 h-16 rounded-full bg-blue-100 flex justify-center items-center">
+
+            <i class="fa-solid fa-clipboard-list text-3xl text-blue-600"></i>
+
         </div>
-        <div class="flex gap-2 bg-white w-60 p-3 rounded-lg">
-            <img class="bg-red-200 rounded-full w-10" src="" alt="img">
-            <div>
-                <h2>Rejected Requests</h2>
-                <p class="text-red-800">2</p>
-            </div>
+
+        <div>
+
+            <h2 class="text-gray-500 text-lg">
+                Pending Requests
+            </h2>
+
+            <h1 class="text-4xl font-bold text-blue-700 mt-1">
+                2
+            </h1>
+
         </div>
-        
-     </div>
-     </main>
+
+    </div>
+
+</div>
+
+<!-- Approved Card -->
+
+<div class="bg-white rounded-2xl shadow-lg p-6 border border-green-100 flex items-center justify-between hover:shadow-xl duration-300">
+
+    <div class="flex items-center gap-4">
+
+        <div class="w-16 h-16 rounded-full bg-green-100 flex justify-center items-center">
+
+            <i class="fa-solid fa-circle-check text-3xl text-green-600"></i>
+
+        </div>
+
+        <div>
+
+            <h2 class="text-gray-500 text-lg">
+                Approved Requests
+            </h2>
+
+            <h1 class="text-4xl font-bold text-green-600 mt-1">
+                5
+            </h1>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Rejected Card -->
+
+<div class="bg-white rounded-2xl shadow-lg p-6 border border-red-100 flex items-center justify-between hover:shadow-xl duration-300">
+
+    <div class="flex items-center gap-4">
+
+        <div class="w-16 h-16 rounded-full bg-red-100 flex justify-center items-center">
+
+            <i class="fa-solid fa-circle-xmark text-3xl text-red-500"></i>
+
+        </div>
+
+        <div>
+
+            <h2 class="text-gray-500 text-lg">
+                Rejected Requests
+            </h2>
+
+            <h1 class="text-4xl font-bold text-red-500 mt-1">
+                1
+            </h1>
+
+        </div>
+
+    </div>
+
+</div>
+
+            <!-- Part 2 -->
+
+        </div>
+
+    </div>
+
+    <!-- Main Grid -->
+
+    <div class="grid grid-cols-12 gap-8 mt-10">
+
+        <!-- Left Form -->
+
+        <div class="col-span-4 bg-white rounded-2xl shadow-lg p-8">
+        <h1 class="text-3xl font-bold text-blue-700 mb-8">
+    Request New Asset
+</h1>
+
+<form class="space-y-6">
+
+    <!-- Category -->
+
+    <div>
+
+        <label class="font-semibold">
+            Asset Category <span class="text-red-500">*</span>
+        </label>
+
+        <select
+        class="mt-2 w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500">
+
+            <option>Laptop</option>
+            <option>Monitor</option>
+            <option>Keyboard</option>
+            <option>Mouse</option>
+            <option>Printer</option>
+
+        </select>
+
+    </div>
+
+    <!-- Asset Name -->
+
+    <div>
+
+        <label class="font-semibold">
+            Asset Name <span class="text-red-500">*</span>
+        </label>
+
+        <input
+        type="text"
+        placeholder="Dell Latitude 7450"
+        class="mt-2 w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500">
+
+    </div>
+
+    <!-- Priority -->
+
+    <div>
+
+        <label class="font-semibold">
+            Priority <span class="text-red-500">*</span>
+        </label>
+
+        <div class="flex gap-10 mt-4">
+
+            <label class="flex items-center gap-2">
+                <input type="radio" name="priority">
+                Low
+            </label>
+
+            <label class="flex items-center gap-2">
+                <input type="radio" name="priority">
+                Medium
+            </label>
+
+            <label class="flex items-center gap-2">
+                <input type="radio" name="priority" checked>
+                High
+            </label>
+
+        </div>
+
+    </div>
+
+    <!-- Quantity -->
+
+    <div>
+
+        <label class="font-semibold">
+            Quantity <span class="text-red-500">*</span>
+        </label>
+
+        <input
+        type="number"
+        value="1"
+        min="1"
+        class="mt-2 w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500">
+
+    </div>
+
+    <!-- Needed By -->
+
+    <div>
+
+        <label class="font-semibold">
+            Needed By <span class="text-red-500">*</span>
+        </label>
+
+        <input
+        type="date"
+        class="mt-2 w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500">
+
+    </div>
+
+    <!-- Reason -->
+
+    <div>
+
+        <label class="font-semibold">
+            Reason <span class="text-red-500">*</span>
+        </label>
+
+        <textarea
+        rows="5"
+        placeholder="Enter the reason for requesting this asset..."
+        class="mt-2 w-full border rounded-xl px-4 py-3 resize-none outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+
+    </div>
+
+    <!-- Submit -->
+
+    <button
+    type="submit"
+    class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl text-lg font-semibold duration-300">
+
+        <i class="fa-solid fa-paper-plane mr-2"></i>
+
+        Submit Request
+
+    </button>
+
+</form>
+            <!-- Part 2 -->
+
+        </div>
+
+        <!-- Right Table -->
+
+        <div class="col-span-8 bg-white rounded-2xl shadow-lg p-8">
+        <h1 class="text-3xl font-bold text-blue-700 mb-8">
+    My Recent Requests
+</h1>
+
+<div class="overflow-x-auto">
+
+<table class="w-full">
+
+<thead>
+
+<tr class="border-b text-left">
+
+<th class="py-4">Request ID</th>
+
+<th>Asset</th>
+
+<th>Date</th>
+
+<th>Priority</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr class="border-b hover:bg-slate-50">
+
+<td class="py-5">REQ001</td>
+
+<td class="font-medium">💻 Laptop</td>
+
+<td>22 Jul 2026</td>
+
+<td>
+<span class="bg-red-100 text-red-600 px-3 py-1 rounded-full">
+High
+</span>
+</td>
+
+<td>
+<span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
+Pending
+</span>
+</td>
+
+<td>
+
+<button
+onclick="viewRequest(
+'REQ001',
+'Laptop',
+'Dell Latitude 7450',
+'High',
+'1',
+'22 Jul 2026',
+'Need laptop for React & Java development.',
+'Pending'
+)"
+class="text-blue-600 hover:underline">
+
+<i class="fa-solid fa-eye"></i>
+
+View
+
+</button>
+
+</td>
+
+</tr>
+
+<tr class="border-b hover:bg-slate-50">
+
+<td class="py-5">REQ002</td>
+
+<td class="font-medium">🖱 Mouse</td>
+
+<td>15 Jul 2026</td>
+
+<td>
+
+<span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
+Medium
+</span>
+
+</td>
+
+<td>
+
+<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">
+Approved
+</span>
+
+</td>
+
+<td>
+
+<button
+onclick="viewRequest(
+'REQ002',
+'Mouse',
+'Logitech Wireless Mouse',
+'Medium',
+'1',
+'15 Jul 2026',
+'Old mouse is not working properly.',
+'Approved'
+)"
+class="text-blue-600 hover:underline">
+
+<i class="fa-solid fa-eye"></i>
+
+View
+
+</button>
+
+</td>
+
+</tr>
+
+<tr class="hover:bg-slate-50">
+
+<td class="py-5">REQ003</td>
+
+<td class="font-medium">🖥 Monitor</td>
+
+<td>10 Jul 2026</td>
+
+<td>
+
+<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">
+Low
+</span>
+
+</td>
+
+<td>
+
+<span class="bg-red-100 text-red-600 px-3 py-1 rounded-full">
+Rejected
+</span>
+
+</td>
+
+<td>
+
+<button
+onclick="viewRequest(
+'REQ003',
+'Monitor',
+'Dell 24 Inch Monitor',
+'Low',
+'1',
+'10 Jul 2026',
+'Need second monitor.',
+'Rejected'
+)"
+class="text-blue-600 hover:underline">
+
+<i class="fa-solid fa-eye"></i>
+
+View
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- Pagination -->
+
+<div class="flex justify-center gap-3 mt-10">
+
+<button class="w-10 h-10 rounded-lg border hover:bg-gray-100">
+
+<i class="fa-solid fa-chevron-left"></i>
+
+</button>
+
+<button class="w-10 h-10 rounded-lg bg-blue-600 text-white">
+1
+</button>
+
+<button class="w-10 h-10 rounded-lg border hover:bg-gray-100">
+
+<i class="fa-solid fa-chevron-right"></i>
+
+</button>
+
+</div>
+            <!-- Part 3 -->
+        <div
+id="requestModal"
+class="fixed inset-0 bg-black/50 hidden justify-center items-center z-50">
+
+<div class="bg-white w-[550px] rounded-2xl p-8 relative shadow-2xl">
+
+<button
+onclick="closeModal()"
+class="absolute top-4 right-6 text-3xl">
+
+&times;
+
+</button>
+
+<h2 class="text-3xl font-bold text-blue-700 mb-6">
+Request Details
+</h2>
+
+<div class="space-y-4">
+
+<div class="flex justify-between">
+<span class="font-semibold">Request ID</span>
+<span id="rid"></span>
+</div>
+
+<div class="flex justify-between">
+<span class="font-semibold">Category</span>
+<span id="category"></span>
+</div>
+
+<div class="flex justify-between">
+<span class="font-semibold">Asset</span>
+<span id="asset"></span>
+</div>
+
+<div class="flex justify-between">
+<span class="font-semibold">Priority</span>
+<span id="priority"></span>
+</div>
+
+<div class="flex justify-between">
+<span class="font-semibold">Quantity</span>
+<span id="qty"></span>
+</div>
+
+<div class="flex justify-between">
+<span class="font-semibold">Needed By</span>
+<span id="date"></span>
+</div>
+
+<div>
+
+<h3 class="font-semibold mb-2">
+Reason
+</h3>
+
+<p id="reason" class="bg-slate-100 p-4 rounded-lg"></p>
+
+</div>
+
+<div class="flex justify-between">
+
+<span class="font-semibold">
+Status
+</span>
+
+<span id="status"></span>
+
+</div>
+
+</div>
+
+<button
+onclick="closeModal()"
+class="w-full mt-8 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl">
+
+Close
+
+</button>
+
+</div>
+
+</div>
+        </div>
+
+    </div>
+    
+
+</main>
+<script>
+
+function viewRequest(
+id,
+category,
+asset,
+priority,
+qty,
+date,
+reason,
+status
+){
+
+document.getElementById("rid").innerHTML=id;
+
+document.getElementById("category").innerHTML=category;
+
+document.getElementById("asset").innerHTML=asset;
+
+document.getElementById("priority").innerHTML=priority;
+
+document.getElementById("qty").innerHTML=qty;
+
+document.getElementById("date").innerHTML=date;
+
+document.getElementById("reason").innerHTML=reason;
+
+document.getElementById("status").innerHTML=status;
+
+document.getElementById("requestModal").classList.remove("hidden");
+
+document.getElementById("requestModal").classList.add("flex");
+
+}
+
+function closeModal(){
+
+document.getElementById("requestModal").classList.remove("flex");
+
+document.getElementById("requestModal").classList.add("hidden");
+
+}
+
+</script>
 </body>
 </html>

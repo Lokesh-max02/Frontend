@@ -23,52 +23,70 @@ body{
 
 <body class="bg-slate-100">
 
+<body class="bg-slate-100 font-[Inter]">
+
 <!-- ================= NAVBAR ================= -->
 
-<nav class="fixed top-0 left-0 w-full h-16 bg-white shadow flex items-center justify-between px-8 z-50">
+<nav class="fixed top-0 left-0 right-0 h-20 bg-white shadow-sm flex items-center justify-between px-10 z-50">
 
     <!-- Logo -->
 
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-4">
 
-       
-        <div>
+    <button id="menuBtn" class="lg:hidden text-2xl">
 
-            <h1 class="font-bold text-xl text-slate-800">
-                AssetsHub
-            </h1>
+        <i class="fa-solid fa-bars"></i>
 
-            <p class="text-xs text-slate-500">
-                Employee Dashboard
-            </p>
+    </button>
 
-        </div>
+    <div class="w-12 h-12 bg-blue-600 rounded-xl flex justify-center items-center text-white">
+
+        <i class="fa-solid fa-boxes-stacked"></i>
 
     </div>
 
+    <div>
+
+        <h1 class="text-3xl font-bold text-blue-700">
+
+            AssetsHub
+
+        </h1>
+
+        <p class="text-sm text-gray-500">
+
+            Employee Dashboard
+
+        </p>
+
+    </div>
+
+</div>
+
     <!-- Search -->
 
-    <div class="relative w-[420px]">
+    <div class="relative w-[500px]">
 
-        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+        <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-gray-400"></i>
 
-        <input
-        type="text"
-        placeholder="Search Assets..."
-        class="w-full rounded-xl border bg-slate-100 pl-11 pr-4 py-3 outline-none focus:ring-2 focus:ring-blue-500">
+        <input id="searchBox" type="text" placeholder="Search assets..."
+            class="w-full border rounded-xl py-3 pl-14 pr-5 bg-slate-50 focus:ring-2 focus:ring-blue-500 outline-none">
 
     </div>
 
     <!-- Right -->
 
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-8">
 
         <button class="relative">
 
-            <i class="fa-regular fa-bell text-2xl text-slate-600"></i>
+            <i class="fa-regular fa-bell text-2xl text-gray-600"></i>
 
-            <span class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex justify-center items-center">
+            <span id="notificationCount"
+                class="absolute -top-2 -right-2 bg-red-500 text-white w-5 h-5 rounded-full text-xs flex justify-center items-center">
+            
                 3
+            
             </span>
 
         </button>
@@ -77,17 +95,15 @@ body{
 
             <img
             src="../assets/icons/user (1).png"
-            class="w-11 h-11 rounded-full border">
+            class="w-12 h-12 rounded-full border-2 border-blue-500">
 
             <div>
 
-                <h2 class="font-semibold">
-                    Lokesh
-                </h2>
-
-                <p class="text-xs text-slate-500">
+                <h2 id="employeeName" class="font-semibold">
+                
                     Employee
-                </p>
+                
+                </h2>
 
             </div>
 
@@ -99,158 +115,160 @@ body{
 
 <!-- ================= SIDEBAR ================= -->
 
-<aside class="fixed top-16 left-0 w-64 h-[calc(100vh-64px)] bg-slate-900 text-white">
+<aside id="sidebar" class="fixed top-20 left-0 w-64 h-[calc(100vh-80px)] bg-slate-900 text-white">
 
-    <ul class="mt-8 space-y-2">
+    <div class="mt-10">
 
-        <li>
+        <p class="px-8 text-gray-400 uppercase text-sm mb-4">
+            Main Menu
+        </p>
 
-            <a href="#"
-            class="flex items-center gap-4 px-6 py-4 bg-blue-600">
+        <ul class="space-y-2">
 
-                <i class="fa-solid fa-house"></i>
+            <li>
 
-                Dashboard
+                <a href="#"
+                class="mx-3 rounded-xl bg-blue-600 flex items-center gap-4 px-6 py-4">
 
-            </a>
+                    <i class="fa-solid fa-house"></i>
 
-        </li>
+                    Dashboard
 
-        <li>
+                </a>
 
-            <a href="../Main Project/myAssets.html"
-            class="flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
+            </li>
 
-                <i class="fa-solid fa-laptop"></i>
+            <li>
 
-                My Assets
+                <a href="myAssets.html"
+                class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
 
-            </a>
+                    <i class="fa-solid fa-laptop"></i>
 
-        </li>
+                    My Assets
 
-        <li>
+                </a>
 
-            <a href="../Main Project/Request.html"
-            class="flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
+            </li>
 
-                <i class="fa-solid fa-plus"></i>
+            <li>
 
-                Request Asset
+                <a href="Request.html"
+                class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
 
-            </a>
+                    <i class="fa-solid fa-plus"></i>
 
-        </li>
+                    Request Asset
 
-        <li>
+                </a>
 
-            <a href="#"
-            class="flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
+            </li>
 
-                <i class="fa-solid fa-arrow-rotate-left"></i>
+            <li>
 
-                Return Request
+                <a href="#"
+                class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800">
 
-            </a>
+                    <i class="fa-solid fa-arrow-rotate-left"></i>
 
-        </li>
+                    Return Request
 
-        <li>
+                </a>
 
-            <a href="#"
-            class="flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
+            </li>
 
-                <i class="fa-solid fa-screwdriver-wrench"></i>
+            <li>
 
-                Report Issue
+                <a href="#"
+                class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800">
 
-            </a>
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
 
-        </li>
+                    Report Issue
 
-        <li>
+                </a>
 
-            <a href="#"
-            class="flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
+            </li>
 
-                <i class="fa-solid fa-user"></i>
+            <li>
 
-                My Profile
+                <a href="#"
+                class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800">
 
-            </a>
+                    <i class="fa-solid fa-user"></i>
 
-        </li>
+                    My Profile
 
-        <li>
+                </a>
 
-            <a href="#"
-            class="flex items-center gap-4 px-6 py-4 hover:bg-red-600 duration-300">
+            </li>
 
-                <i class="fa-solid fa-right-from-bracket"></i>
+            <li>
 
-                Logout
+                <a href="#"
+                class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-red-600">
 
-            </a>
+                    <i class="fa-solid fa-right-from-bracket"></i>
 
-        </li>
+                    Logout
 
-    </ul>
+                </a>
+
+            </li>
+
+        </ul>
+
+    </div>
 
 </aside>
 
 <!-- ================= MAIN CONTENT ================= -->
 
-<main class="ml-64 mt-16 p-8">
+<main class="ml-64 mt-20 p-8">
 
-    <!-- Welcome Banner -->
+    <!-- Welcome -->
 
-    <div class="relative rounded-3xl overflow-hidden h-72 shadow-xl">
+    <div class="mb-8">
 
-        <img src="../assets/employee_banner1.png"
-        class="w-full h-full object-cover">
+    <h1 id="welcomeText" class="text-5xl font-bold text-slate-800">
+        Welcome 👋
+    </h1>
 
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-900/70 via-blue-700/40 to-transparent"></div>
-
-        <div class="absolute left-10 top-1/2 -translate-y-1/2 text-white">
-
-            <h1 class="text-5xl font-bold">
-                Welcome Back,
-                <span id="username">Lokesh</span>
-            </h1>
-
-            <p class="mt-3 text-lg">
-                Employee ID :
-                <span class="font-semibold">EMP001</span>
-            </p>
-
-            <p class="text-lg">
-                Department :
-                <span class="font-semibold">IT Department</span>
-            </p>
-
-        </div>
+        <p class="text-gray-500 mt-3 text-lg">
+            Here's your asset overview for today.
+        </p>
 
     </div>
 
     <!-- Statistics -->
 
-    <div class="grid grid-cols-4 gap-6 mt-8">
+    <div class="grid grid-cols-4 gap-6">
 
-        <div class="bg-white rounded-2xl p-6 shadow hover:-translate-y-2 duration-300">
+        <!-- My Assets -->
 
-            <div class="flex justify-between">
+        <div class="bg-white rounded-2xl shadow-md p-6 hover:-translate-y-1 duration-300">
+
+            <div class="flex justify-between items-center">
 
                 <div>
 
-                    <p class="text-gray-500">My Assets</p>
+                    <p class="text-gray-500">
+                        My Assets
+                    </p>
 
-                    <h2 class="text-4xl font-bold mt-2">03</h2>
+                    <h2 id="assetCounter" class="text-4xl font-bold mt-2">
+                        03
+                    </h2>
+
+                    <span class="text-green-600 text-sm">
+                        +1 This Month
+                    </span>
 
                 </div>
 
-                <div class="w-16 h-16 rounded-xl bg-blue-100 flex justify-center items-center">
+                <div class="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center">
 
-                    <i class="fa-solid fa-laptop text-3xl text-blue-600"></i>
+                    <i class="fa-solid fa-laptop text-blue-600 text-3xl"></i>
 
                 </div>
 
@@ -258,21 +276,31 @@ body{
 
         </div>
 
-        <div class="bg-white rounded-2xl p-6 shadow hover:-translate-y-2 duration-300">
+        <!-- Requests -->
 
-            <div class="flex justify-between">
+        <div class="bg-white rounded-2xl shadow-md p-6 hover:-translate-y-1 duration-300">
+
+            <div class="flex justify-between items-center">
 
                 <div>
 
-                    <p class="text-gray-500">Requests</p>
+                    <p class="text-gray-500">
+                        Requests
+                    </p>
 
-                    <h2 class="text-4xl font-bold mt-2">02</h2>
+                    <h2 id="requestCounter" class="text-4xl font-bold mt-2">
+                        02
+                    </h2>
+
+                    <span class="text-yellow-600 text-sm">
+                        Pending
+                    </span>
 
                 </div>
 
-                <div class="w-16 h-16 rounded-xl bg-green-100 flex justify-center items-center">
+                <div class="w-16 h-16 rounded-xl bg-green-100 flex items-center justify-center">
 
-                    <i class="fa-solid fa-box-open text-3xl text-green-600"></i>
+                    <i class="fa-solid fa-box-open text-green-600 text-3xl"></i>
 
                 </div>
 
@@ -280,21 +308,31 @@ body{
 
         </div>
 
-        <div class="bg-white rounded-2xl p-6 shadow hover:-translate-y-2 duration-300">
+        <!-- Returns -->
 
-            <div class="flex justify-between">
+        <div class="bg-white rounded-2xl shadow-md p-6 hover:-translate-y-1 duration-300">
+
+            <div class="flex justify-between items-center">
 
                 <div>
 
-                    <p class="text-gray-500">Returns</p>
+                    <p class="text-gray-500">
+                        Returns
+                    </p>
 
-                    <h2 class="text-4xl font-bold mt-2">01</h2>
+                    <h2  id="returnCounter" class="text-4xl font-bold mt-2">
+                        01
+                    </h2>
+
+                    <span class="text-orange-600 text-sm">
+                        Upcoming
+                    </span>
 
                 </div>
 
-                <div class="w-16 h-16 rounded-xl bg-orange-100 flex justify-center items-center">
+                <div class="w-16 h-16 rounded-xl bg-orange-100 flex items-center justify-center">
 
-                    <i class="fa-solid fa-right-left text-3xl text-orange-500"></i>
+                    <i class="fa-solid fa-right-left text-orange-500 text-3xl"></i>
 
                 </div>
 
@@ -302,21 +340,31 @@ body{
 
         </div>
 
-        <div class="bg-white rounded-2xl p-6 shadow hover:-translate-y-2 duration-300">
+        <!-- Alerts -->
 
-            <div class="flex justify-between">
+        <div class="bg-white rounded-2xl shadow-md p-6 hover:-translate-y-1 duration-300">
+
+            <div class="flex justify-between items-center">
 
                 <div>
 
-                    <p class="text-gray-500">Alerts</p>
+                    <p class="text-gray-500">
+                        Alerts
+                    </p>
 
-                    <h2 class="text-4xl font-bold mt-2">05</h2>
+                    <h2  id="alertCounter" class="text-4xl font-bold mt-2">
+                        05
+                    </h2>
+
+                    <span class="text-red-600 text-sm">
+                        Important
+                    </span>
 
                 </div>
 
-                <div class="w-16 h-16 rounded-xl bg-red-100 flex justify-center items-center">
+                <div class="w-16 h-16 rounded-xl bg-red-100 flex items-center justify-center">
 
-                    <i class="fa-solid fa-triangle-exclamation text-3xl text-red-600"></i>
+                    <i class="fa-solid fa-triangle-exclamation text-red-600 text-3xl"></i>
 
                 </div>
 
@@ -326,164 +374,394 @@ body{
 
     </div>
 
-    <!-- Middle Section -->
 
-    <div class="grid grid-cols-3 gap-6 mt-8">
+</main>
 
-        <!-- Assigned Assets -->
+</body>
 
-        <div class="col-span-2 bg-white rounded-2xl shadow p-6">
+<!-- ================= MAIN CONTENT ================= -->
 
-            <div class="flex justify-between items-center mb-5">
+<main class="ml-64  p-8">
 
-                <h2 class="font-bold text-xl">
+ 
+
+<div class="grid grid-cols-12 gap-6 ">
+
+    <!-- Assigned Assets -->
+
+    <div class="col-span-8 bg-white rounded-2xl shadow-md p-6">
+
+        <div class="asset-card flex justify-between items-center mb-6">
+
+            <div>
+
+                <h2 class="text-2xl font-bold">
                     My Assigned Assets
                 </h2>
 
-                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg">
-                    View All
-                </button>
+                <p class="text-gray-500 text-sm">
+                    Recently assigned company assets
+                </p>
 
             </div>
 
-            <table class="w-full">
+            <button
+            class="bg-blue-600 text-white px-5 py-2 rounded-xl hover:bg-blue-700">
 
-                <thead>
+                View All
 
-                    <tr class="border-b">
-
-                        <th class="text-left py-3">Asset</th>
-
-                        <th>Status</th>
-
-                        <th>Issued</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr class="border-b">
-
-                        <td class="py-4">Dell Latitude 5420</td>
-
-                        <td class="text-green-600 font-semibold">
-                            Active
-                        </td>
-
-                        <td>12 Jul 2026</td>
-
-                    </tr>
-
-                    <tr class="border-b">
-
-                        <td class="py-4">HP Monitor</td>
-
-                        <td class="text-green-600 font-semibold">
-                            Active
-                        </td>
-
-                        <td>20 Jul 2026</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="py-4">Logitech Mouse</td>
-
-                        <td class="text-yellow-500 font-semibold">
-                            Pending Return
-                        </td>
-
-                        <td>28 Jul 2026</td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <!-- Profile -->
-
-        <div class="bg-white rounded-2xl shadow p-6 text-center">
-
-            <img src="../assets/icons/user (1).png"
-            class="w-28 h-28 rounded-full mx-auto border-4 border-blue-500">
-
-            <h2 class="mt-4 font-bold text-xl">
-                Lokesh
-            </h2>
-
-            <p class="text-gray-500">
-                Software Engineer
-            </p>
-
-            <button class="bg-blue-600 text-white px-5 py-2 rounded-xl mt-5 w-full">
-                Edit Profile
             </button>
 
         </div>
 
+        <!-- Asset 1 -->
+
+        <div class="flex justify-between items-center border rounded-xl p-4 hover:shadow-lg duration-300 mb-4">
+
+            <div class="flex gap-4 items-center">
+
+                <div class="w-16 h-16 rounded-xl bg-blue-100 flex justify-center items-center">
+
+                    <i class="fa-solid fa-laptop text-blue-600 text-3xl"></i>
+
+                </div>
+
+                <div>
+
+                    <h2 class="font-bold text-xl">
+                        Dell Latitude 5420
+                    </h2>
+
+                    <p class="text-gray-500">
+                        Asset ID : AST-1001
+                    </p>
+
+                    <p class="text-sm text-gray-400">
+                        Assigned : 20 Jul 2026
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="text-right">
+
+                <span class="bg-green-100 text-green-700 px-4 py-1 rounded-full">
+
+                    Active
+
+                </span>
+
+                <p class="mt-3 text-gray-500">
+
+                    Warranty : 2028
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Asset 2 -->
+
+        <div class="flex justify-between items-center border rounded-xl p-4 hover:shadow-lg duration-300 mb-4">
+
+            <div class="flex gap-4 items-center">
+
+                <div class="w-16 h-16 rounded-xl bg-green-100 flex justify-center items-center">
+
+                    <i class="fa-solid fa-desktop text-green-600 text-3xl"></i>
+
+                </div>
+
+                <div>
+
+                    <h2 class="font-bold text-xl">
+                        HP Monitor
+                    </h2>
+
+                    <p class="text-gray-500">
+
+                        Asset ID : AST-1002
+
+                    </p>
+
+                    <p class="text-sm text-gray-400">
+
+                        Assigned : 15 Jul 2026
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="text-right">
+
+                <span class="bg-green-100 text-green-700 px-4 py-1 rounded-full">
+
+                    Active
+
+                </span>
+
+                <p class="mt-3 text-gray-500">
+
+                    Warranty : 2027
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Asset 3 -->
+
+        <div class="flex justify-between items-center border rounded-xl p-4 hover:shadow-lg duration-300">
+
+            <div class="flex gap-4 items-center">
+
+                <div class="w-16 h-16 rounded-xl bg-yellow-100 flex justify-center items-center">
+
+                    <i class="fa-solid fa-keyboard text-yellow-600 text-3xl"></i>
+
+                </div>
+
+                <div>
+
+                    <h2 class="font-bold text-xl">
+
+                        Logitech Keyboard
+
+                    </h2>
+
+                    <p class="text-gray-500">
+
+                        Asset ID : AST-1003
+
+                    </p>
+
+                    <p class="text-sm text-gray-400">
+
+                        Assigned : 12 Jul 2026
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="text-right">
+
+                <span class="bg-yellow-100 text-yellow-700 px-4 py-1 rounded-full">
+
+                    Repair
+
+                </span>
+
+                <p class="mt-3 text-gray-500">
+
+                    Warranty : 2026
+
+                </p>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <!-- Bottom -->
+    <!-- Recent Requests -->
 
-    <div class="grid grid-cols-2 gap-6 mt-8">
+    <div class="col-span-4 bg-white rounded-2xl shadow-md p-6">
 
-        <!-- Notifications -->
+        <div class="flex justify-between items-center">
 
-        <div class="bg-white rounded-2xl shadow p-6">
+            <h2 class="text-2xl font-bold">
 
-            <h2 class="font-bold text-xl mb-5">
+                Recent Requests
+
+            </h2>
+
+            <a href="#" class="text-blue-600">
+
+                View All
+
+            </a>
+
+        </div>
+
+        <div class="space-y-5 mt-6">
+
+            <div class="flex justify-between items-center border-b pb-4">
+
+                <div>
+
+                    <h3 class="font-semibold">
+
+                        Dell Laptop
+
+                    </h3>
+
+                    <p class="text-sm text-gray-500">
+
+                        22 Jul 2026
+
+                    </p>
+
+                </div>
+
+                <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
+
+                    Pending
+
+                </span>
+
+            </div>
+
+            <div class="flex justify-between items-center border-b pb-4">
+
+                <div>
+
+                    <h3 class="font-semibold">
+
+                        Logitech Mouse
+
+                    </h3>
+
+                    <p class="text-sm text-gray-500">
+
+                        18 Jul 2026
+
+                    </p>
+
+                </div>
+
+                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">
+
+                    Approved
+
+                </span>
+
+            </div>
+
+            <div class="flex justify-between items-center">
+
+                <div>
+
+                    <h3 class="font-semibold">
+
+                        Dell Monitor
+
+                    </h3>
+
+                    <p class="text-sm text-gray-500">
+
+                        12 Jul 2026
+
+                    </p>
+
+                </div>
+
+                <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full">
+
+                    Rejected
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Part 3 starts here -->
+<!-- ================= LOWER SECTION ================= -->
+
+<div class="grid grid-cols-12 gap-6 mt-8">
+
+    <!-- Notifications -->
+
+    <div class="col-span-4 bg-white rounded-2xl shadow-md p-6">
+
+        <div class="flex justify-between items-center mb-6">
+
+            <h2 class="text-2xl font-bold">
                 Notifications
             </h2>
 
-            <div class="space-y-4">
+            <a href="#" class="text-blue-600">
+                View All
+            </a>
 
-                <div class="border-l-4 border-green-500 pl-4">
-                    Laptop Request Approved
+        </div>
+
+        <div class="space-y-5">
+
+            <div class="flex gap-4">
+
+                <div class="w-12 h-12 rounded-full bg-green-100 flex justify-center items-center">
+                    <i class="fa-solid fa-circle-check text-green-600"></i>
                 </div>
 
-                <div class="border-l-4 border-blue-500 pl-4">
-                    New Asset Assigned
-                </div>
+                <div>
+                    <h3 class="font-semibold">
+                        Laptop Request Approved
+                    </h3>
 
-                <div class="border-l-4 border-red-500 pl-4">
-                    Return Asset Before 30 Jul
+                    <p class="text-gray-500 text-sm">
+                        Your Dell Laptop request has been approved.
+                    </p>
+
+                    <span class="text-xs text-gray-400">
+                        Today • 10:30 AM
+                    </span>
                 </div>
 
             </div>
 
-        </div>
+            <div class="flex gap-4">
 
-        <!-- Quick Actions -->
+                <div class="w-12 h-12 rounded-full bg-yellow-100 flex justify-center items-center">
+                    <i class="fa-solid fa-clock text-yellow-600"></i>
+                </div>
 
-        <div class="bg-white rounded-2xl shadow p-6">
+                <div>
+                    <h3 class="font-semibold">
+                        Return Reminder
+                    </h3>
 
-            <h2 class="font-bold text-xl mb-5">
-                Quick Actions
-            </h2>
+                    <p class="text-gray-500 text-sm">
+                        Dell Monitor return due tomorrow.
+                    </p>
 
-            <div class="grid grid-cols-2 gap-4">
+                    <span class="text-xs text-gray-400">
+                        Yesterday
+                    </span>
+                </div>
 
-                <button class="bg-blue-600 text-white rounded-xl py-4">
-                    Request Asset
-                </button>
+            </div>
 
-                <button class="bg-green-600 text-white rounded-xl py-4">
-                    Return Asset
-                </button>
+            <div class="flex gap-4">
 
-                <button class="bg-orange-500 text-white rounded-xl py-4">
-                    Report Issue
-                </button>
+                <div class="w-12 h-12 rounded-full bg-blue-100 flex justify-center items-center">
+                    <i class="fa-solid fa-screwdriver-wrench text-blue-600"></i>
+                </div>
 
-                <button class="bg-slate-700 text-white rounded-xl py-4">
-                    Download Report
-                </button>
+                <div>
+                    <h3 class="font-semibold">
+                        Maintenance Completed
+                    </h3>
+
+                    <p class="text-gray-500 text-sm">
+                        Keyboard service completed successfully.
+                    </p>
+
+                    <span class="text-xs text-gray-400">
+                        2 Days Ago
+                    </span>
+                </div>
 
             </div>
 
@@ -491,7 +769,393 @@ body{
 
     </div>
 
-</main>
+    <!-- Upcoming Returns -->
 
+    <div class="col-span-4 bg-white rounded-2xl shadow-md p-6">
+
+        <div class="flex justify-between items-center mb-6">
+
+            <h2 class="text-2xl font-bold">
+                Upcoming Returns
+            </h2>
+
+            <a href="#" class="text-blue-600">
+                View All
+            </a>
+
+        </div>
+
+        <div class="space-y-5">
+
+            <div class="border rounded-xl p-4">
+
+                <div class="flex justify-between">
+
+                    <div>
+
+                        <h3 class="font-bold">
+                            Dell Latitude
+                        </h3>
+
+                        <p class="text-gray-500 text-sm">
+                            Asset ID : AST1001
+                        </p>
+
+                    </div>
+
+                    <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-center">
+                        28 Jul
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="border rounded-xl p-4">
+
+                <div class="flex justify-between">
+
+                    <div>
+
+                        <h3 class="font-bold">
+                            HP Monitor
+                        </h3>
+
+                        <p class="text-gray-500 text-sm">
+                            Asset ID : AST1002
+                        </p>
+
+                    </div>
+
+                    <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full">
+                        31 Jul
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="border rounded-xl p-4">
+
+                <div class="flex justify-between">
+
+                    <div>
+
+                        <h3 class="font-bold">
+                            Logitech Keyboard
+                        </h3>
+
+                        <p class="text-gray-500 text-sm">
+                            Asset ID : AST1003
+                        </p>
+
+                    </div>
+
+                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
+                        05 Aug
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Employee Profile -->
+
+    <div class="col-span-4 bg-white rounded-2xl shadow-md p-6 text-center">
+
+        <img
+        src="../assets/icons/user (1).png"
+        class="w-24 h-24 rounded-full border-4 border-blue-500 mx-auto">
+
+        <h2 class="text-2xl font-bold mt-4">
+            Lokesh
+        </h2>
+
+        <p class="text-gray-500">
+            Employee
+        </p>
+
+        <div class="mt-6 space-y-3 text-left">
+
+            <div class="flex justify-between">
+                <span class="text-gray-500">Employee ID</span>
+                <span class="font-semibold">EMP001</span>
+            </div>
+
+            <div class="flex justify-between">
+                <span class="text-gray-500">Department</span>
+                <span class="font-semibold">IT</span>
+            </div>
+
+            <div class="flex justify-between">
+                <span class="text-gray-500">Email</span>
+                <span class="font-semibold text-sm">
+                    lokesh@gmail.com
+                </span>
+            </div>
+
+            <div class="flex justify-between">
+                <span class="text-gray-500">Phone</span>
+                <span class="font-semibold">
+                    +91 9876543210
+                </span>
+            </div>
+
+        </div>
+
+        <button
+        class="mt-6 w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700">
+
+            Edit Profile
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ================= QUICK ACTIONS ================= -->
+
+<div class="bg-white rounded-2xl shadow-md p-6 mt-8">
+
+    <h2 class="text-2xl font-bold mb-6">
+
+        Quick Actions
+
+    </h2>
+
+    <div class="grid grid-cols-4 gap-6">
+
+        <a href="Request.html"
+        class="bg-blue-50 rounded-xl p-6 text-center hover:bg-blue-600 hover:text-white duration-300">
+
+            <i class="fa-solid fa-plus text-4xl mb-4"></i>
+
+            <h3 class="font-semibold">
+                Request Asset
+            </h3>
+
+        </a>
+
+        <a href="#"
+        class="bg-green-50 rounded-xl p-6 text-center hover:bg-green-600 hover:text-white duration-300">
+
+            <i class="fa-solid fa-arrow-rotate-left text-4xl mb-4"></i>
+
+            <h3 class="font-semibold">
+                Return Asset
+            </h3>
+
+        </a>
+
+        <a href="#"
+        class="bg-yellow-50 rounded-xl p-6 text-center hover:bg-yellow-500 hover:text-white duration-300">
+
+            <i class="fa-solid fa-screwdriver-wrench text-4xl mb-4"></i>
+
+            <h3 class="font-semibold">
+                Report Issue
+            </h3>
+
+        </a>
+
+        <a href="#"
+        class="bg-purple-50 rounded-xl p-6 text-center hover:bg-purple-600 hover:text-white duration-300">
+
+            <i class="fa-solid fa-file-arrow-down text-4xl mb-4"></i>
+
+            <h3 class="font-semibold">
+                Download Report
+            </h3>
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- Part 4 starts here -->
+</main>
+<script>
+
+/* ==========================
+   Employee Data
+========================== */
+
+const employee=JSON.parse(localStorage.getItem("employee")) || {
+
+    name:"Lokesh",
+
+    id:"EMP001",
+
+    department:"IT",
+
+    email:"lokesh@gmail.com"
+
+};
+
+/* ==========================
+   Load Employee
+========================== */
+
+document.getElementById("employeeName").innerHTML=employee.name;
+
+/* ==========================
+   Dashboard Counters
+========================== */
+
+function animateCounter(id,target){
+
+let element=document.getElementById(id);
+
+let count=0;
+
+let interval=setInterval(()=>{
+
+count++;
+
+element.innerHTML=count;
+
+if(count>=target){
+
+clearInterval(interval);
+
+}
+
+},50);
+
+}
+
+animateCounter("assetCounter",3);
+
+animateCounter("requestCounter",2);
+
+animateCounter("returnCounter",1);
+
+animateCounter("alertCounter",5);
+
+/* ==========================
+   Search Assets
+========================== */
+
+const search=document.getElementById("searchBox");
+
+search.addEventListener("keyup",function(){
+
+let value=this.value.toLowerCase();
+
+let cards=document.querySelectorAll(".asset-card");
+
+cards.forEach(card=>{
+
+let text=card.innerText.toLowerCase();
+
+card.style.display=text.includes(value)?"flex":"none";
+
+});
+
+});
+
+/* ==========================
+   Sidebar Toggle
+========================== */
+
+const menu=document.getElementById("menuBtn");
+
+const sidebar=document.getElementById("sidebar");
+
+menu.addEventListener("click",()=>{
+
+sidebar.classList.toggle("-translate-x-full");
+
+});
+
+/* ==========================
+   Notification Badge
+========================== */
+
+let notification=3;
+
+document.getElementById("notificationCount").innerHTML=notification;
+
+/* ==========================
+   Fade Animation
+========================== */
+
+window.onload=function(){
+
+document.querySelectorAll(".shadow-md,.shadow-lg").forEach((card,index)=>{
+
+card.style.opacity="0";
+
+card.style.transform="translateY(20px)";
+
+setTimeout(()=>{
+
+card.style.transition=".5s";
+
+card.style.opacity="1";
+
+card.style.transform="translateY(0)";
+
+},index*120);
+
+});
+
+};
+
+/* ==========================
+   Greeting
+========================== */
+
+let hour=new Date().getHours();
+
+let greeting="Good Evening";
+
+if(hour<12){
+
+greeting="Good Morning";
+
+}
+
+else if(hour<17){
+
+greeting="Good Afternoon";
+
+}
+
+document.querySelector("main h1").innerHTML=greeting+", "+employee.name+" 👋";
+const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+
+if (loggedUser) {
+
+    // Navbar Name
+    document.getElementById("employeeName").textContent = loggedUser.name;
+
+    // Greeting
+    const hour = new Date().getHours();
+
+    let greeting = "Good Evening";
+
+    if (hour < 12) {
+
+        greeting = "Good Morning";
+
+    } else if (hour < 17) {
+
+        greeting = "Good Afternoon";
+
+    }
+
+    document.getElementById("welcomeText").textContent =
+        `${greeting}, ${loggedUser.name} 👋`;
+
+}
+
+</script>
 </body>
 </html>
