@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employee Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Inter, sans-serif;
+        }
+    </style>
+
+</head>
+
+<body class="bg-slate-100 font-[Inter]">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="fixed top-0 left-0 right-0 h-20 bg-white shadow-sm flex items-center justify-between px-10 z-50">
+
+        <!-- Logo -->
+
+        <div class="flex items-center gap-4">
+
+            <button id="menuBtn" class="lg:hidden text-2xl">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+            <div class="w-12 h-12 bg-blue-600 rounded-xl flex justify-center items-center text-white">
+
+                <i class="fa-solid fa-boxes-stacked"></i>
+
+            </div>
+
+            <div>
+
+                <h1 class="text-3xl font-bold text-blue-700">
+
+                    AssetsHub
+
+                </h1>
+
+                <p class="text-sm text-gray-500">
+
+                    Employee Dashboard
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Search -->
+
+        <div class="relative w-[500px]">
+
+            <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+
+            <input id="searchBox" type="text" placeholder="Search assets..."
+                class="w-full border rounded-xl py-3 pl-14 pr-5 bg-slate-50 focus:ring-2 focus:ring-blue-500 outline-none">
+
+        </div>
+
+        <!-- Right -->
+
+        <div class="flex items-center gap-8">
+
+            <button class="relative">
+
+                <i class="fa-regular fa-bell text-2xl text-gray-600"></i>
+
+                <span id="notificationCount"
+                    class="absolute -top-2 -right-2 bg-red-500 text-white w-5 h-5 rounded-full text-xs flex justify-center items-center">
+
+                    3
+
+                </span>
+
+            </button>
+
+            <div class="flex items-center gap-3">
+
+                <img src="../assets/icons/user (1).png" class="w-12 h-12 rounded-full border-2 border-blue-500">
+
+                <div>
+
+                    <h2 id="employeeName" class="font-semibold">
+
+                        Employee
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside id="sidebar" class="fixed top-20 left-0 w-64 h-[calc(100vh-80px)] bg-slate-900 text-white">
+
+        <div class="mt-10">
+
+            <p class="px-8 text-gray-400 uppercase text-sm mb-4">
+                Main Menu
+            </p>
+
+            <ul class="space-y-2">
+
+                <li>
+
+                    <a href="../Main Project/employee_Dashboard.html"
+                        class="mx-3 rounded-xl bg-blue-600 flex items-center gap-4 px-6 py-4">
+
+                        <i class="fa-solid fa-house"></i>
+
+                        Dashboard
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="../Main Project/myAssets.html"
+                        class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
+
+                        <i class="fa-solid fa-laptop"></i>
+
+                        My Assets
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="../Main Project/Request.html"
+                        class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Request Asset
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="../Main Project/Return_Request.html"
+                        class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800">
+
+                        <i class="fa-solid fa-arrow-rotate-left"></i>
+
+                        Return Request
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="../Main Project/Report.html"
+                        class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800">
+
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                        Report Issue
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#" class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        My Profile
+
+                    </a>
+
+                </li>
+
+                <li>
+                    <button onclick="logout()"
+                        class="mx-3 w-[95%] rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-red-600 duration-300 text-left">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        Logout
+                    </button>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="ml-72 mt-20 p-8">
+
+        <!-- Heading -->
+
+        <div class="mb-8">
+
+            <h1 class="text-5xl font-bold text-slate-800">
+
+                My Profile
+
+            </h1>
+
+            <p class="text-gray-500 mt-2 text-lg">
+
+                Manage your personal information and account settings.
+
+            </p>
+
+        </div>
+
+        <!-- Grid Start -->
+
+        <div class="grid lg:grid-cols-[35%_65%] gap-8">
+            <!-- ================= PROFILE CARD ================= -->
+
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+
+                <div class="flex flex-col items-center">
+
+                    <div class="relative">
+
+                        <img id="profileImage" src="../assets/icons/user (1).png"
+                            class="w-40 h-40 rounded-full border-4 border-blue-500 object-cover">
+
+                        <label for="uploadImage"
+                            class="absolute bottom-2 right-2 w-12 h-12 rounded-full bg-blue-600 text-white flex justify-center items-center cursor-pointer hover:bg-blue-700">
+
+                            <i class="fa-solid fa-camera"></i>
+
+                        </label>
+
+                        <input id="uploadImage" type="file" accept="image/*" class="hidden">
+
+                    </div>
+
+                    <h2 id="cardName" class="text-3xl font-bold mt-6">
+
+                        Lokesh J
+
+                    </h2>
+
+                    <p class="text-gray-500 mt-1">
+
+                        Java Full Stack Developer
+
+                    </p>
+
+                    <span id="cardEmpId" class="mt-3 px-4 py-1 bg-blue-100 text-blue-700 rounded-full">
+                        Employee ID : EMP1001
+                    </span>
+                </div>
+
+                <hr class="my-8">
+
+                <div class="space-y-5">
+
+                    <div class="flex items-center gap-4">
+
+                        <i class="fa-solid fa-envelope text-blue-600 text-xl"></i>
+
+                        <div>
+
+                            <p class="text-gray-500 text-sm">
+
+                                Email
+
+                            </p>
+
+                            <h3 id="cardEmail" class="font-semibold">
+                                lokesh@gmail.com
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <div class="flex items-center gap-4">
+
+                        <i class="fa-solid fa-phone text-blue-600 text-xl"></i>
+
+                        <div>
+
+                            <p class="text-gray-500 text-sm">
+
+                                Phone
+
+                            </p>
+
+                            <h3 id="cardPhone" class="font-semibold">
+                                +91 9876543210
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <div class="flex items-center gap-4">
+
+                        <i class="fa-solid fa-building text-blue-600 text-xl"></i>
+
+                        <div>
+
+                            <p class="text-gray-500 text-sm">
+
+                                Department
+
+                            </p>
+
+                            <h3 id="cardDepartment" class="font-semibold">
+                                Information Technology
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <div class="flex items-center gap-4">
+
+                        <i class="fa-solid fa-location-dot text-blue-600 text-xl"></i>
+
+                        <div>
+
+                            <p class="text-gray-500 text-sm">
+
+                                Location
+
+                            </p>
+
+                            <h3 id="cardLocation" class="font-semibold">
+
+                                Chennai
+
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button id="editProfileBtn" type="button"
+                    class="mt-8 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl">
+
+                    <i class="fa-solid fa-pen-to-square mr-2"></i>
+
+                    Edit Profile
+
+                </button>
+
+            </div>
+
+            <!-- ================= RIGHT SECTION ================= -->
+
+            <div>
+
+                <!-- Summary Cards -->
+
+                <div class="grid grid-cols-2 gap-6 mb-8">
+
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+
+                        <div class="flex justify-between items-center">
+
+                            <div>
+
+                                <p class="text-gray-500">
+
+                                    Assigned Assets
+
+                                </p>
+
+                                <h2 class="text-5xl font-bold text-blue-600 mt-2">
+
+                                    3
+
+                                </h2>
+
+                            </div>
+
+                            <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center">
+
+                                <i class="fa-solid fa-laptop text-blue-600 text-2xl"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+
+                        <div class="flex justify-between items-center">
+
+                            <div>
+
+                                <p class="text-gray-500">
+
+                                    Asset Requests
+
+                                </p>
+
+                                <h2 class="text-5xl font-bold text-green-600 mt-2">
+
+                                    2
+
+                                </h2>
+
+                            </div>
+
+                            <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center">
+
+                                <i class="fa-solid fa-plus text-green-600 text-2xl"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+
+                        <div class="flex justify-between items-center">
+
+                            <div>
+
+                                <p class="text-gray-500">
+
+                                    Return Requests
+
+                                </p>
+
+                                <h2 class="text-5xl font-bold text-yellow-500 mt-2">
+
+                                    1
+
+                                </h2>
+
+                            </div>
+
+                            <div class="w-14 h-14 rounded-full bg-yellow-100 flex items-center justify-center">
+
+                                <i class="fa-solid fa-arrow-rotate-left text-yellow-600 text-2xl"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+
+                        <div class="flex justify-between items-center">
+
+                            <div>
+
+                                <p class="text-gray-500">
+
+                                    Reported Issues
+
+                                </p>
+
+                                <h2 class="text-5xl font-bold text-red-600 mt-2">
+
+                                    1
+
+                                </h2>
+
+                            </div>
+
+                            <div class="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center">
+
+                                <i class="fa-solid fa-triangle-exclamation text-red-600 text-2xl"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- ================= PERSONAL INFORMATION ================= -->
+
+                <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+
+                    <div class="flex justify-between items-center mb-8">
+
+                        <h2 class="text-3xl font-bold text-blue-700">
+
+                            Personal Information
+
+                        </h2>
+
+                        <button id="saveBtn" type="button"
+                            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl">
+
+                            <i class="fa-solid fa-floppy-disk mr-2"></i>
+
+                            Save Changes
+
+                        </button>
+
+                    </div>
+
+                    <form id="profileForm" class="grid md:grid-cols-2 gap-6">
+
+                        <div>
+
+                            <label class="font-semibold">
+
+                                Full Name
+
+                            </label>
+
+                            <input id="fullName" type="text" value="Lokesh J" class="w-full mt-2 border rounded-xl p-3">
+
+                        </div>
+
+                        <div>
+
+                            <label class="font-semibold">
+
+                                Employee ID
+
+                            </label>
+
+                            <input id="employeeId" type="text" value="EMP1001" readonly
+                                class="w-full mt-2 border rounded-xl p-3 bg-slate-100">
+
+                        </div>
+
+                        <div>
+
+                            <label class="font-semibold">
+
+                                Email
+
+                            </label>
+
+                            <input id="email" type="email" value="lokesh@gmail.com"
+                                class="w-full mt-2 border rounded-xl p-3">
+
+                        </div>
+
+                        <div>
+
+                            <label class="font-semibold">
+
+                                Phone Number
+
+                            </label>
+
+                            <input id="phone" type="text" value="+91 9876543210"
+                                class="w-full mt-2 border rounded-xl p-3">
+
+                        </div>
+
+                        <div>
+
+                            <label class="font-semibold">
+
+                                Department
+
+                            </label>
+
+                            <input id="department" type="text" value="Information Technology"
+                                class="w-full mt-2 border rounded-xl p-3">
+
+                        </div>
+
+                        <div>
+
+                            <label class="font-semibold">
+
+                                Designation
+
+                            </label>
+
+                            <input id="designation" type="text" value="Software Engineer"
+                                class="w-full mt-2 border rounded-xl p-3">
+
+                        </div>
+
+                        <div class="md:col-span-2">
+
+                            <label class="font-semibold">
+
+                                Address
+
+                            </label>
+
+                            <textarea id="address" rows="4"
+                                class="w-full mt-2 border rounded-xl p-3">Chennai, Tamil Nadu</textarea>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <!-- ================= PASSWORD + ACTIVITY ================= -->
+
+                <div class="grid lg:grid-cols-2 gap-8">
+
+                    <!-- Change Password -->
+
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+
+                        <h2 class="text-3xl font-bold text-blue-700 mb-6">
+
+                            Change Password
+
+                        </h2>
+
+                        <div class="space-y-5">
+
+                            <div>
+
+                                <label class="font-semibold">
+
+                                    Current Password
+
+                                </label>
+
+                                <input id="currentPassword" type="password" class="w-full mt-2 border rounded-xl p-3">
+
+                            </div>
+
+                            <div>
+
+                                <label class="font-semibold">
+
+                                    New Password
+
+                                </label>
+
+                                <input id="newPassword" type="password" class="w-full mt-2 border rounded-xl p-3">
+
+                            </div>
+
+                            <div>
+
+                                <label class="font-semibold">
+
+                                    Confirm Password
+
+                                </label>
+
+                                <input id="confirmPassword" type="password" class="w-full mt-2 border rounded-xl p-3">
+
+                            </div>
+
+                            <button id="passwordBtn" type="button"
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl">
+
+                                <i class="fa-solid fa-key mr-2"></i>
+
+                                Update Password
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Recent Activity -->
+
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+
+                        <h2 class="text-3xl font-bold text-blue-700 mb-6">
+
+                            Recent Activity
+
+                        </h2>
+
+                        <div class="space-y-6">
+
+                            <div class="flex gap-4">
+
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex justify-center items-center">
+
+                                    <i class="fa-solid fa-check text-green-600"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h3 class="font-semibold">
+
+                                        Requested Dell Laptop
+
+                                    </h3>
+
+                                    <p class="text-gray-500 text-sm">
+
+                                        Today • 09:30 AM
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="flex gap-4">
+
+                                <div class="w-12 h-12 bg-yellow-100 rounded-full flex justify-center items-center">
+
+                                    <i class="fa-solid fa-arrow-rotate-left text-yellow-600"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h3 class="font-semibold">
+
+                                        Submitted Return Request
+
+                                    </h3>
+
+                                    <p class="text-gray-500 text-sm">
+
+                                        Yesterday • 03:15 PM
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="flex gap-4">
+
+                                <div class="w-12 h-12 bg-red-100 rounded-full flex justify-center items-center">
+
+                                    <i class="fa-solid fa-triangle-exclamation text-red-600"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h3 class="font-semibold">
+
+                                        Reported Monitor Issue
+
+                                    </h3>
+
+                                    <p class="text-gray-500 text-sm">
+
+                                        25 Jul 2026
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="flex gap-4">
+
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex justify-center items-center">
+
+                                    <i class="fa-solid fa-user-pen text-blue-600"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h3 class="font-semibold">
+
+                                        Updated Profile Information
+
+                                    </h3>
+
+                                    <p class="text-gray-500 text-sm">
+
+                                        20 Jul 2026
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+
+        const memoryStore = {
+            profileImage: null,
+            employeeProfile: null
+        };
+
+        // ================= ELEMENT REFERENCES =================
+        const uploadImage = document.getElementById("uploadImage");
+        const profileImage = document.getElementById("profileImage");
+        const saveBtn = document.getElementById("saveBtn");
+        const fullNameInput = document.getElementById("fullName");
+        const employeeIdInput = document.getElementById("employeeId");
+        const emailInput = document.getElementById("email");
+        const phoneInput = document.getElementById("phone");
+        const departmentInput = document.getElementById("department");
+        const designationInput = document.getElementById("designation");
+        const addressInput = document.getElementById("address");
+        const editProfileBtn = document.getElementById("editProfileBtn");
+        const passwordBtn = document.getElementById("passwordBtn");
+
+        // ================= PROFILE IMAGE UPLOAD =================
+        uploadImage.addEventListener("change", function () {
+            const file = this.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    profileImage.src = e.target.result;
+                    memoryStore.profileImage = e.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // ================= UPDATE PROFILE CARD =================
+        function updateProfile(profile) {
+            document.getElementById("cardName").innerHTML = profile.name;
+            document.getElementById("cardEmpId").innerHTML = "Employee ID : " + profile.empId;
+            document.getElementById("cardEmail").innerHTML = profile.email;
+            document.getElementById("cardPhone").innerHTML = profile.phone;
+            document.getElementById("cardDepartment").innerHTML = profile.department;
+            document.getElementById("cardLocation").innerHTML = profile.address;
+        }
+
+        // ================= SAVE CHANGES =================
+        saveBtn.addEventListener("click", function () {
+            const profile = {
+                name: fullNameInput.value,
+                empId: employeeIdInput.value,
+                email: emailInput.value,
+                phone: phoneInput.value,
+                department: departmentInput.value,
+                designation: designationInput.value,
+                address: addressInput.value
+            };
+
+            memoryStore.employeeProfile = profile;
+            updateProfile(profile);
+            alert("Profile Updated Successfully!");
+        });
+
+        // ================= CHANGE PASSWORD =================
+        passwordBtn.addEventListener("click", function () {
+            const currentPassword = document.getElementById("currentPassword");
+            const newPassword = document.getElementById("newPassword");
+            const confirmPassword = document.getElementById("confirmPassword");
+
+            if (currentPassword.value === "" || newPassword.value === "" || confirmPassword.value === "") {
+                alert("Please fill all password fields.");
+                return;
+            }
+
+            if (newPassword.value !== confirmPassword.value) {
+                alert("New Password and Confirm Password do not match.");
+                return;
+            }
+
+            alert("Password Updated Successfully!");
+            [currentPassword, newPassword, confirmPassword].forEach(input => input.value = "");
+        });
+
+        // ================= EDIT PROFILE BUTTON =================
+        editProfileBtn.addEventListener("click", function () {
+            alert("You can edit your information below and click Save Changes.");
+        });
+
+        // ================= LOAD SAVED DATA ON PAGE LOAD =================
+        window.addEventListener("load", function () {
+            if (memoryStore.profileImage) {
+                profileImage.src = memoryStore.profileImage;
+            }
+
+            if (memoryStore.employeeProfile) {
+                const profile = memoryStore.employeeProfile;
+                fullNameInput.value = profile.name;
+                employeeIdInput.value = profile.empId;
+                emailInput.value = profile.email;
+                phoneInput.value = profile.phone;
+                departmentInput.value = profile.department;
+                designationInput.value = profile.designation;
+                addressInput.value = profile.address;
+                updateProfile(profile);
+            }
+        });
+        function logout() {
+
+            const confirmLogout = confirm("Are you sure you want to logout?");
+
+            if (confirmLogout) {
+
+                // Remove login information
+                localStorage.removeItem("loggedUser");
+                localStorage.removeItem("employee");
+                localStorage.removeItem("isLoggedIn");
+
+                sessionStorage.clear();
+
+                // Redirect to Login page
+                window.location.replace("Login.html");
+            }
+
+        }
+    </script>
+</body>
+
+</html>

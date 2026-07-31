@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Issues</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Inter, sans-serif;
+        }
+    </style>
+
+</head>
+
+<body class="bg-slate-100">
+
+    <body class="bg-slate-100 font-[Inter]">
+
+        <!-- ================= NAVBAR ================= -->
+
+        <nav class="fixed top-0 left-0 right-0 h-20 bg-white shadow-sm flex items-center justify-between px-10 z-50">
+
+            <!-- Logo -->
+
+            <div class="flex items-center gap-4">
+
+                <button id="menuBtn" class="lg:hidden text-2xl">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+                <div class="w-12 h-12 bg-blue-600 rounded-xl flex justify-center items-center text-white">
+
+                    <i class="fa-solid fa-boxes-stacked"></i>
+
+                </div>
+
+                <div>
+
+                    <h1 class="text-3xl font-bold text-blue-700">
+
+                        AssetsHub
+
+                    </h1>
+
+                    <p class="text-sm text-gray-500">
+
+                        Employee Dashboard
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Search -->
+
+            <div class="relative w-[500px]">
+
+                <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+
+                <input id="searchBox" type="text" placeholder="Search assets..."
+                    class="w-full border rounded-xl py-3 pl-14 pr-5 bg-slate-50 focus:ring-2 focus:ring-blue-500 outline-none">
+
+            </div>
+
+            <!-- Right -->
+
+            <div class="flex items-center gap-8">
+
+                <button class="relative">
+
+                    <i class="fa-regular fa-bell text-2xl text-gray-600"></i>
+
+                    <span id="notificationCount"
+                        class="absolute -top-2 -right-2 bg-red-500 text-white w-5 h-5 rounded-full text-xs flex justify-center items-center">
+
+                        3
+
+                    </span>
+
+                </button>
+
+                <div class="flex items-center gap-3">
+
+                    <img src="../assets/icons/user (1).png" class="w-12 h-12 rounded-full border-2 border-blue-500">
+
+                    <div>
+
+                        <h2 id="employeeName" class="font-semibold">
+
+                            Employee
+
+                        </h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside id="sidebar" class="fixed top-20 left-0 w-64 h-[calc(100vh-80px)] bg-slate-900 text-white">
+
+            <div class="mt-10">
+
+                <p class="px-8 text-gray-400 uppercase text-sm mb-4">
+                    Main Menu
+                </p>
+
+                <ul class="space-y-2">
+
+                    <li>
+
+                        <a href="../Main Project/employee_Dashboard.html" class="mx-3 rounded-xl bg-blue-600 flex items-center gap-4 px-6 py-4">
+
+                            <i class="fa-solid fa-house"></i>
+
+                            Dashboard
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../Main Project/myAssets.html"
+                            class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
+
+                            <i class="fa-solid fa-laptop"></i>
+
+                            My Assets
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../Main Project/Request.html"
+                            class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                            Request Asset
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../Main Project/Return_Request.html" class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800">
+
+                            <i class="fa-solid fa-arrow-rotate-left"></i>
+
+                            Return Request
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../Main Project/Report.html" class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800">
+
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                            Report Issue
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../Main Project/Profile.html" class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            My Profile
+
+                        </a>
+
+                    </li>
+
+                   <li>
+    <button onclick="logout()"
+        class="mx-3 w-[95%] rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-red-600 duration-300 text-left">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Logout
+    </button>
+</li>
+
+                </ul>
+
+            </div>
+
+        </aside>
+       
+       <!-- ================= MAIN CONTENT ================= -->
+
+<main class="ml-64 mt-20 p-8 bg-slate-100 min-h-screen">
+
+    <!-- Heading -->
+
+    <div class="mb-8">
+        <h1 class="text-5xl font-bold text-slate-800">
+            Report Issue
+        </h1>
+
+        <p class="text-xl text-gray-500 mt-2">
+            Report hardware or software issues with your assigned assets.
+        </p>
+    </div>
+
+    <!-- Summary Cards -->
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+
+        <!-- Open Issues -->
+
+        <div class="bg-white rounded-2xl shadow-md p-6 flex items-center gap-5 border border-red-100">
+
+            <div class="w-16 h-16 rounded-full bg-red-100 flex justify-center items-center">
+
+                <i class="fa-solid fa-circle-exclamation text-red-600 text-3xl"></i>
+
+            </div>
+
+            <div>
+
+                <p class="text-gray-500 text-lg">
+                    Open Issues
+                </p>
+
+                <h2 class="text-5xl font-bold text-red-600">
+                    3
+                </h2>
+
+            </div>
+
+        </div>
+
+        <!-- In Progress -->
+
+        <div class="bg-white rounded-2xl shadow-md p-6 flex items-center gap-5 border border-yellow-100">
+
+            <div class="w-16 h-16 rounded-full bg-yellow-100 flex justify-center items-center">
+
+                <i class="fa-solid fa-screwdriver-wrench text-yellow-600 text-3xl"></i>
+
+            </div>
+
+            <div>
+
+                <p class="text-gray-500 text-lg">
+                    In Progress
+                </p>
+
+                <h2 class="text-5xl font-bold text-yellow-500">
+                    2
+                </h2>
+
+            </div>
+
+        </div>
+
+        <!-- Resolved -->
+
+        <div class="bg-white rounded-2xl shadow-md p-6 flex items-center gap-5 border border-green-100">
+
+            <div class="w-16 h-16 rounded-full bg-green-100 flex justify-center items-center">
+
+                <i class="fa-solid fa-circle-check text-green-600 text-3xl"></i>
+
+            </div>
+
+            <div>
+
+                <p class="text-gray-500 text-lg">
+                    Resolved
+                </p>
+
+                <h2 class="text-5xl font-bold text-green-600">
+                    8
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Report Form + Table -->
+
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+    <form id="issueForm" class="space-y-5">
+
+    <!-- Select Asset -->
+      <!-- Report Form -->
+
+        <div class="bg-white rounded-2xl shadow-md p-8">
+
+            <h2 class="text-4xl font-bold text-blue-700 mb-8">
+
+                Report New Issue
+
+            </h2>
+
+            <!-- Part 2 Form Here -->
+
+    <div>
+
+        <label class="font-semibold">
+            Select Asset <span class="text-red-500">*</span>
+        </label>
+
+        <select id="asset" class="w-full mt-2 border rounded-xl p-3">
+
+            <option disabled selected>Select Asset</option>
+
+            <option>Dell Latitude 7450</option>
+
+            <option>HP Monitor</option>
+
+            <option>Wireless Mouse</option>
+
+            <option>Mechanical Keyboard</option>
+
+        </select>
+
+    </div>
+
+    <!-- Issue Type -->
+
+    <div>
+
+        <label class="font-semibold">
+            Issue Type <span class="text-red-500">*</span>
+        </label>
+
+        <select id="issueType" class="w-full mt-2 border rounded-xl p-3">
+
+            <option disabled selected>Select Issue</option>
+
+            <option>Hardware</option>
+
+            <option>Software</option>
+
+            <option>Network</option>
+
+            <option>Battery</option>
+
+            <option>Display</option>
+
+        </select>
+
+    </div>
+
+    <!-- Priority -->
+
+    <div>
+
+        <label class="font-semibold">
+            Priority
+        </label>
+
+        <select id="priority" class="w-full mt-2 border rounded-xl p-3">
+
+            <option>Low</option>
+
+            <option>Medium</option>
+
+            <option>High</option>
+
+        </select>
+
+    </div>
+
+    <!-- Description -->
+
+    <div>
+
+        <label class="font-semibold">
+            Description
+        </label>
+
+        <textarea
+            id="description"
+            rows="5"
+            class="w-full mt-2 border rounded-xl p-3"
+            placeholder="Describe your issue..."></textarea>
+
+    </div>
+
+    <!-- Upload -->
+
+    <div>
+
+        <label class="font-semibold">
+
+            Upload Screenshot
+
+        </label>
+
+        <input
+            id="issueImage"
+            type="file"
+            accept="image/*"
+            class="mt-3">
+
+        <img
+            id="preview"
+            class="hidden w-44 mt-4 rounded-xl border shadow">
+
+    </div>
+
+    <button
+        type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-semibold">
+
+        <i class="fa-solid fa-paper-plane mr-2"></i>
+
+        Submit Report
+
+    </button>
+
+</form>
+    </div>
+        <!-- Report History -->
+
+        <div class="bg-white rounded-2xl shadow-md p-8">
+
+            <div class="flex justify-between items-center mb-6">
+
+                <h2 class="text-4xl font-bold text-blue-700">
+
+                    My Reported Issues
+
+                </h2>
+
+                <select class="border rounded-lg px-4 py-2">
+
+                    <option>All Status</option>
+                    <option>Open</option>
+                    <option>In Progress</option>
+                    <option>Resolved</option>
+
+                </select>
+
+            </div>
+
+            <!-- Part 2 Table Here -->
+        <table class="w-full">
+
+    <thead>
+
+        <tr class="border-b">
+
+            <th class="text-left py-4">Issue ID</th>
+
+            <th>Asset</th>
+
+            <th>Date</th>
+
+            <th>Status</th>
+
+            <th>Action</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody id="issueTable">
+
+        <tr class="border-b">
+
+            <td class="py-5">
+
+                ISS001
+
+            </td>
+
+            <td>
+
+                💻 Dell Laptop
+
+            </td>
+
+            <td>
+
+                30 Jul 2026
+
+            </td>
+
+            <td>
+
+                <span class="bg-yellow-100 text-yellow-700 px-4 py-1 rounded-full">
+
+                    Open
+
+                </span>
+
+            </td>
+
+            <td>
+
+                <button
+                    onclick="openIssueModal()"
+                    class="text-blue-600 hover:text-blue-800">
+
+                    <i class="fa-solid fa-eye mr-1"></i>
+
+                    View
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        <tr class="border-b">
+
+            <td class="py-5">
+
+                ISS002
+
+            </td>
+
+            <td>
+
+                🖥 HP Monitor
+
+            </td>
+
+            <td>
+
+                27 Jul 2026
+
+            </td>
+
+            <td>
+
+                <span class="bg-green-100 text-green-700 px-4 py-1 rounded-full">
+
+                    Resolved
+
+                </span>
+
+            </td>
+
+            <td>
+
+                <button
+                    onclick="openIssueModal()"
+                    class="text-blue-600 hover:text-blue-800">
+
+                    <i class="fa-solid fa-eye mr-1"></i>
+
+                    View
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td class="py-5">
+
+                ISS003
+
+            </td>
+
+            <td>
+
+                ⌨ Keyboard
+
+            </td>
+
+            <td>
+
+                25 Jul 2026
+
+            </td>
+
+            <td>
+
+                <span class="bg-red-100 text-red-600 px-4 py-1 rounded-full">
+
+                    Rejected
+
+                </span>
+
+            </td>
+
+            <td>
+
+                <button
+                    onclick="openIssueModal()"
+                    class="text-blue-600 hover:text-blue-800">
+
+                    <i class="fa-solid fa-eye mr-1"></i>
+
+                    View
+
+                </button>
+
+            </td>
+
+        </tr>
+
+    </tbody>
+
+</table>
+        </div>
+
+    </div>
+
+    <!-- Bottom Cards -->
+
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mt-8">
+
+        <!-- Guidelines -->
+
+        <div class="bg-white rounded-2xl shadow-md p-6">
+
+            <h3 class="text-2xl font-bold text-blue-700 mb-5">
+
+                <i class="fa-solid fa-circle-info mr-2"></i>
+
+                Issue Reporting Guidelines
+
+            </h3>
+
+            <ul class="space-y-3 text-gray-700">
+
+                <li>✔ Describe the issue clearly.</li>
+
+                <li>✔ Select the correct issue type.</li>
+
+                <li>✔ Upload a screenshot or photo if available.</li>
+
+                <li>✔ Choose the correct priority.</li>
+
+                <li>✔ Avoid duplicate reports.</li>
+
+            </ul>
+
+        </div>
+
+        <!-- Support -->
+
+        <div class="bg-white rounded-2xl shadow-md p-6">
+
+            <h3 class="text-2xl font-bold text-blue-700 mb-5">
+
+                <i class="fa-solid fa-headset mr-2"></i>
+
+                IT Support
+
+            </h3>
+
+            <div class="space-y-4 text-gray-700">
+
+                <p>
+
+                    <i class="fa-solid fa-envelope text-blue-600 mr-2"></i>
+
+                    support@assetshub.com
+
+                </p>
+
+                <p>
+
+                    <i class="fa-solid fa-phone text-blue-600 mr-2"></i>
+
+                    +91 98765 43210
+
+                </p>
+
+                <p>
+
+                    <i class="fa-solid fa-clock text-blue-600 mr-2"></i>
+
+                    Monday - Friday (9:00 AM - 6:00 PM)
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- ================= ISSUE VIEW MODAL ================= -->
+
+<div id="issueModal"
+class="fixed inset-0 hidden bg-black/50 flex justify-center items-center z-50">
+
+<div class="bg-white w-[750px] max-h-[90vh] overflow-y-auto rounded-2xl shadow-xl">
+
+    <!-- Header -->
+
+    <div class="bg-blue-600 text-white flex justify-between items-center px-8 py-5">
+
+        <h2 class="text-2xl font-bold">
+            Issue Details
+        </h2>
+
+        <button onclick="closeIssueModal()"
+        class="text-3xl hover:text-red-300">
+
+            &times;
+
+        </button>
+
+    </div>
+
+    <!-- Body -->
+
+    <div class="p-8 space-y-6">
+
+        <img id="modalImage"
+        src="https://placehold.co/700x300"
+        class="w-full h-64 object-cover rounded-xl border">
+
+        <div class="grid grid-cols-2 gap-6">
+
+            <div>
+
+                <p class="text-gray-500">Issue ID</p>
+
+                <h3 id="modalIssueId"
+                class="font-bold text-lg">
+                    ISS001
+                </h3>
+
+            </div>
+
+            <div>
+
+                <p class="text-gray-500">Asset</p>
+
+                <h3 id="modalAsset"
+                class="font-bold text-lg">
+                    Dell Laptop
+                </h3>
+
+            </div>
+
+            <div>
+
+                <p class="text-gray-500">Issue Type</p>
+
+                <h3 id="modalType">
+                    Hardware
+                </h3>
+
+            </div>
+
+            <div>
+
+                <p class="text-gray-500">Priority</p>
+
+                <h3 id="modalPriority">
+                    High
+                </h3>
+
+            </div>
+
+            <div>
+
+                <p class="text-gray-500">Status</p>
+
+                <span class="bg-yellow-100 text-yellow-700 px-4 py-1 rounded-full">
+
+                    Open
+
+                </span>
+
+            </div>
+
+            <div>
+
+                <p class="text-gray-500">Reported Date</p>
+
+                <h3 id="modalDate">
+
+                    30 Jul 2026
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <p class="text-gray-500 mb-2">
+
+                Description
+
+            </p>
+
+            <div id="modalDescription"
+            class="bg-slate-100 rounded-xl p-4">
+
+                Laptop screen flickering.
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bg-slate-100 p-5 flex justify-end">
+
+        <button
+        onclick="closeIssueModal()"
+        class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl">
+
+            Close
+
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+</main>
+<script>
+
+const preview=document.getElementById("preview");
+
+document.getElementById("issueImage").addEventListener("change",function(){
+
+const file=this.files[0];
+
+if(file){
+
+const reader=new FileReader();
+
+reader.onload=function(e){
+
+preview.src=e.target.result;
+
+preview.classList.remove("hidden");
+
+}
+
+reader.readAsDataURL(file);
+
+}
+
+});
+
+
+document.getElementById("issueForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Issue Report Submitted Successfully.");
+
+});
+
+
+function openIssueModal(){
+
+document.getElementById("issueModal").classList.remove("hidden");
+
+document.body.style.overflow="hidden";
+
+}
+
+function closeIssueModal(){
+
+document.getElementById("issueModal").classList.add("hidden");
+
+document.body.style.overflow="auto";
+
+}
+
+window.onclick=function(e){
+
+const modal=document.getElementById("issueModal");
+
+if(e.target===modal){
+
+closeIssueModal();
+
+}
+
+}
+document.getElementById("issueForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const reports=JSON.parse(localStorage.getItem("issueReports"))||[];
+
+const report={
+
+id:"ISS"+Date.now(),
+
+asset:document.getElementById("asset").value,
+
+type:document.getElementById("issueType").value,
+
+priority:document.getElementById("priority").value,
+
+description:document.getElementById("description").value,
+
+image:preview.src,
+
+status:"Open",
+
+date:new Date().toLocaleDateString()
+
+};
+
+reports.push(report);
+
+localStorage.setItem("issueReports",JSON.stringify(reports));
+
+alert("Issue Report Submitted Successfully!");
+
+this.reset();
+
+preview.classList.add("hidden");
+
+});
+function logout() {
+
+    const confirmLogout = confirm("Are you sure you want to logout?");
+
+    if (confirmLogout) {
+
+        // Remove login information
+        localStorage.removeItem("loggedUser");
+        localStorage.removeItem("employee");
+        localStorage.removeItem("isLoggedIn");
+
+        sessionStorage.clear();
+
+        // Redirect to Login page
+        window.location.replace("Login.html");
+    }
+
+}
+</script>
+    </body>
+    </html>

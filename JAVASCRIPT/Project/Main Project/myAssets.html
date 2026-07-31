@@ -140,7 +140,7 @@ body{
 
         <li>
 
-            <a href="#"
+            <a href="../Main Project/Return_Request.html"
             class="flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
 
                 <i class="fa-solid fa-arrow-rotate-left"></i>
@@ -153,7 +153,7 @@ body{
 
         <li>
 
-            <a href="#"
+            <a href="../Main Project/Report.html"
             class="flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
 
                 <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -166,7 +166,7 @@ body{
 
         <li>
 
-            <a href="#"
+            <a href="../Main Project/Profile.html"
             class="flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
 
                 <i class="fa-solid fa-user"></i>
@@ -178,18 +178,12 @@ body{
         </li>
 
         <li>
-
-            <a href="#"
-            class="flex items-center gap-4 px-6 py-4 hover:bg-red-600 duration-300">
-
-                <i class="fa-solid fa-right-from-bracket"></i>
-
-                Logout
-
-            </a>
-
-        </li>
-
+    <button onclick="logout()"
+        class="mx-3 w-[95%] rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-red-600 duration-300 text-left">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Logout
+    </button>
+</li>
     </ul>
 
 </aside>
@@ -507,6 +501,26 @@ function closeModal(){
     document.getElementById("detailsModal").classList.add("hidden");
 
 }
+
+function logout() {
+
+    const confirmLogout = confirm("Are you sure you want to logout?");
+
+    if (confirmLogout) {
+
+        // Remove login information
+        localStorage.removeItem("loggedUser");
+        localStorage.removeItem("employee");
+        localStorage.removeItem("isLoggedIn");
+
+        sessionStorage.clear();
+
+        // Redirect to Login page
+        window.location.replace("Login.html");
+    }
+
+}
+
 
 </script>
 </main>
