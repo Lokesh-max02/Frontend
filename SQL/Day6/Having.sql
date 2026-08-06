@@ -51,3 +51,26 @@ select name,salary from Employees;
 select department from Employees;
 select * from Employees where salary > 40000;
 -- task 8
+select * from Employees where salary >5000 And location="Madurai";
+select * from Employees where salary >50000 OR location="Madurai";
+select * from Employees where department IN  ("IT")  ;
+select * from Employees where department NOT IN  ("IT")  ;
+select * from Employees where salary BETWEEN 20000 AND 40000   ;
+select * from Employees where name like "D%"  ;
+-- task 9
+select  * from Employees order by salary desc;
+select  * from Employees order by salary ;
+select  * from Employees order by salary desc limit 5;
+select  * from Employees order by id desc limit 3;
+-- task 10
+select count(salary),sum(salary),max(salary),min(salary),avg(salary) from Employees;
+-- task 11
+select  department,count(id) from Employees group by  department ;
+select department ,sum(salary) from Employees group by department;
+select location ,avg(salary) from Employees group by location;
+select department ,max(salary) from Employees group by department;
+-- task 12
+select department, count(id) from Employees group by department having count(id)>2;
+select location,avg(salary) from Employees group by location having avg(salary) > 50000;
+select department, sum(salary) from Employees group by department having sum(salary)>200000;
+
