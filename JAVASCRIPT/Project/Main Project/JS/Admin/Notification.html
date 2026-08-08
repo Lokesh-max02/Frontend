@@ -28,7 +28,7 @@
 </head>
 <body class="text-[15px]">
 <div class="flex min-h-screen">
- 
+
   <aside class="w-64 shrink-0 flex flex-col" style="background:var(--sidebar)">
     <div class="flex items-center gap-2.5 px-6 py-6">
       <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:var(--accent)"><i class="fa-solid fa-cubes text-white text-sm"></i></div>
@@ -53,19 +53,19 @@
       </div>
     </div>
   </aside>
- 
+
   <div class="flex-1 min-w-0 flex flex-col">
     <header class="bg-white border-b flex items-center justify-between gap-6 px-8 py-4" style="border-color:var(--line)">
       <div><h2 class="font-semibold">Notifications</h2></div>
       <button onclick="dismissAll()" class="text-sm font-medium" style="color:var(--accent)">Mark all as read</button>
     </header>
- 
+
     <main class="flex-1 px-8 py-6 space-y-6">
       <div>
         <h1 class="display text-2xl font-bold">Notifications</h1>
         <p class="text-sm mt-1" style="color:var(--ink-soft)">Pending requests and open maintenance tickets that need your attention.</p>
       </div>
- 
+
       <div class="card p-6">
         <div id="notifList" class="divide-y" style="border-color:var(--line)"></div>
         <p id="notifEmpty" class="hidden text-sm text-center py-10" style="color:var(--ink-soft)">You're all caught up. 🎉</p>
@@ -73,23 +73,26 @@
     </main>
   </div>
 </div>
- 
+
 <script>
 const REQUESTS_KEY = "assetRequests";
 const MAINTENANCE_KEY = "maintenanceLogs";
+const RETURNS_KEY = "returnRequests";
 const DISMISSED_KEY = "dismissedNotifications";
- 
+
 function getRequests(){ return JSON.parse(localStorage.getItem(REQUESTS_KEY)) || []; }
 function setRequests(v){ localStorage.setItem(REQUESTS_KEY, JSON.stringify(v)); }
 function getMaintenance(){ return JSON.parse(localStorage.getItem(MAINTENANCE_KEY)) || []; }
+function getReturns(){ return JSON.parse(localStorage.getItem(RETURNS_KEY)) || []; }
 function getDismissed(){ return JSON.parse(localStorage.getItem(DISMISSED_KEY)) || []; }
 function setDismissed(v){ localStorage.setItem(DISMISSED_KEY, JSON.stringify(v)); }
- 
+
 function buildFeed(){
   const requests = getRequests();
   const maint = getMaintenance();
+  const returns = getReturns();
   const dismissed = new Set(getDismissed());
- 
+
   const items = [];
   requests.filter(r=>r.status==="Pending").forEach(r=>{
     items.push({
@@ -98,6 +101,15 @@ function buildFeed(){
       title: `New request: ${r.assetName || r.asset}`,
       subtitle: `Requested by ${r.requestedBy||r.employeeName} · ${r.date}`,
       link: "Admin-Dashboard.html", refId: r.id
+    });
+  });
+  returns.filter(r=>r.status==="Pending").forEach(r=>{
+    items.push({
+      id: "ret-"+r.id, type:"return",
+      icon:"fa-arrow-rotate-left", color:"blue",
+      title: `Return request: ${r.assetName}`,
+      subtitle: `${r.employeeName} · condition: ${r.condition}`,
+      link: "Assignments.html", refId: r.id
     });
   });
   maint.filter(m=>m.status!=="Resolved").forEach(m=>{
@@ -109,15 +121,15 @@ function buildFeed(){
       link: "Maintenance.html", refId: m.id
     });
   });
- 
+
   return items.filter(i => !dismissed.has(i.id));
 }
- 
+
 function colorClasses(c){
-  const map = { amber:"bg-amber-50 text-amber-600", rose:"bg-rose-50 text-rose-600" };
+  const map = { amber:"bg-amber-50 text-amber-600", rose:"bg-rose-50 text-rose-600", blue:"bg-blue-50 text-blue-600" };
   return map[c] || "bg-gray-100 text-gray-600";
 }
- 
+
 function render(){
   const feed = buildFeed();
   const list = document.getElementById("notifList");
@@ -137,7 +149,7 @@ function render(){
     </div>`).join("");
   document.getElementById("notifEmpty").classList.toggle("hidden", feed.length > 0);
 }
- 
+
 function dismiss(id){
   const d = getDismissed();
   if(!d.includes(id)) d.push(id);
@@ -151,7 +163,7 @@ function dismissAll(){
   setDismissed([...d]);
   render();
 }
- 
+
 /* ---------- init ---------- */
 render();
 setInterval(render, 2000);
@@ -159,4 +171,3 @@ window.addEventListener("storage", render);
 </script>
 </body>
 </html>
- 

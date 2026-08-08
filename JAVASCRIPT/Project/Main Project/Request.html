@@ -82,7 +82,7 @@
 
                 <div>
 
-                    <h2 class="font-semibold">
+                    <h2 id="employeeName" class="font-semibold">
                         Lokesh
                     </h2>
 
@@ -106,7 +106,7 @@
 
             <li>
 
-                <a href="../Main Project/employee_Dashboard.html" class="flex items-center gap-4 px-6 py-4 bg-blue-600">
+                <a href="../Main Project/employee_Dashboard.html" class="flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
 
                     <i class="fa-solid fa-house"></i>
 
@@ -132,7 +132,7 @@
             <li>
 
                 <a href="../Main Project/Request.html"
-                    class="flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
+                    class="flex items-center gap-4 px-6 py-4 bg-blue-600">
 
                     <i class="fa-solid fa-plus"></i>
 
@@ -220,7 +220,6 @@
 
         <div class="grid grid-cols-3 gap-8 mt-10">
 
-            <!-- Pending -->
             <!-- Pending Card -->
             <div
                 class="bg-white rounded-2xl shadow-lg p-6 border border-blue-100 flex items-center justify-between hover:shadow-xl duration-300">
@@ -239,8 +238,8 @@
                             Pending Requests
                         </h2>
 
-                        <h1 class="text-4xl font-bold text-blue-700 mt-1">
-                            2
+                        <h1 id="pendingCount" class="text-4xl font-bold text-blue-700 mt-1">
+                            0
                         </h1>
 
                     </div>
@@ -268,8 +267,8 @@
                             Approved Requests
                         </h2>
 
-                        <h1 class="text-4xl font-bold text-green-600 mt-1">
-                            5
+                        <h1 id="approvedCount" class="text-4xl font-bold text-green-600 mt-1">
+                            0
                         </h1>
 
                     </div>
@@ -297,8 +296,8 @@
                             Rejected Requests
                         </h2>
 
-                        <h1 class="text-4xl font-bold text-red-500 mt-1">
-                            1
+                        <h1 id="rejectedCount" class="text-4xl font-bold text-red-500 mt-1">
+                            0
                         </h1>
 
                     </div>
@@ -306,10 +305,6 @@
                 </div>
 
             </div>
-
-            <!-- Part 2 -->
-
-        </div>
 
         </div>
 
@@ -324,7 +319,7 @@
                     Request New Asset
                 </h1>
 
-                <form class="space-y-6">
+                <form id="requestForm" class="space-y-6">
 
                     <!-- Category -->
 
@@ -334,7 +329,7 @@
                             Asset Category <span class="text-red-500">*</span>
                         </label>
 
-                        <select
+                        <select id="reqCategory"
                             class="mt-2 w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500">
 
                             <option>Laptop</option>
@@ -355,7 +350,7 @@
                             Asset Name <span class="text-red-500">*</span>
                         </label>
 
-                        <input type="text" placeholder="Dell Latitude 7450"
+                        <input id="reqAssetName" type="text" placeholder="Dell Latitude 7450"
                             class="mt-2 w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500">
 
                     </div>
@@ -371,17 +366,17 @@
                         <div class="flex gap-10 mt-4">
 
                             <label class="flex items-center gap-2">
-                                <input type="radio" name="priority">
+                                <input type="radio" name="priority" value="Low">
                                 Low
                             </label>
 
                             <label class="flex items-center gap-2">
-                                <input type="radio" name="priority">
+                                <input type="radio" name="priority" value="Medium">
                                 Medium
                             </label>
 
                             <label class="flex items-center gap-2">
-                                <input type="radio" name="priority" checked>
+                                <input type="radio" name="priority" value="High" checked>
                                 High
                             </label>
 
@@ -397,7 +392,7 @@
                             Quantity <span class="text-red-500">*</span>
                         </label>
 
-                        <input type="number" value="1" min="1"
+                        <input id="reqQty" type="number" value="1" min="1"
                             class="mt-2 w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500">
 
                     </div>
@@ -410,7 +405,7 @@
                             Needed By <span class="text-red-500">*</span>
                         </label>
 
-                        <input type="date"
+                        <input id="reqNeededBy" type="date"
                             class="mt-2 w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500">
 
                     </div>
@@ -423,7 +418,7 @@
                             Reason <span class="text-red-500">*</span>
                         </label>
 
-                        <textarea rows="5" placeholder="Enter the reason for requesting this asset..."
+                        <textarea id="reqReason" rows="5" placeholder="Enter the reason for requesting this asset..."
                             class="mt-2 w-full border rounded-xl px-4 py-3 resize-none outline-none focus:ring-2 focus:ring-blue-500"></textarea>
 
                     </div>
@@ -440,7 +435,6 @@
                     </button>
 
                 </form>
-                <!-- Part 2 -->
 
             </div>
 
@@ -475,150 +469,17 @@
 
                         </thead>
 
-                        <tbody>
-
-                            <tr class="border-b hover:bg-slate-50">
-
-                                <td class="py-5">REQ001</td>
-
-                                <td class="font-medium">💻 Laptop</td>
-
-                                <td>22 Jul 2026</td>
-
-                                <td>
-                                    <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full">
-                                        High
-                                    </span>
-                                </td>
-
-                                <td>
-                                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
-                                        Pending
-                                    </span>
-                                </td>
-
-                                <td>
-
-                                    <button onclick="viewRequest(
-'REQ001',
-'Laptop',
-'Dell Latitude 7450',
-'High',
-'1',
-'22 Jul 2026',
-'Need laptop for React & Java development.',
-'Pending'
-)" class="text-blue-600 hover:underline">
-
-                                        <i class="fa-solid fa-eye"></i>
-
-                                        View
-
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
-                            <tr class="border-b hover:bg-slate-50">
-
-                                <td class="py-5">REQ002</td>
-
-                                <td class="font-medium">🖱 Mouse</td>
-
-                                <td>15 Jul 2026</td>
-
-                                <td>
-
-                                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
-                                        Medium
-                                    </span>
-
-                                </td>
-
-                                <td>
-
-                                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">
-                                        Approved
-                                    </span>
-
-                                </td>
-
-                                <td>
-
-                                    <button onclick="viewRequest(
-'REQ002',
-'Mouse',
-'Logitech Wireless Mouse',
-'Medium',
-'1',
-'15 Jul 2026',
-'Old mouse is not working properly.',
-'Approved'
-)" class="text-blue-600 hover:underline">
-
-                                        <i class="fa-solid fa-eye"></i>
-
-                                        View
-
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
-                            <tr class="hover:bg-slate-50">
-
-                                <td class="py-5">REQ003</td>
-
-                                <td class="font-medium">🖥 Monitor</td>
-
-                                <td>10 Jul 2026</td>
-
-                                <td>
-
-                                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">
-                                        Low
-                                    </span>
-
-                                </td>
-
-                                <td>
-
-                                    <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full">
-                                        Rejected
-                                    </span>
-
-                                </td>
-
-                                <td>
-
-                                    <button onclick="viewRequest(
-'REQ003',
-'Monitor',
-'Dell 24 Inch Monitor',
-'Low',
-'1',
-'10 Jul 2026',
-'Need second monitor.',
-'Rejected'
-)" class="text-blue-600 hover:underline">
-
-                                        <i class="fa-solid fa-eye"></i>
-
-                                        View
-
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
+                        <tbody id="requestsTableBody">
+                            <!-- rows rendered by JS -->
                         </tbody>
 
                     </table>
 
                 </div>
+
+                <p id="requestsEmpty" class="hidden text-center text-gray-400 py-10">
+                    You haven't submitted any requests yet.
+                </p>
 
                 <!-- Pagination -->
 
@@ -641,7 +502,7 @@
                     </button>
 
                 </div>
-                <!-- Part 3 -->
+
                 <div id="requestModal" class="fixed inset-0 bg-black/50 hidden justify-center items-center z-50">
 
                     <div class="bg-white w-[550px] rounded-2xl p-8 relative shadow-2xl">
@@ -727,65 +588,159 @@
 
     </main>
     <script>
+        /* ============================================================
+           Shared identity: same "employee" object your Dashboard reads
+           (JSON: {name, id, department, email}). Falls back to the same
+           default your Dashboard uses so both pages agree even before
+           a real login page sets it.
+           ============================================================ */
+        const employee = JSON.parse(localStorage.getItem("employee")) || {
+            name: "Lokesh", id: "EMP001", department: "IT", email: "lokesh@gmail.com"
+        };
 
-        function viewRequest(
-            id,
-            category,
-            asset,
-            priority,
-            qty,
-            date,
-            reason,
-            status
-        ) {
+        /* Shared bridge with the admin side: same "assetRequests" key
+           used by Assets.html, Assignments.html, Reports.html, Notifications.html */
+        const REQUESTS_KEY = "assetRequests";
+        const CATEGORY_EMOJI = { Laptop: "💻", Monitor: "🖥", Keyboard: "⌨️", Mouse: "🖱", Printer: "🖨️" };
 
-            document.getElementById("rid").innerHTML = id;
+        function getRequests() { return JSON.parse(localStorage.getItem(REQUESTS_KEY)) || []; }
+        function setRequests(v) { localStorage.setItem(REQUESTS_KEY, JSON.stringify(v)); }
 
-            document.getElementById("category").innerHTML = category;
+        function seedIfEmpty() {
+            if (localStorage.getItem(REQUESTS_KEY)) return;
+            setRequests([
+                { id: "REQ001", category: "Laptop", asset: "Dell Latitude 7450", priority: "High", qty: "1", date: "22 Jul 2026", reason: "Need laptop for React & Java development.", status: "Pending", requestedBy: employee.name, department: employee.department },
+                { id: "REQ002", category: "Mouse", asset: "Logitech Wireless Mouse", priority: "Medium", qty: "1", date: "15 Jul 2026", reason: "Old mouse is not working properly.", status: "Approved", requestedBy: employee.name, department: employee.department },
+                { id: "REQ003", category: "Monitor", asset: "Dell 24 Inch Monitor", priority: "Low", qty: "1", date: "10 Jul 2026", reason: "Need second monitor.", status: "Rejected", requestedBy: employee.name, department: employee.department }
+            ]);
+        }
 
-            document.getElementById("asset").innerHTML = asset;
+        function priorityBadge(priority) {
+            const map = { High: "bg-red-100 text-red-600", Medium: "bg-yellow-100 text-yellow-700", Low: "bg-green-100 text-green-700" };
+            return `<span class="${map[priority] || "bg-slate-100 text-slate-600"} px-3 py-1 rounded-full">${priority}</span>`;
+        }
 
-            document.getElementById("priority").innerHTML = priority;
+        function statusBadge(status) {
+            const map = { Pending: "bg-yellow-100 text-yellow-700", Approved: "bg-green-100 text-green-700", Rejected: "bg-red-100 text-red-600" };
+            return `<span class="${map[status] || "bg-slate-100 text-slate-600"} px-3 py-1 rounded-full">${status}</span>`;
+        }
 
-            document.getElementById("qty").innerHTML = qty;
+        function renderStats(requests) {
+            document.getElementById("pendingCount").textContent = requests.filter(r => r.status === "Pending").length;
+            document.getElementById("approvedCount").textContent = requests.filter(r => r.status === "Approved").length;
+            document.getElementById("rejectedCount").textContent = requests.filter(r => r.status === "Rejected").length;
+        }
 
-            document.getElementById("date").innerHTML = date;
+        function renderTable() {
+            const requests = getRequests();
+            const mine = requests.filter(r => r.requestedBy === employee.name);
+            const tbody = document.getElementById("requestsTableBody");
 
-            document.getElementById("reason").innerHTML = reason;
+            tbody.innerHTML = mine.slice().reverse().map(r => `
+                <tr class="border-b hover:bg-slate-50">
+                    <td class="py-5">${r.id}</td>
+                    <td class="font-medium">${CATEGORY_EMOJI[r.category] || "📦"} ${r.category}</td>
+                    <td>${r.date}</td>
+                    <td>${priorityBadge(r.priority)}</td>
+                    <td>${statusBadge(r.status)}</td>
+                    <td>
+                        <button onclick="viewRequestById('${r.id}')" class="text-blue-600 hover:underline">
+                            <i class="fa-solid fa-eye"></i>
+                            View
+                        </button>
+                    </td>
+                </tr>
+            `).join("");
 
-            document.getElementById("status").innerHTML = status;
+            document.getElementById("requestsEmpty").classList.toggle("hidden", mine.length > 0);
+            renderStats(mine);
+        }
+
+        function viewRequestById(id) {
+            const req = getRequests().find(r => r.id === id);
+            if (!req) return;
+
+            document.getElementById("rid").innerHTML = req.id;
+            document.getElementById("category").innerHTML = req.category;
+            document.getElementById("asset").innerHTML = req.asset;
+            document.getElementById("priority").innerHTML = req.priority;
+            document.getElementById("qty").innerHTML = req.qty;
+            document.getElementById("date").innerHTML = req.date;
+            document.getElementById("reason").innerHTML = req.reason;
+            document.getElementById("status").innerHTML = req.status;
 
             document.getElementById("requestModal").classList.remove("hidden");
-
             document.getElementById("requestModal").classList.add("flex");
-
         }
 
         function closeModal() {
-
             document.getElementById("requestModal").classList.remove("flex");
-
             document.getElementById("requestModal").classList.add("hidden");
-
         }
+
+        function formatDateForTable(isoDate) {
+            if (!isoDate) return "";
+            const d = new Date(isoDate + "T00:00:00");
+            return d.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+        }
+
+        document.getElementById("requestForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const category = document.getElementById("reqCategory").value;
+            const asset = document.getElementById("reqAssetName").value.trim();
+            const priority = document.querySelector('input[name="priority"]:checked')?.value || "Medium";
+            const qty = document.getElementById("reqQty").value || "1";
+            const neededByRaw = document.getElementById("reqNeededBy").value;
+            const reason = document.getElementById("reqReason").value.trim();
+
+            if (!asset || !neededByRaw || !reason) {
+                alert("Please fill in Asset Name, Needed By, and Reason.");
+                return;
+            }
+
+            const requests = getRequests();
+            requests.push({
+                id: "REQ" + Date.now(),
+                category, asset, priority, qty,
+                date: formatDateForTable(neededByRaw),
+                reason,
+                status: "Pending",
+                requestedBy: employee.name,
+                department: employee.department
+            });
+            setRequests(requests);
+
+            // reset form
+            document.getElementById("reqAssetName").value = "";
+            document.getElementById("reqQty").value = "1";
+            document.getElementById("reqNeededBy").value = "";
+            document.getElementById("reqReason").value = "";
+            document.querySelector('input[name="priority"][value="High"]').checked = true;
+
+            renderTable();
+            alert("Request submitted! Your admin will review it shortly.");
+        });
+
         function logout() {
-
             const confirmLogout = confirm("Are you sure you want to logout?");
-
             if (confirmLogout) {
-
-                // Remove login information
                 localStorage.removeItem("loggedUser");
                 localStorage.removeItem("employee");
                 localStorage.removeItem("isLoggedIn");
-
                 sessionStorage.clear();
-
-                // Redirect to Login page
                 window.location.replace("Login.html");
             }
-
         }
+
+        /* ---------- init ---------- */
+        document.getElementById("employeeName").textContent = employee.name;
+        seedIfEmpty();
+        renderTable();
+
+        // Pick up status changes made from the admin side (Approve/Reject)
+        setInterval(renderTable, 2000);
+        window.addEventListener("storage", renderTable);
     </script>
 </body>
 

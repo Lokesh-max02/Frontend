@@ -27,7 +27,7 @@
 </head>
 <body class="text-[15px]">
 <div class="flex min-h-screen">
- 
+
   <aside class="w-64 shrink-0 flex flex-col" style="background:var(--sidebar)">
     <div class="flex items-center gap-2.5 px-6 py-6">
       <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:var(--accent)"><i class="fa-solid fa-cubes text-white text-sm"></i></div>
@@ -52,7 +52,7 @@
       </div>
     </div>
   </aside>
- 
+
   <div class="flex-1 min-w-0 flex flex-col">
     <header class="bg-white border-b flex items-center justify-between gap-6 px-8 py-4" style="border-color:var(--line)">
       <div class="relative w-full max-w-md">
@@ -71,7 +71,7 @@
         </button>
       </div>
     </header>
- 
+
     <div id="assignModal" class="hidden fixed inset-0 bg-black/50 flex justify-center items-center z-50">
       <div class="bg-white rounded-2xl w-[480px] p-8 shadow-2xl">
         <div class="flex justify-between items-center mb-6">
@@ -88,20 +88,38 @@
         </div>
       </div>
     </div>
- 
+
     <main class="flex-1 px-8 py-6 space-y-6">
       <div>
         <h1 class="display text-2xl font-bold">Assignments</h1>
         <p class="text-sm mt-1" style="color:var(--ink-soft)">Every asset currently checked out to an employee.</p>
       </div>
- 
+
       <div class="grid grid-cols-1 sm:grid-cols-4 gap-5">
         <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">Total Assignments</p><p id="statTotal" class="display text-2xl font-bold mt-0.5">0</p></div>
         <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">IT Department</p><p id="statIT" class="display text-2xl font-bold mt-0.5" style="color:var(--accent)">0</p></div>
         <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">HR Department</p><p id="statHR" class="display text-2xl font-bold mt-0.5 text-emerald-600">0</p></div>
         <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">Other Depts</p><p id="statOther" class="display text-2xl font-bold mt-0.5 text-amber-600">0</p></div>
       </div>
- 
+
+      <div class="card p-6">
+        <div class="flex justify-between items-center mb-5">
+          <h2 class="font-semibold text-base flex items-center gap-2">
+            <i class="fa-solid fa-arrow-rotate-left" style="color:var(--accent)"></i> Pending Return Requests
+          </h2>
+        </div>
+        <div id="returnsTableWrap" class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead><tr class="border-b" style="border-color:var(--line)">
+              <th class="py-3 text-left">Asset</th><th class="text-left">Returned By</th><th class="text-left">Condition</th>
+              <th class="text-left">Return Date</th><th class="text-left">Reason</th><th class="text-right pr-2">Actions</th>
+            </tr></thead>
+            <tbody id="returnsTableBody"></tbody>
+          </table>
+        </div>
+        <p id="returnsEmpty" class="hidden text-sm text-center py-8" style="color:var(--ink-soft)">No pending return requests.</p>
+      </div>
+
       <div class="card p-6">
         <div class="overflow-x-auto">
           <table class="w-full text-sm">
@@ -117,29 +135,78 @@
     </main>
   </div>
 </div>
- 
+
 <script>
 const ASSETS_KEY = "assets";
 const EMPLOYEES_KEY = "employees";
 const REQUESTS_KEY = "assetRequests";
- 
+const RETURNS_KEY = "returnRequests";
+
 function getAssets(){ return JSON.parse(localStorage.getItem(ASSETS_KEY)) || []; }
 function setAssets(v){ localStorage.setItem(ASSETS_KEY, JSON.stringify(v)); }
 function getEmployees(){ return JSON.parse(localStorage.getItem(EMPLOYEES_KEY)) || []; }
 function getRequests(){ return JSON.parse(localStorage.getItem(REQUESTS_KEY)) || []; }
- 
+function getReturns(){ return JSON.parse(localStorage.getItem(RETURNS_KEY)) || []; }
+function setReturns(v){ localStorage.setItem(RETURNS_KEY, JSON.stringify(v)); }
+
+function renderReturns(){
+  const returns = getReturns().filter(r => r.status === "Pending");
+  const tbody = document.getElementById("returnsTableBody");
+  tbody.innerHTML = returns.slice().reverse().map(r => `
+    <tr class="row-hover border-b" style="border-color:var(--line)">
+      <td class="py-3"><p class="font-medium">${r.assetName}</p><p class="text-xs" style="color:var(--ink-soft)">${r.assetId}</p></td>
+      <td>${r.employeeName}</td>
+      <td>${r.condition}</td>
+      <td>${r.returnDate}</td>
+      <td class="max-w-[160px] truncate" title="${r.reason}">${r.reason}</td>
+      <td class="text-right"><div class="flex gap-1.5 justify-end">
+        <button onclick="approveReturn('${r.id}')" class="btn-mini bg-emerald-600 text-white">Approve</button>
+        <button onclick="rejectReturn('${r.id}')" class="btn-mini bg-gray-200 text-gray-700">Reject</button>
+      </div></td>
+    </tr>`).join("");
+  document.getElementById("returnsEmpty").classList.toggle("hidden", returns.length > 0);
+}
+
+function approveReturn(id){
+  const returns = getReturns();
+  const r = returns.find(x=>x.id===id);
+  if(!r) return;
+  r.status = "Approved";
+  setReturns(returns);
+
+  // Actually free up the asset now that the return is approved
+  const assets = getAssets();
+  const a = assets.find(x=>x.assetId===r.assetId);
+  if(a){
+    a.status = "Available";
+    a.assignedTo = ""; a.department = ""; a.assignedDate = "";
+    setAssets(assets);
+  }
+  render();
+}
+
+function rejectReturn(id){
+  const returns = getReturns();
+  const r = returns.find(x=>x.id===id);
+  if(!r) return;
+  r.status = "Rejected";
+  setReturns(returns);
+  render();
+}
+
 function render(){
+  renderReturns();
   const assets = getAssets();
   const search = document.getElementById("searchInput").value.trim().toLowerCase();
   const assigned = assets.filter(a => a.status === "Assigned" &&
     (!search || a.assetName.toLowerCase().includes(search) || (a.assignedTo||"").toLowerCase().includes(search)));
- 
+
   document.getElementById("statTotal").textContent = assets.filter(a=>a.status==="Assigned").length;
   document.getElementById("statIT").textContent = assets.filter(a=>a.status==="Assigned" && a.department==="IT Department").length;
   document.getElementById("statHR").textContent = assets.filter(a=>a.status==="Assigned" && a.department==="HR Department").length;
   document.getElementById("statOther").textContent = assets.filter(a=>a.status==="Assigned" && a.department!=="IT Department" && a.department!=="HR Department").length;
   document.getElementById("notifDot").classList.toggle("hidden", !getRequests().some(r=>r.status==="Pending"));
- 
+
   const tbody = document.getElementById("assignTableBody");
   tbody.innerHTML = assigned.map(a => `
     <tr class="row-hover border-b" style="border-color:var(--line)">
@@ -151,7 +218,7 @@ function render(){
     </tr>`).join("");
   document.getElementById("assignEmpty").classList.toggle("hidden", assigned.length > 0);
 }
- 
+
 function unassign(id){
   const assets = getAssets();
   const a = assets.find(x=>x.assetId===id);
@@ -160,7 +227,7 @@ function unassign(id){
   setAssets(assets);
   render();
 }
- 
+
 function openAssignModal(){
   const assets = getAssets().filter(a=>a.status==="Available");
   const employees = getEmployees();
@@ -180,7 +247,7 @@ function confirmAssign(){
   const empSelect = document.getElementById("aEmployee");
   const empName = empSelect.value;
   const dept = empSelect.selectedOptions[0]?.dataset.dept || "";
- 
+
   const assets = getAssets();
   const a = assets.find(x=>x.assetId===assetId);
   if(!a) return;
@@ -189,7 +256,7 @@ function confirmAssign(){
   closeAssignModal();
   render();
 }
- 
+
 /* ---------- init ---------- */
 render();
 document.getElementById("searchInput").addEventListener("input", render);
@@ -198,4 +265,3 @@ window.addEventListener("storage", render);
 </script>
 </body>
 </html>
- 

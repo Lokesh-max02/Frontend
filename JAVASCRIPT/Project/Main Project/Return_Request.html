@@ -21,9 +21,7 @@
 
 </head>
 
-<body class="bg-slate-100">
-
-    <body class="bg-slate-100 font-[Inter]">
+<body class="bg-slate-100 font-[Inter]">
 
         <!-- ================= NAVBAR ================= -->
 
@@ -125,7 +123,7 @@
 
                     <li>
 
-                        <a href="#" class="mx-3 rounded-xl bg-blue-600 flex items-center gap-4 px-6 py-4">
+                        <a href="../Main Project/employee_Dashboard.html" class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
 
                             <i class="fa-solid fa-house"></i>
 
@@ -164,7 +162,7 @@
                     <li>
 
                         <a href="../Main Project/Return_Request.html"
-                            class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800">
+                            class="mx-3 rounded-xl bg-blue-600 flex items-center gap-4 px-6 py-4">
 
                             <i class="fa-solid fa-arrow-rotate-left"></i>
 
@@ -240,7 +238,7 @@
 
                     <div>
                         <p class="text-gray-500 text-xl">Pending Returns</p>
-                        <h2 class="text-5xl font-bold text-blue-600">2</h2>
+                        <h2 id="pendingReturns" class="text-5xl font-bold text-blue-600">0</h2>
                     </div>
 
                 </div>
@@ -253,7 +251,7 @@
 
                     <div>
                         <p class="text-gray-500 text-xl">Approved Returns</p>
-                        <h2 class="text-5xl font-bold text-green-600">8</h2>
+                        <h2 id="approvedReturns" class="text-5xl font-bold text-green-600">0</h2>
                     </div>
 
                 </div>
@@ -266,7 +264,7 @@
 
                     <div>
                         <p class="text-gray-500 text-xl">Rejected Returns</p>
-                        <h2 class="text-5xl font-bold text-red-600">1</h2>
+                        <h2 id="rejectedReturns" class="text-5xl font-bold text-red-600">0</h2>
                     </div>
 
                 </div>
@@ -285,7 +283,7 @@
                         Return Asset
                     </h2>
 
-                    <div class="space-y-5">
+                    <form id="returnForm" class="space-y-5">
 
                         <div>
 
@@ -293,16 +291,8 @@
                                 Select Asset
                             </label>
 
-                            <select class="w-full mt-2 border rounded-xl p-3">
-
-                                <option>Dell Latitude 7450</option>
-
-                                <option>HP Monitor</option>
-
-                                <option>Wireless Mouse</option>
-
-                                <option>Keyboard</option>
-
+                            <select id="retAssetSelect" class="w-full mt-2 border rounded-xl p-3">
+                                <option value="">— Select one of your assigned assets —</option>
                             </select>
 
                         </div>
@@ -315,7 +305,7 @@
                                     Asset ID
                                 </label>
 
-                                <input type="text" value="AST1024" readonly
+                                <input id="retAssetId" type="text" readonly
                                     class="w-full mt-2 border rounded-xl p-3 bg-slate-100">
 
                             </div>
@@ -326,7 +316,7 @@
                                     Return Date
                                 </label>
 
-                                <input type="date" class="w-full mt-2 border rounded-xl p-3">
+                                <input id="retDate" type="date" class="w-full mt-2 border rounded-xl p-3">
 
                             </div>
 
@@ -340,7 +330,7 @@
                                     Condition
                                 </label>
 
-                                <select class="w-full mt-2 border rounded-xl p-3">
+                                <select id="retCondition" class="w-full mt-2 border rounded-xl p-3">
 
                                     <option>Excellent</option>
 
@@ -360,7 +350,7 @@
                                     Reason
                                 </label>
 
-                                <select class="w-full mt-2 border rounded-xl p-3">
+                                <select id="retReason" class="w-full mt-2 border rounded-xl p-3">
 
                                     <option>Project Completed</option>
 
@@ -380,7 +370,7 @@
                                 Comments
                             </label>
 
-                            <textarea rows="4" class="w-full mt-2 border rounded-xl p-3"
+                            <textarea id="retComments" rows="4" class="w-full mt-2 border rounded-xl p-3"
                                 placeholder="Enter comments"></textarea>
 
                         </div>
@@ -395,7 +385,7 @@
                             <img id="preview" class="w-40 rounded hidden">
                         </div>
 
-                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-semibold">
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-semibold">
 
                             <i class="fa-solid fa-arrow-rotate-left mr-2"></i>
 
@@ -403,7 +393,7 @@
 
                         </button>
 
-                    </div>
+                    </form>
 
                 </div>
 
@@ -417,9 +407,9 @@
                             Return History
                         </h2>
 
-                        <select class="border rounded-lg px-4 py-2">
+                        <select id="historyFilter" class="border rounded-lg px-4 py-2">
 
-                            <option>All Status</option>
+                            <option value="">All Status</option>
 
                             <option>Pending</option>
 
@@ -451,110 +441,13 @@
 
                         </thead>
 
-                        <tbody>
-
-                            <tr class="border-b">
-
-                                <td class="py-5">RET001</td>
-
-                                <td>💻 Dell Laptop</td>
-
-                                <td>20 Jul 2026</td>
-
-                                <td>
-
-                                    <span class="bg-yellow-100 text-yellow-700 px-4 py-1 rounded-full">
-
-                                        Pending
-
-                                    </span>
-
-                                </td>
-
-                                <td>
-
-                                    <button onclick="openModal()"
-                                        class="text-blue-600 hover:text-blue-800 font-semibold">
-
-                                        <i class="fa-solid fa-eye mr-1"></i>
-
-                                        View
-
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
-                            <tr class="border-b">
-
-                                <td class="py-5">RET002</td>
-
-                                <td>🖥 HP Monitor</td>
-
-                                <td>15 Jul 2026</td>
-
-                                <td>
-
-                                    <span class="bg-green-100 text-green-700 px-4 py-1 rounded-full">
-
-                                        Approved
-
-                                    </span>
-
-                                </td>
-
-                                <td>
-
-                                    <button onclick="openModal()"
-                                        class="text-blue-600 hover:text-blue-800 font-semibold">
-
-                                        <i class="fa-solid fa-eye mr-1"></i>
-
-                                        View
-
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td class="py-5">RET003</td>
-
-                                <td>⌨ Keyboard</td>
-
-                                <td>10 Jul 2026</td>
-
-                                <td>
-
-                                    <span class="bg-red-100 text-red-600 px-4 py-1 rounded-full">
-
-                                        Rejected
-
-                                    </span>
-
-                                </td>
-
-                                <td>
-
-                                    <button onclick="openModal()"
-                                        class="text-blue-600 hover:text-blue-800 font-semibold">
-
-                                        <i class="fa-solid fa-eye mr-1"></i>
-
-                                        View
-
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
-                        </tbody>
+                        <tbody id="returnHistoryBody"></tbody>
 
                     </table>
+
+                    <p id="returnHistoryEmpty" class="hidden text-center text-gray-400 py-10">
+                        No return requests yet.
+                    </p>
 
                 </div>
 
@@ -594,7 +487,7 @@
 
                             <div>
 
-                                <img src="https://placehold.co/300x220" class="rounded-xl border shadow w-full">
+                                <img id="mPhoto" src="https://placehold.co/300x220" class="rounded-xl border shadow w-full">
 
                             </div>
 
@@ -610,9 +503,7 @@
 
                                     </p>
 
-                                    <h3 class="font-semibold text-lg">
-
-                                        AST1024
+                                    <h3 id="mAssetId" class="font-semibold text-lg">
 
                                     </h3>
 
@@ -626,9 +517,7 @@
 
                                     </p>
 
-                                    <h3 class="font-semibold text-lg">
-
-                                        Dell Latitude 7450
+                                    <h3 id="mAssetName" class="font-semibold text-lg">
 
                                     </h3>
 
@@ -642,9 +531,7 @@
 
                                     </p>
 
-                                    <h3 class="font-semibold">
-
-                                        Laptop
+                                    <h3 id="mCategory" class="font-semibold">
 
                                     </h3>
 
@@ -654,13 +541,11 @@
 
                                     <p class="text-gray-500">
 
-                                        Assigned Date
+                                        Requested On
 
                                     </p>
 
-                                    <h3>
-
-                                        15 Jun 2026
+                                    <h3 id="mRequestDate">
 
                                     </h3>
 
@@ -674,9 +559,7 @@
 
                                     </p>
 
-                                    <h3>
-
-                                        30 Jul 2026
+                                    <h3 id="mReturnDate">
 
                                     </h3>
 
@@ -698,11 +581,7 @@
 
                                 </p>
 
-                                <span class="bg-green-100 text-green-700 px-4 py-1 rounded-full">
-
-                                    Good
-
-                                </span>
+                                <span id="mCondition" class="bg-green-100 text-green-700 px-4 py-1 rounded-full"></span>
 
                             </div>
 
@@ -714,11 +593,7 @@
 
                                 </p>
 
-                                <span class="bg-yellow-100 text-yellow-700 px-4 py-1 rounded-full">
-
-                                    Pending
-
-                                </span>
+                                <span id="mStatus" class="bg-yellow-100 text-yellow-700 px-4 py-1 rounded-full"></span>
 
                             </div>
 
@@ -732,9 +607,7 @@
 
                             </p>
 
-                            <div class="bg-slate-100 rounded-lg p-4 mt-2">
-
-                                Project Completed
+                            <div id="mReason" class="bg-slate-100 rounded-lg p-4 mt-2">
 
                             </div>
 
@@ -748,10 +621,7 @@
 
                             </p>
 
-                            <div class="bg-slate-100 rounded-lg p-4 mt-2">
-
-                                Laptop is in good condition.
-                                Charger and mouse are included.
+                            <div id="mComments" class="bg-slate-100 rounded-lg p-4 mt-2">
 
                             </div>
 
@@ -828,116 +698,190 @@
 
         </main>
         <script>
-            const file = document.getElementById("returnImage");
+            /* ============================================================
+               Same "employee" object as your Dashboard and Request page.
+               ============================================================ */
+            const employee = JSON.parse(localStorage.getItem("employee")) || {
+                name: "Lokesh", id: "EMP001", department: "IT", email: "lokesh@gmail.com"
+            };
 
-            file.addEventListener("change", function () {
+            /* "assets" is the same key your admin's Assets/Assignments pages
+               use. We read it to find what's really assigned to this employee
+               so the dropdown isn't hardcoded fake options. */
+            const ASSETS_KEY = "assets";
+            const RETURNS_KEY = "returnRequests";
 
-                const image = this.files[0];
+            function getAssets() { return JSON.parse(localStorage.getItem(ASSETS_KEY)) || []; }
+            function getReturns() { return JSON.parse(localStorage.getItem(RETURNS_KEY)) || []; }
+            function setReturns(v) { localStorage.setItem(RETURNS_KEY, JSON.stringify(v)); }
 
-                if (image) {
+            function myAssignedAssets() {
+                return getAssets().filter(a => a.status === "Assigned" && a.assignedTo === employee.name);
+            }
 
-                    console.log(image.name);
+            function statusBadgeClass(status) {
+                const map = { Pending: "bg-yellow-100 text-yellow-700", Approved: "bg-green-100 text-green-700", Rejected: "bg-red-100 text-red-600" };
+                return map[status] || "bg-slate-100 text-slate-600";
+            }
 
+            /* ---------- populate the "Select Asset" dropdown ---------- */
+            function populateAssetSelect() {
+                const assets = myAssignedAssets();
+                const select = document.getElementById("retAssetSelect");
+                const previousValue = select.value;
+
+                select.innerHTML = `<option value="">— Select one of your assigned assets —</option>` +
+                    assets.map(a => `<option value="${a.assetId}">${a.assetName}</option>`).join("");
+
+                if (assets.length === 0) {
+                    select.innerHTML = `<option value="">No assets currently assigned to you</option>`;
                 }
-
+                if (assets.some(a => a.assetId === previousValue)) {
+                    select.value = previousValue;
+                } else {
+                    document.getElementById("retAssetId").value = "";
+                }
+            }
+            document.getElementById("retAssetSelect").addEventListener("change", function () {
+                document.getElementById("retAssetId").value = this.value || "";
             });
-            file.addEventListener("change", function () {
 
+            /* ---------- render stats + history ---------- */
+            function render() {
+                const mine = getReturns().filter(r => r.employeeName === employee.name);
+                const filterVal = document.getElementById("historyFilter").value;
+                const filtered = filterVal ? mine.filter(r => r.status === filterVal) : mine;
+
+                document.getElementById("pendingReturns").textContent = mine.filter(r => r.status === "Pending").length;
+                document.getElementById("approvedReturns").textContent = mine.filter(r => r.status === "Approved").length;
+                document.getElementById("rejectedReturns").textContent = mine.filter(r => r.status === "Rejected").length;
+
+                const tbody = document.getElementById("returnHistoryBody");
+                tbody.innerHTML = filtered.slice().reverse().map(r => `
+                    <tr class="border-b hover:bg-slate-50">
+                        <td class="py-5">${r.id}</td>
+                        <td>${r.assetName}</td>
+                        <td>${r.returnDate}</td>
+                        <td><span class="${statusBadgeClass(r.status)} px-4 py-1 rounded-full">${r.status}</span></td>
+                        <td>
+                            <button onclick="viewReturnById('${r.id}')" class="text-blue-600 hover:text-blue-800 font-semibold">
+                                <i class="fa-solid fa-eye mr-1"></i>
+                                View
+                            </button>
+                        </td>
+                    </tr>
+                `).join("");
+
+                document.getElementById("returnHistoryEmpty").classList.toggle("hidden", filtered.length > 0);
+            }
+
+            function viewReturnById(id) {
+                const r = getReturns().find(x => x.id === id);
+                if (!r) return;
+
+                document.getElementById("mAssetId").textContent = r.assetId;
+                document.getElementById("mAssetName").textContent = r.assetName;
+                document.getElementById("mCategory").textContent = r.category || "—";
+                document.getElementById("mRequestDate").textContent = r.requestDate;
+                document.getElementById("mReturnDate").textContent = r.returnDate;
+                document.getElementById("mCondition").textContent = r.condition;
+                document.getElementById("mStatus").textContent = r.status;
+                document.getElementById("mStatus").className = statusBadgeClass(r.status) + " px-4 py-1 rounded-full";
+                document.getElementById("mReason").textContent = r.reason;
+                document.getElementById("mComments").textContent = r.comments || "—";
+                document.getElementById("mPhoto").src = r.photo || "https://placehold.co/300x220";
+
+                document.getElementById("viewModal").classList.remove("hidden");
+                document.getElementById("viewModal").classList.add("flex");
+            }
+
+            function closeModal() {
+                document.getElementById("viewModal").classList.remove("flex");
+                document.getElementById("viewModal").classList.add("hidden");
+            }
+
+            /* ---------- photo preview (kept from your original code) ---------- */
+            let photoDataUrl = null;
+            const fileInput = document.getElementById("returnImage");
+            fileInput.addEventListener("change", function () {
                 const img = this.files[0];
-
                 if (img) {
-
                     const reader = new FileReader();
-
                     reader.onload = function (e) {
-
-                        preview.src = e.target.result;
-
-                        preview.classList.remove("hidden");
-
-                    }
-
+                        document.getElementById("preview").src = e.target.result;
+                        document.getElementById("preview").classList.remove("hidden");
+                        photoDataUrl = e.target.result;
+                    };
                     reader.readAsDataURL(img);
-
                 }
-
             });
 
+            /* ---------- submit ---------- */
+            document.getElementById("returnForm").addEventListener("submit", function (e) {
+                e.preventDefault();
 
-            function openModal() {
+                const assetId = document.getElementById("retAssetSelect").value;
+                const returnDate = document.getElementById("retDate").value;
+                const condition = document.getElementById("retCondition").value;
+                const reason = document.getElementById("retReason").value;
+                const comments = document.getElementById("retComments").value.trim();
 
-                document
-                    .getElementById("viewModal")
-                    .classList.remove("hidden");
+                if (!assetId) { alert("Please select an asset to return."); return; }
+                if (!returnDate) { alert("Please choose a return date."); return; }
 
-                document
-                    .getElementById("viewModal")
-                    .classList.add("flex");
+                const asset = getAssets().find(a => a.assetId === assetId);
+                if (!asset) { alert("Couldn't find that asset — try refreshing the page."); return; }
 
-            }
+                const returns = getReturns();
+                returns.push({
+                    id: "RET" + Date.now(),
+                    assetId: asset.assetId,
+                    assetName: asset.assetName,
+                    category: asset.category,
+                    employeeName: employee.name,
+                    department: employee.department,
+                    returnDate,
+                    condition,
+                    reason,
+                    comments,
+                    photo: photoDataUrl,
+                    status: "Pending",
+                    requestDate: new Date().toISOString().slice(0, 10)
+                });
+                setReturns(returns);
 
-            function closeModal() {
+                // reset form
+                document.getElementById("returnForm").reset();
+                document.getElementById("retAssetId").value = "";
+                document.getElementById("preview").classList.add("hidden");
+                photoDataUrl = null;
 
-                document
-                    .getElementById("viewModal")
-                    .classList.remove("flex");
+                render();
+                alert("Return request submitted! Your admin will review it shortly.");
+            });
 
-                document
-                    .getElementById("viewModal")
-                    .classList.add("hidden");
+            document.getElementById("historyFilter").addEventListener("change", render);
 
-            }
-
-            // Close when clicking outside the modal
-
-            window.onclick = function (e) {
-
-                const modal = document.getElementById("viewModal");
-
-                if (e.target === modal) {
-
-                    closeModal();
-
-                }
-
-            }
-            function openModal() {
-
-                const modal = document.getElementById("viewModal");
-
-                modal.classList.remove("hidden");
-                modal.classList.add("flex");
-
-                document.body.style.overflow = "hidden";
-            }
-
-            function closeModal() {
-
-                const modal = document.getElementById("viewModal");
-
-                modal.classList.remove("flex");
-                modal.classList.add("hidden");
-
-                document.body.style.overflow = "auto";
-            }
             function logout() {
-
                 const confirmLogout = confirm("Are you sure you want to logout?");
-
                 if (confirmLogout) {
-
-                    // Remove login information
                     localStorage.removeItem("loggedUser");
                     localStorage.removeItem("employee");
                     localStorage.removeItem("isLoggedIn");
-
                     sessionStorage.clear();
-
-                    // Redirect to Login page
                     window.location.replace("Login.html");
                 }
-
             }
+
+            /* ---------- init ---------- */
+            document.getElementById("employeeName").textContent = employee.name;
+            populateAssetSelect();
+            render();
+
+            // Pick up status changes made from the admin side (Approve/Reject),
+            // and refresh the dropdown if the admin re-assigns something.
+            setInterval(() => { populateAssetSelect(); render(); }, 2000);
+            window.addEventListener("storage", () => { populateAssetSelect(); render(); });
         </script>
     </body>
 

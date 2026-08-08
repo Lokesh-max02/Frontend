@@ -3,156 +3,689 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+
+    <title>Create Account | AssetsHub</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-   
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+        }
+
+        /* Floating input */
+
+        .floating-group {
+            position: relative;
+            margin-bottom: 22px;
+        }
+
+        .floating-input {
+            width: 100%;
+            height: 58px;
+            padding: 18px 45px 5px 48px;
+            border: 1px solid #d1d5db;
+            border-radius: 14px;
+            outline: none;
+            background: rgba(255,255,255,0.9);
+            color: #1f2937;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .floating-input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
+        }
+
+        .floating-label {
+            position: absolute;
+            left: 48px;
+            top: 18px;
+            color: #6b7280;
+            font-size: 15px;
+            pointer-events: none;
+            transition: all 0.2s ease;
+            background: transparent;
+        }
+
+        .floating-input:focus + .floating-label,
+        .floating-input:not(:placeholder-shown) + .floating-label {
+            top: 7px;
+            left: 47px;
+            font-size: 11px;
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 18px;
+            top: 20px;
+            color: #9ca3af;
+            font-size: 17px;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .floating-group:focus-within .input-icon {
+            color: #2563eb;
+        }
+
+        /* Password eye */
+
+        .password-toggle {
+            position: absolute;
+            right: 18px;
+            top: 20px;
+            color: #9ca3af;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .password-toggle:hover {
+            color: #2563eb;
+        }
+
+        /* Image overlay */
+
+        .image-overlay {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(30,64,175,0.85),
+                    rgba(79,70,229,0.55),
+                    rgba(0,0,0,0.25)
+                );
+        }
+
+        /* Floating decoration */
+
+        .circle-one {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            top: -80px;
+            right: -70px;
+        }
+
+        .circle-two {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            bottom: -60px;
+            left: -50px;
+        }
+
+        /* Button */
+
+        .register-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(37,99,235,0.25);
+        }
+
+        /* Google button */
+
+        .google-btn {
+            transition: all 0.3s ease;
+        }
+
+        .google-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        /* Responsive */
+
+        @media (max-width: 900px) {
+
+            .register-card {
+                width: 95% !important;
+            }
+
+            .register-image {
+                display: none;
+            }
+
+            .register-form {
+                width: 100% !important;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .register-card {
+                border-radius: 20px;
+            }
+
+            .register-form {
+                padding: 28px !important;
+            }
+
+            .title {
+                font-size: 28px !important;
+            }
+        }
+
+    </style>
 </head>
 
-    <body class="bg-slate-100">
 
-<div class="min-h-screen flex justify-center items-center">
+<body class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-100 flex items-center justify-center p-5">
 
-    <div class="bg-white rounded-2xl shadow-2xl flex overflow-hidden w-[900px]">
 
-        <!-- Form -->
-        <div class="w-1/2 p-10">
+    <!-- Background Decorations -->
 
-            <h1 class="text-3xl font-bold text-gray-800 mb-2">
-                Create Account
-            </h1>
+    <div class="fixed -top-32 -left-32 w-80 h-80 bg-blue-200 rounded-full blur-3xl opacity-40"></div>
 
-            <p class="text-gray-500 mb-8">
-                Register to continue
-            </p>
+    <div class="fixed -bottom-32 -right-32 w-80 h-80 bg-indigo-300 rounded-full blur-3xl opacity-40"></div>
+
+
+    <!-- Main Card -->
+
+    <div
+        class="register-card relative bg-white/90 backdrop-blur-xl rounded-[28px] shadow-2xl flex overflow-hidden w-[1000px] min-h-[650px] border border-white"
+    >
+
+
+        <!-- ========================= -->
+        <!-- LEFT FORM -->
+        <!-- ========================= -->
+
+        <div class="register-form w-1/2 p-12 flex flex-col justify-center">
+
+
+            <!-- Logo -->
+
+            <div class="flex items-center gap-3 mb-7">
+
+                <div
+                    class="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center shadow-lg"
+                >
+                    <i class="fa-solid fa-cubes text-lg"></i>
+                </div>
+
+                <div>
+                    <h2 class="font-bold text-gray-800 text-lg">
+                        AssetsHub
+                    </h2>
+
+                    <p class="text-xs text-gray-400">
+                        Asset Management System
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Heading -->
+
+            <div class="mb-7">
+
+                <h1
+                    class="title text-3xl font-bold text-gray-800 mb-2"
+                >
+                    Create Account
+                </h1>
+
+                <p class="text-gray-500 text-sm">
+                    Register to manage your assets easily
+                </p>
+
+            </div>
+
 
             <!-- Name -->
-            <label class="font-medium text-gray-700">
-                Name
-            </label>
 
-            <input
-            id="name"
-                type="text"
-                placeholder="Enter your name"
-                class="w-full border rounded-lg p-3 mt-2 mb-5 outline-none focus:ring-2 focus:ring-blue-500"
-            >
+            <div class="floating-group">
+
+                <i class="fa-regular fa-user input-icon"></i>
+
+                <input
+                    id="name"
+                    type="text"
+                    placeholder=" "
+                    class="floating-input"
+                >
+
+                <label
+                    for="name"
+                    class="floating-label"
+                >
+                    Full Name
+                </label>
+
+            </div>
+
 
             <!-- Email -->
 
-            <label class="font-medium text-gray-700">
-                Email
-            </label>
+            <div class="floating-group">
 
-            <input
-            id="email"
-                type="email"
-                placeholder="Enter your email"
-                class="w-full border rounded-lg p-3 mt-2 mb-5 outline-none focus:ring-2 focus:ring-blue-500"
-            >
+                <i class="fa-regular fa-envelope input-icon"></i>
+
+                <input
+                    id="email"
+                    type="email"
+                    placeholder=" "
+                    class="floating-input"
+                >
+
+                <label
+                    for="email"
+                    class="floating-label"
+                >
+                    Email Address
+                </label>
+
+            </div>
+
 
             <!-- Password -->
 
-            <label class="font-medium text-gray-700">
-                Password
-            </label>
+            <div class="floating-group">
 
-            <input
-            id="password"
-                type="password"
-                placeholder="Enter password"
-                class="w-full border rounded-lg p-3 mt-2 mb-5 outline-none focus:ring-2 focus:ring-blue-500"
-            >
+                <i class="fa-solid fa-lock input-icon"></i>
 
-            <!-- Confirm -->
+                <input
+                    id="password"
+                    type="password"
+                    placeholder=" "
+                    class="floating-input"
+                >
 
-            <label class="font-medium text-gray-700">
-                Confirm Password
-            </label>
+                <label
+                    for="password"
+                    class="floating-label"
+                >
+                    Password
+                </label>
 
-            <input
-            id="confirm"
-                type="password"
-                placeholder="Confirm password"
-                class="w-full border rounded-lg p-3 mt-2 mb-6 outline-none focus:ring-2 focus:ring-blue-500"
-            >
-            <select id="role" class="mb-5 p-2">
-    <option value="">Select Role</option>
-    <option value="Admin">Admin</option>
-    <option value="Employee">Employee</option>
-</select>
+                <i
+                    class="fa-regular fa-eye password-toggle"
+                    onclick="togglePassword('password', this)"
+                ></i>
 
-            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg py-3 font-semibold duration-300" onclick="register()">
-                Register
-            </button>
-
-
-            <div class="flex items-center my-6">
-                <hr class="flex-1">
-                <span class="mx-3 text-gray-500">OR</span>
-                <hr class="flex-1">
             </div>
 
-            <button class="w-full border rounded-lg py-3 hover:bg-gray-100 font-medium">
-                Continue with Google
+
+            <!-- Confirm Password -->
+
+            <div class="floating-group">
+
+                <i class="fa-solid fa-shield-halved input-icon"></i>
+
+                <input
+                    id="confirm"
+                    type="password"
+                    placeholder=" "
+                    class="floating-input"
+                >
+
+                <label
+                    for="confirm"
+                    class="floating-label"
+                >
+                    Confirm Password
+                </label>
+
+                <i
+                    class="fa-regular fa-eye password-toggle"
+                    onclick="togglePassword('confirm', this)"
+                ></i>
+
+            </div>
+
+
+            <!-- Role -->
+
+            <div class="relative mb-6">
+
+                <i
+                    class="fa-solid fa-user-tag absolute left-4 top-5 text-gray-400 z-10"
+                ></i>
+
+                <select
+                    id="role"
+                    class="w-full h-[58px] border border-gray-300 rounded-[14px] pl-12 pr-4 bg-white text-gray-600 outline-none focus:border-blue-600 focus:ring-4 focus:ring-blue-100 transition"
+                >
+
+                    <option value="">
+                        Select Role
+                    </option>
+
+                    <option value="Admin">
+                        Admin
+                    </option>
+
+                    <option value="Employee">
+                        Employee
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Register Button -->
+
+            <button
+                class="register-btn w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-[14px] py-4 font-semibold shadow-lg shadow-blue-200"
+                onclick="register()"
+            >
+
+                <span class="flex items-center justify-center gap-2">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    Create Account
+
+                </span>
+
             </button>
 
-            <p class="text-center mt-6">
+
+            <!-- Divider -->
+
+            <div class="flex items-center my-6">
+
+                <div class="flex-1 h-px bg-gray-200"></div>
+
+                <span class="mx-4 text-xs text-gray-400 font-medium">
+                    OR
+                </span>
+
+                <div class="flex-1 h-px bg-gray-200"></div>
+
+            </div>
+
+
+            <!-- Google -->
+
+            <button
+                class="google-btn w-full border border-gray-200 rounded-[14px] py-3.5 hover:bg-gray-50 font-medium text-gray-700 flex items-center justify-center gap-3"
+            >
+
+                <div
+                    class="w-6 h-6 rounded-full flex items-center justify-center"
+                >
+
+                    <i class="fa-brands fa-google text-red-500"></i>
+
+                </div>
+
+                Continue with Google
+
+            </button>
+
+
+            <!-- Login -->
+
+            <p class="text-center mt-6 text-sm text-gray-500">
+
                 Already have an account?
-                <a href="../OAMS/Login.html" class="text-blue-600 font-semibold">
+
+                <a
+                    href="../OAMS/Login.html"
+                    class="text-blue-600 font-semibold hover:text-indigo-600 transition"
+                >
                     Sign In
                 </a>
+
             </p>
+
 
         </div>
 
-        <!-- Image -->
 
-        <div class="w-1/2">
+        <!-- ========================= -->
+        <!-- RIGHT IMAGE -->
+        <!-- ========================= -->
+
+        <div class="register-image relative w-1/2 overflow-hidden">
+
 
             <img
                 src="../assets/register_img.jpg"
-                class="w-full h-full object-cover"
+                class="absolute inset-0 w-full h-full object-cover"
                 alt="Register Image"
             >
+
+
+            <!-- Overlay -->
+
+            <div
+                class="image-overlay absolute inset-0"
+            ></div>
+
+
+            <!-- Decorative circles -->
+
+            <div class="circle-one"></div>
+
+            <div class="circle-two"></div>
+
+
+            <!-- Content -->
+
+            <div
+                class="relative z-10 h-full flex flex-col justify-end p-12 text-white"
+            >
+
+                <div class="mb-8">
+
+                    <div
+                        class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-5"
+                    >
+
+                        <span
+                            class="w-2 h-2 bg-green-400 rounded-full"
+                        ></span>
+
+                        <span class="text-sm">
+                            Secure Asset Management
+                        </span>
+
+                    </div>
+
+
+                    <h2
+                        class="text-4xl font-bold leading-tight mb-4"
+                    >
+                        Manage Your Assets.
+                        <br>
+                        Simplify Your Work.
+                    </h2>
+
+
+                    <p
+                        class="text-blue-100 leading-relaxed max-w-md"
+                    >
+                        Join AssetsHub and manage company assets,
+                        requests, returns and reports from one
+                        powerful platform.
+                    </p>
+
+                </div>
+
+
+                <!-- Features -->
+
+                <div class="space-y-3">
+
+                    <div class="flex items-center gap-3">
+
+                        <div
+                            class="w-9 h-9 rounded-lg bg-white/15 backdrop-blur-md flex items-center justify-center"
+                        >
+
+                            <i class="fa-solid fa-shield-halved"></i>
+
+                        </div>
+
+                        <span class="text-sm">
+                            Secure & Reliable
+                        </span>
+
+                    </div>
+
+
+                    <div class="flex items-center gap-3">
+
+                        <div
+                            class="w-9 h-9 rounded-lg bg-white/15 backdrop-blur-md flex items-center justify-center"
+                        >
+
+                            <i class="fa-solid fa-boxes-stacked"></i>
+
+                        </div>
+
+                        <span class="text-sm">
+                            Easy Asset Management
+                        </span>
+
+                    </div>
+
+
+                    <div class="flex items-center gap-3">
+
+                        <div
+                            class="w-9 h-9 rounded-lg bg-white/15 backdrop-blur-md flex items-center justify-center"
+                        >
+
+                            <i class="fa-solid fa-chart-line"></i>
+
+                        </div>
+
+                        <span class="text-sm">
+                            Track Everything Easily
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
-<script>
-const register=()=>{
-    let name=document.getElementById("name").value
-     let email=document.getElementById("email").value
-     let password=document.getElementById("password").value 
-     let confirm=document.getElementById("confirm").value
-     let role=document.getElementById("role").value
-    
-     if(name==""||email==""||password==""||confirm==""||role==""){
-        alert("Fill all Feild")
-        return
-     }
-     if(password!=confirm){
-        alert("Password do not Match")
-        return
-     }
-     let users=JSON.parse(localStorage.getItem("users"))||[]
-    
-     
-     let check =users.find(users=>users.email===email)
-     if(check){
-        alert("Email already Registered")
-        return
-     }
-    users.push({name,email,password,role})
-    localStorage.setItem("users",JSON.stringify(users)) 
-    console.log(users);
-    
-    alert("Registered Successfully")
-    window.location="Login.html"
-     
-}
-</script>
+
+
+    <!-- ========================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================= -->
+
+    <script>
+
+        function togglePassword(id, icon) {
+
+            const input = document.getElementById(id);
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                icon.classList.remove("fa-eye");
+
+                icon.classList.add("fa-eye-slash");
+
+            } else {
+
+                input.type = "password";
+
+                icon.classList.remove("fa-eye-slash");
+
+                icon.classList.add("fa-eye");
+
+            }
+
+        }
+
+
+        function register() {
+
+            let name = document.getElementById("name").value.trim();
+
+            let email = document.getElementById("email").value.trim();
+
+            let password = document.getElementById("password").value;
+
+            let confirm = document.getElementById("confirm").value;
+
+            let role = document.getElementById("role").value;
+
+
+            if(name==""||email==""||password==""||confirm==""||role==""){
+
+                alert("Fill all Feild")
+
+                return
+
+            }
+
+
+            if(password!=confirm){
+
+                alert("Password do not Match")
+
+                return
+
+            }
+
+
+            let users=JSON.parse(localStorage.getItem("users"))||[]
+
+
+            let check =users.find(users=>users.email===email)
+
+            if(check){
+
+                alert("Email already Registered")
+
+                return
+
+            }
+
+
+            users.push({name,email,password,role})
+
+            localStorage.setItem("users",JSON.stringify(users))
+
+            console.log(users);
+
+
+            alert("Registered Successfully")
+
+            window.location="Login.html"
+
+        }
+
+    </script>
+
 
 </body>
 </html>
