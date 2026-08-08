@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AssetHub — Assets</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111C33; --ink-soft:#5B6478; --line:#E7E9F0; --paper:#F4F5F9;
+    --sidebar:#0F1A30; --sidebar-soft:#8B96AE; --accent:#2F5CF2; --accent-soft:#EAEFFE;
+  }
+  body{ font-family:'Inter', sans-serif; background:var(--paper); color:var(--ink); }
+  h1,h2,h3,.display{ font-family:'Lexend', sans-serif; }
+  .nav-link{ color:var(--sidebar-soft); transition:.15s ease; }
+  .nav-link:hover{ background:rgba(255,255,255,.06); color:#fff; }
+  .nav-link.active{ background:var(--accent); color:#fff; }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:16px; }
+  .icon-badge{ display:flex; align-items:center; justify-content:center; border-radius:12px; flex-shrink:0; }
+  .row-hover:hover{ background:#FAFBFD; }
+  .btn-mini{ font-size:11px; font-weight:600; padding:5px 10px; border-radius:8px; white-space:nowrap; }
+  table th{ font-size:11px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); font-weight:600; }
+  ::-webkit-scrollbar{ width:8px; height:8px; }
+  ::-webkit-scrollbar-thumb{ background:#D7DBE7; border-radius:8px; }
+</style>
+</head>
+<body class="text-[15px]">
+<div class="flex min-h-screen">
+ 
+  <!-- SIDEBAR -->
+  <aside class="w-64 shrink-0 flex flex-col" style="background:var(--sidebar)">
+    <div class="flex items-center gap-2.5 px-6 py-6">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:var(--accent)"><i class="fa-solid fa-cubes text-white text-sm"></i></div>
+      <span class="display text-white font-bold text-lg tracking-tight">AssetHub</span>
+    </div>
+     <nav class="flex-1 px-3 mt-2 space-y-1">
+      <p class="px-3 text-[11px] font-semibold tracking-wider uppercase mb-2" style="color:#5A6580">Overview</p>
+      <a href="../../admin_Dashboard.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-grid-2 w-4 text-center"></i> Dashboard</a>
+      <a href="#" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-boxes-stacked w-4 text-center"></i> Assets</a>
+      <a href="../Admin/Employees.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-users w-4 text-center"></i> Employees</a>
+      <a href="../Admin/Assignment.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-clipboard-list w-4 text-center"></i> Assignments</a>
+      <a href="../Admin/Maintenance.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-screwdriver-wrench w-4 text-center"></i> Maintenance</a>
+      <p class="px-3 text-[11px] font-semibold tracking-wider uppercase mb-2 mt-5" style="color:#5A6580">System</p>
+      <a href="../Admin/Report.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-chart-simple w-4 text-center"></i> Reports</a>
+      <a href="../Admin/Notification.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-bell w-4 text-center"></i> Notifications</a>
+      <a href="../Admin/settings.html" class="nav-link active flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-gear w-4 text-center"></i> Settings</a>
+    </nav>
+    <div class="p-4 mx-3 mb-4 rounded-xl" style="background:rgba(255,255,255,.05)">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-semibold" style="background:var(--accent)">LK</div>
+        <div class="min-w-0"><p class="text-white text-sm font-medium truncate">Lokesh</p><p class="text-xs truncate" style="color:var(--sidebar-soft)">IT Administrator</p></div>
+      </div>
+    </div>
+  </aside>
+ 
+  <!-- MAIN -->
+  <div class="flex-1 min-w-0 flex flex-col">
+    <header class="bg-white border-b flex items-center justify-between gap-6 px-8 py-4" style="border-color:var(--line)">
+      <div class="relative w-full max-w-md">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-sm" style="color:#A6ADBB"></i>
+        <input id="searchInput" type="text" placeholder="Search by name, ID, brand..."
+          class="w-full pl-11 pr-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2"
+          style="border-color:var(--line); --tw-ring-color:var(--accent-soft)">
+      </div>
+      <div class="flex items-center gap-5 shrink-0">
+        <a href="Notifications.html" class="relative w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100">
+          <i class="fa-regular fa-bell text-lg" style="color:var(--ink-soft)"></i>
+          <span id="notifDot" class="hidden absolute top-2 right-2.5 w-1.5 h-1.5 rounded-full bg-red-500"></span>
+        </a>
+        <button onclick="openAssetModal()" class="flex items-center gap-2 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm" style="background:var(--accent)">
+          <i class="fa-solid fa-plus"></i> Add Asset
+        </button>
+      </div>
+    </header>
+ 
+    <!-- Add/Edit Asset Modal -->
+    <div id="assetModal" class="hidden fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+      <div class="bg-white rounded-2xl w-[600px] p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+          <h2 id="modalTitle" class="text-2xl font-bold">Add New Asset</h2>
+          <button onclick="closeAssetModal()"><i class="fa-solid fa-xmark text-xl"></i></button>
+        </div>
+        <input type="hidden" id="editingId">
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="font-medium text-sm">Asset Name</label><input id="fAssetName" type="text" class="w-full border rounded-lg p-3 mt-2" placeholder="Dell Laptop"></div>
+          <div><label class="font-medium text-sm">Asset ID</label><input id="fAssetId" type="text" class="w-full border rounded-lg p-3 mt-2" placeholder="AST001"></div>
+          <div><label class="font-medium text-sm">Category</label><select id="fCategory" class="w-full border rounded-lg p-3 mt-2"></select></div>
+          <div><label class="font-medium text-sm">Brand</label><input id="fBrand" type="text" class="w-full border rounded-lg p-3 mt-2" placeholder="Dell"></div>
+          <div><label class="font-medium text-sm">Purchase Date</label><input id="fPurchase" type="date" class="w-full border rounded-lg p-3 mt-2"></div>
+          <div><label class="font-medium text-sm">Price</label><input id="fPrice" type="number" class="w-full border rounded-lg p-3 mt-2" placeholder="45000"></div>
+          <div><label class="font-medium text-sm">Status</label>
+            <select id="fStatus" class="w-full border rounded-lg p-3 mt-2">
+              <option>Available</option><option>Assigned</option><option>Maintenance</option>
+            </select>
+          </div>
+          <div><label class="font-medium text-sm">Assigned To</label><input id="fAssignedTo" type="text" class="w-full border rounded-lg p-3 mt-2" placeholder="Employee name (if Assigned)"></div>
+          <div class="col-span-2"><label class="font-medium text-sm">Description</label><textarea id="fDescription" rows="3" class="w-full border rounded-lg p-3 mt-2"></textarea></div>
+        </div>
+        <div class="flex justify-end gap-4 mt-8">
+          <button onclick="closeAssetModal()" class="px-5 py-3 rounded-lg bg-gray-200 text-sm font-semibold">Cancel</button>
+          <button onclick="saveAssetForm()" class="px-6 py-3 rounded-lg text-white bg-blue-600 text-sm font-semibold">Save Asset</button>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- Send to Maintenance Modal -->
+    <div id="maintModal" class="hidden fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+      <div class="bg-white rounded-2xl w-[480px] p-8 shadow-2xl">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold">Send to Maintenance</h2>
+          <button onclick="closeMaintModal()"><i class="fa-solid fa-xmark text-xl"></i></button>
+        </div>
+        <input type="hidden" id="maintAssetId">
+        <label class="font-medium text-sm">Issue Description</label>
+        <textarea id="maintIssue" rows="3" class="w-full border rounded-lg p-3 mt-2" placeholder="What's wrong with this asset?"></textarea>
+        <label class="font-medium text-sm mt-4 block">Priority</label>
+        <select id="maintPriority" class="w-full border rounded-lg p-3 mt-2"><option>Low</option><option selected>Medium</option><option>High</option></select>
+        <div class="flex justify-end gap-4 mt-8">
+          <button onclick="closeMaintModal()" class="px-5 py-3 rounded-lg bg-gray-200 text-sm font-semibold">Cancel</button>
+          <button onclick="confirmSendToMaintenance()" class="px-6 py-3 rounded-lg text-white bg-rose-600 text-sm font-semibold">Send</button>
+        </div>
+      </div>
+    </div>
+ 
+    <main class="flex-1 px-8 py-6 space-y-6">
+      <div>
+        <h1 class="display text-2xl font-bold">Assets</h1>
+        <p class="text-sm mt-1" style="color:var(--ink-soft)">Manage your full inventory of company assets.</p>
+      </div>
+ 
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-5">
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">Total</p><p id="statTotal" class="display text-2xl font-bold mt-0.5">0</p></div>
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">Available</p><p id="statAvailable" class="display text-2xl font-bold mt-0.5 text-amber-600">0</p></div>
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">Assigned</p><p id="statAssigned" class="display text-2xl font-bold mt-0.5 text-emerald-600">0</p></div>
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">In Maintenance</p><p id="statMaintenance" class="display text-2xl font-bold mt-0.5 text-rose-600">0</p></div>
+      </div>
+ 
+      <div class="card p-6">
+        <div class="flex flex-wrap gap-3 items-center justify-between mb-5">
+          <div class="flex flex-wrap gap-3">
+            <select id="filterCategory" class="text-sm border rounded-lg px-3 py-2" style="border-color:var(--line)"><option value="">All Categories</option></select>
+            <select id="filterStatus" class="text-sm border rounded-lg px-3 py-2" style="border-color:var(--line)">
+              <option value="">All Statuses</option><option>Available</option><option>Assigned</option><option>Maintenance</option>
+            </select>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead><tr class="border-b" style="border-color:var(--line)">
+              <th class="py-3 text-left">Asset</th><th class="text-left">Category</th><th class="text-left">Brand</th>
+              <th class="text-left">Status</th><th class="text-left">Assigned To</th><th class="text-left">Price</th><th class="text-right pr-2">Actions</th>
+            </tr></thead>
+            <tbody id="assetsTableBody"></tbody>
+          </table>
+        </div>
+        <p id="assetsEmpty" class="hidden text-sm text-center py-10" style="color:var(--ink-soft)">No assets yet. Click "Add Asset" to get started.</p>
+      </div>
+    </main>
+  </div>
+</div>
+ 
+<script>
+const ASSETS_KEY = "assets";
+const REQUESTS_KEY = "assetRequests";
+const MAINTENANCE_KEY = "maintenanceLogs";
+const SETTINGS_KEY = "settings";
+const DEFAULT_CATEGORIES = ["Laptop","Desktop","Printer","Keyboard","Mouse","Monitor","Other"];
+ 
+const CATEGORY_ICON = { Laptop:"fa-laptop", Desktop:"fa-desktop", Printer:"fa-print", Keyboard:"fa-keyboard", Mouse:"fa-computer-mouse", Monitor:"fa-desktop", Other:"fa-box" };
+ 
+function getAssets(){ return JSON.parse(localStorage.getItem(ASSETS_KEY)) || []; }
+function setAssets(v){ localStorage.setItem(ASSETS_KEY, JSON.stringify(v)); }
+function getRequests(){ return JSON.parse(localStorage.getItem(REQUESTS_KEY)) || []; }
+function getMaintenance(){ return JSON.parse(localStorage.getItem(MAINTENANCE_KEY)) || []; }
+function setMaintenance(v){ localStorage.setItem(MAINTENANCE_KEY, JSON.stringify(v)); }
+function getSettings(){ return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || { categories: DEFAULT_CATEGORIES, departments: ["IT Department","HR Department","Finance","Marketing"] }; }
+ 
+function statusBadge(status){
+  const map = { Available:"bg-amber-50 text-amber-600", Assigned:"bg-emerald-50 text-emerald-600", Maintenance:"bg-rose-50 text-rose-600" };
+  return `<span class="${map[status]||'bg-gray-100 text-gray-600'} px-2.5 py-1 rounded-full text-xs font-medium">${status}</span>`;
+}
+ 
+function populateCategorySelects(){
+  const cats = getSettings().categories || DEFAULT_CATEGORIES;
+  document.getElementById("fCategory").innerHTML = cats.map(c=>`<option>${c}</option>`).join("");
+  document.getElementById("filterCategory").innerHTML = `<option value="">All Categories</option>` + cats.map(c=>`<option>${c}</option>`).join("");
+}
+ 
+function render(){
+  const assets = getAssets();
+  const search = document.getElementById("searchInput").value.trim().toLowerCase();
+  const fc = document.getElementById("filterCategory").value;
+  const fs = document.getElementById("filterStatus").value;
+ 
+  document.getElementById("statTotal").textContent = assets.length;
+  document.getElementById("statAvailable").textContent = assets.filter(a=>a.status==="Available").length;
+  document.getElementById("statAssigned").textContent = assets.filter(a=>a.status==="Assigned").length;
+  document.getElementById("statMaintenance").textContent = assets.filter(a=>a.status==="Maintenance").length;
+  document.getElementById("notifDot").classList.toggle("hidden", !getRequests().some(r=>r.status==="Pending"));
+ 
+  const filtered = assets.filter(a =>
+    (!search || a.assetName.toLowerCase().includes(search) || a.assetId.toLowerCase().includes(search) || (a.brand||"").toLowerCase().includes(search)) &&
+    (!fc || a.category === fc) && (!fs || a.status === fs)
+  );
+ 
+  const tbody = document.getElementById("assetsTableBody");
+  tbody.innerHTML = filtered.map(a => {
+    const icon = CATEGORY_ICON[a.category] || "fa-box";
+    let actionButtons = `<button onclick="openAssetModal('${a.assetId}')" class="btn-mini bg-gray-100 text-gray-700">Edit</button>`;
+    if(a.status === "Assigned"){
+      actionButtons += `<button onclick="returnAsset('${a.assetId}')" class="btn-mini bg-blue-50 text-blue-700">Return</button>`;
+    }
+    if(a.status === "Maintenance"){
+      actionButtons += `<button onclick="resolveMaintenance('${a.assetId}')" class="btn-mini bg-emerald-50 text-emerald-700">Resolve</button>`;
+    } else {
+      actionButtons += `<button onclick="openMaintModal('${a.assetId}')" class="btn-mini bg-rose-50 text-rose-700">To Maintenance</button>`;
+    }
+    actionButtons += `<button onclick="deleteAsset('${a.assetId}')" class="btn-mini bg-red-50 text-red-600">Delete</button>`;
+    return `
+      <tr class="row-hover border-b" style="border-color:var(--line)">
+        <td class="py-3">
+          <div class="flex items-center gap-3">
+            <div class="icon-badge w-9 h-9 bg-gray-100"><i class="fa-solid ${icon} text-gray-500 text-sm"></i></div>
+            <div><p class="font-medium">${a.assetName}</p><p class="text-xs" style="color:var(--ink-soft)">${a.assetId}</p></div>
+          </div>
+        </td>
+        <td>${a.category}</td>
+        <td>${a.brand||"—"}</td>
+        <td>${statusBadge(a.status)}</td>
+        <td>${a.assignedTo||"—"}</td>
+        <td>${a.price ? "₹"+a.price : "—"}</td>
+        <td class="text-right"><div class="flex gap-1.5 justify-end flex-wrap">${actionButtons}</div></td>
+      </tr>`;
+  }).join("");
+  document.getElementById("assetsEmpty").classList.toggle("hidden", filtered.length > 0);
+}
+ 
+/* ---------- Add/Edit modal ---------- */
+function openAssetModal(id){
+  populateCategorySelects();
+  document.getElementById("editingId").value = id || "";
+  if(id){
+    const a = getAssets().find(x=>x.assetId===id);
+    document.getElementById("modalTitle").textContent = "Edit Asset";
+    document.getElementById("fAssetName").value = a.assetName;
+    document.getElementById("fAssetId").value = a.assetId;
+    document.getElementById("fAssetId").disabled = true;
+    document.getElementById("fCategory").value = a.category;
+    document.getElementById("fBrand").value = a.brand||"";
+    document.getElementById("fPurchase").value = a.purchase||"";
+    document.getElementById("fPrice").value = a.price||"";
+    document.getElementById("fStatus").value = a.status;
+    document.getElementById("fAssignedTo").value = a.assignedTo||"";
+    document.getElementById("fDescription").value = a.description||"";
+  } else {
+    document.getElementById("modalTitle").textContent = "Add New Asset";
+    ["fAssetName","fAssetId","fBrand","fPurchase","fPrice","fAssignedTo","fDescription"].forEach(id=>document.getElementById(id).value="");
+    document.getElementById("fAssetId").disabled = false;
+    document.getElementById("fStatus").value = "Available";
+  }
+  document.getElementById("assetModal").classList.remove("hidden");
+  document.getElementById("assetModal").classList.add("flex");
+}
+function closeAssetModal(){
+  document.getElementById("assetModal").classList.add("hidden");
+  document.getElementById("assetModal").classList.remove("flex");
+  document.getElementById("fAssetId").disabled = false;
+}
+function saveAssetForm(){
+  const editingId = document.getElementById("editingId").value;
+  const assetName = document.getElementById("fAssetName").value.trim();
+  const assetId = document.getElementById("fAssetId").value.trim();
+  const category = document.getElementById("fCategory").value;
+  const brand = document.getElementById("fBrand").value.trim();
+  const purchase = document.getElementById("fPurchase").value;
+  const price = document.getElementById("fPrice").value;
+  const status = document.getElementById("fStatus").value;
+  const assignedTo = document.getElementById("fAssignedTo").value.trim();
+  const description = document.getElementById("fDescription").value;
+ 
+  if(!assetName || !assetId){ alert("Please fill in at least Asset Name and Asset ID."); return; }
+ 
+  let assets = getAssets();
+  if(editingId){
+    const idx = assets.findIndex(a=>a.assetId===editingId);
+    assets[idx] = { ...assets[idx], assetName, category, brand, purchase, price, status, assignedTo, description };
+    if(status !== "Assigned") assets[idx].assignedTo = "";
+  } else {
+    if(assets.some(a=>a.assetId===assetId)){ alert("An asset with this ID already exists."); return; }
+    assets.push({ assetId, assetName, category, brand, purchase, price, description, status, assignedTo: status==="Assigned"?assignedTo:"" });
+  }
+  setAssets(assets);
+  closeAssetModal();
+  render();
+}
+function deleteAsset(id){
+  if(!confirm("Delete this asset? This can't be undone.")) return;
+  setAssets(getAssets().filter(a=>a.assetId!==id));
+  render();
+}
+function returnAsset(id){
+  const assets = getAssets();
+  const a = assets.find(x=>x.assetId===id);
+  if(!a) return;
+  a.status = "Available"; a.assignedTo=""; a.department=""; a.assignedDate="";
+  setAssets(assets);
+  render();
+}
+ 
+/* ---------- Maintenance ---------- */
+function openMaintModal(id){
+  document.getElementById("maintAssetId").value = id;
+  document.getElementById("maintIssue").value = "";
+  document.getElementById("maintModal").classList.remove("hidden");
+  document.getElementById("maintModal").classList.add("flex");
+}
+function closeMaintModal(){
+  document.getElementById("maintModal").classList.add("hidden");
+  document.getElementById("maintModal").classList.remove("flex");
+}
+function confirmSendToMaintenance(){
+  const id = document.getElementById("maintAssetId").value;
+  const issue = document.getElementById("maintIssue").value.trim();
+  const priority = document.getElementById("maintPriority").value;
+  if(!issue){ alert("Please describe the issue."); return; }
+ 
+  const assets = getAssets();
+  const a = assets.find(x=>x.assetId===id);
+  if(!a) return;
+  a.previousStatus = a.status;
+  a.status = "Maintenance";
+  setAssets(assets);
+ 
+  const logs = getMaintenance();
+  logs.push({ id:"MNT"+Date.now(), assetId:id, assetName:a.assetName, issue, reportedBy:"Admin", reportedDate:new Date().toISOString().slice(0,10), status:"Open", priority });
+  setMaintenance(logs);
+ 
+  closeMaintModal();
+  render();
+}
+function resolveMaintenance(id){
+  const assets = getAssets();
+  const a = assets.find(x=>x.assetId===id);
+  if(!a) return;
+  a.status = a.previousStatus || "Available";
+  delete a.previousStatus;
+  setAssets(assets);
+ 
+  const logs = getMaintenance();
+  logs.forEach(l=>{ if(l.assetId===id && l.status!=="Resolved") l.status="Resolved"; });
+  setMaintenance(logs);
+  render();
+}
+ 
+/* ---------- init ---------- */
+populateCategorySelects();
+render();
+document.getElementById("searchInput").addEventListener("input", render);
+document.getElementById("filterCategory").addEventListener("change", render);
+document.getElementById("filterStatus").addEventListener("change", render);
+setInterval(render, 2000);
+window.addEventListener("storage", render);
+</script>
+</body>
+</html>
+ 

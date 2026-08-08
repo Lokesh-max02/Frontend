@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AssetHub — Reports</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111C33; --ink-soft:#5B6478; --line:#E7E9F0; --paper:#F4F5F9;
+    --sidebar:#0F1A30; --sidebar-soft:#8B96AE; --accent:#2F5CF2; --accent-soft:#EAEFFE;
+  }
+  body{ font-family:'Inter', sans-serif; background:var(--paper); color:var(--ink); }
+  h1,h2,h3,.display{ font-family:'Lexend', sans-serif; }
+  .nav-link{ color:var(--sidebar-soft); transition:.15s ease; }
+  .nav-link:hover{ background:rgba(255,255,255,.06); color:#fff; }
+  .nav-link.active{ background:var(--accent); color:#fff; }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:16px; }
+  .bar-track{ background:#F0F1F5; border-radius:999px; height:8px; overflow:hidden; }
+  .bar-fill{ height:100%; border-radius:999px; }
+  ::-webkit-scrollbar{ width:8px; height:8px; }
+  ::-webkit-scrollbar-thumb{ background:#D7DBE7; border-radius:8px; }
+</style>
+</head>
+<body class="text-[15px]">
+<div class="flex min-h-screen">
+ 
+  <aside class="w-64 shrink-0 flex flex-col" style="background:var(--sidebar)">
+    <div class="flex items-center gap-2.5 px-6 py-6">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:var(--accent)"><i class="fa-solid fa-cubes text-white text-sm"></i></div>
+      <span class="display text-white font-bold text-lg tracking-tight">AssetHub</span>
+    </div>
+    <nav class="flex-1 px-3 mt-2 space-y-1">
+      <p class="px-3 text-[11px] font-semibold tracking-wider uppercase mb-2" style="color:#5A6580">Overview</p>
+      <a href="../../admin_Dashboard.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-grid-2 w-4 text-center"></i> Dashboard</a>
+      <a href="../Admin/Assets.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-boxes-stacked w-4 text-center"></i> Assets</a>
+      <a href="../Admin/Employees.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-users w-4 text-center"></i> Employees</a>
+      <a href="../Admin/Assignment.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-clipboard-list w-4 text-center"></i> Assignments</a>
+      <a href="../Admin/Maintenance.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-screwdriver-wrench w-4 text-center"></i> Maintenance</a>
+      <p class="px-3 text-[11px] font-semibold tracking-wider uppercase mb-2 mt-5" style="color:#5A6580">System</p>
+      <a href="#" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-chart-simple w-4 text-center"></i> Reports</a>
+      <a href="../Admin/Notification.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-bell w-4 text-center"></i> Notifications</a>
+      <a href="../Admin/settings.html" class="nav-link active flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-gear w-4 text-center"></i> Settings</a>
+    </nav>
+    <div class="p-4 mx-3 mb-4 rounded-xl" style="background:rgba(255,255,255,.05)">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-semibold" style="background:var(--accent)">LK</div>
+        <div class="min-w-0"><p class="text-white text-sm font-medium truncate">Lokesh</p><p class="text-xs truncate" style="color:var(--sidebar-soft)">IT Administrator</p></div>
+      </div>
+    </div>
+  </aside>
+ 
+  <div class="flex-1 min-w-0 flex flex-col">
+    <header class="bg-white border-b flex items-center justify-between gap-6 px-8 py-4" style="border-color:var(--line)">
+      <div><h2 class="font-semibold">Reports</h2></div>
+      <div class="flex items-center gap-5 shrink-0">
+        <a href="Notifications.html" class="relative w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100">
+          <i class="fa-regular fa-bell text-lg" style="color:var(--ink-soft)"></i>
+          <span id="notifDot" class="hidden absolute top-2 right-2.5 w-1.5 h-1.5 rounded-full bg-red-500"></span>
+        </a>
+      </div>
+    </header>
+ 
+    <main class="flex-1 px-8 py-6 space-y-6">
+      <div>
+        <h1 class="display text-2xl font-bold">Reports</h1>
+        <p class="text-sm mt-1" style="color:var(--ink-soft)">A snapshot of your inventory, requests, and maintenance.</p>
+      </div>
+ 
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-5">
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">Total Assets</p><p id="statTotal" class="display text-2xl font-bold mt-0.5">0</p></div>
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">Total Value</p><p id="statValue" class="display text-2xl font-bold mt-0.5">₹0</p></div>
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">Request Approval Rate</p><p id="statApprovalRate" class="display text-2xl font-bold mt-0.5 text-emerald-600">0%</p></div>
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">Open Maintenance</p><p id="statOpenMaint" class="display text-2xl font-bold mt-0.5 text-rose-600">0</p></div>
+      </div>
+ 
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+        <div class="card p-6">
+          <h2 class="font-semibold text-base mb-5">Assets by Status</h2>
+          <div id="byStatus" class="space-y-4"></div>
+        </div>
+        <div class="card p-6">
+          <h2 class="font-semibold text-base mb-5">Assets by Category</h2>
+          <div id="byCategory" class="space-y-4"></div>
+        </div>
+        <div class="card p-6">
+          <h2 class="font-semibold text-base mb-5">Assets by Department</h2>
+          <div id="byDepartment" class="space-y-4"></div>
+        </div>
+        <div class="card p-6">
+          <h2 class="font-semibold text-base mb-5">Requests by Status</h2>
+          <div id="byRequestStatus" class="space-y-4"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+ 
+<script>
+const ASSETS_KEY = "assets";
+const REQUESTS_KEY = "assetRequests";
+const MAINTENANCE_KEY = "maintenanceLogs";
+ 
+function getAssets(){ return JSON.parse(localStorage.getItem(ASSETS_KEY)) || []; }
+function getRequests(){ return JSON.parse(localStorage.getItem(REQUESTS_KEY)) || []; }
+function getMaintenance(){ return JSON.parse(localStorage.getItem(MAINTENANCE_KEY)) || []; }
+ 
+const COLORS = ["var(--accent)","#1BA24E","#D68A1F","#DD4B4B","#8A3FD6","#0E9F9F"];
+ 
+function barRow(label, count, total, color){
+  const pct = total > 0 ? Math.round((count/total)*100) : 0;
+  return `
+    <div>
+      <div class="flex justify-between text-sm mb-1.5">
+        <span class="font-medium">${label}</span>
+        <span style="color:var(--ink-soft)">${count} (${pct}%)</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%; background:${color}"></div></div>
+    </div>`;
+}
+ 
+function render(){
+  const assets = getAssets();
+  const requests = getRequests();
+  const maint = getMaintenance();
+ 
+  document.getElementById("statTotal").textContent = assets.length;
+  const totalValue = assets.reduce((sum,a)=> sum + (parseFloat(a.price)||0), 0);
+  document.getElementById("statValue").textContent = "₹" + totalValue.toLocaleString("en-IN");
+ 
+  const decided = requests.filter(r=>r.status==="Approved"||r.status==="Rejected").length;
+  const approved = requests.filter(r=>r.status==="Approved").length;
+  document.getElementById("statApprovalRate").textContent = decided ? Math.round((approved/decided)*100)+"%" : "—";
+  document.getElementById("statOpenMaint").textContent = maint.filter(m=>m.status!=="Resolved").length;
+  document.getElementById("notifDot").classList.toggle("hidden", !requests.some(r=>r.status==="Pending"));
+ 
+  // By status
+  const statuses = ["Available","Assigned","Maintenance"];
+  const statusColors = { Available:"#D68A1F", Assigned:"#1BA24E", Maintenance:"#DD4B4B" };
+  document.getElementById("byStatus").innerHTML = statuses.map(s =>
+    barRow(s, assets.filter(a=>a.status===s).length, assets.length, statusColors[s])
+  ).join("") || `<p class="text-sm" style="color:var(--ink-soft)">No assets yet.</p>`;
+ 
+  // By category
+  const cats = [...new Set(assets.map(a=>a.category).filter(Boolean))];
+  document.getElementById("byCategory").innerHTML = cats.length ? cats.map((c,i) =>
+    barRow(c, assets.filter(a=>a.category===c).length, assets.length, COLORS[i % COLORS.length])
+  ).join("") : `<p class="text-sm" style="color:var(--ink-soft)">No assets yet.</p>`;
+ 
+  // By department
+  const depts = [...new Set(assets.map(a=>a.department).filter(Boolean))];
+  const assignedTotal = assets.filter(a=>a.status==="Assigned").length;
+  document.getElementById("byDepartment").innerHTML = depts.length ? depts.map((d,i) =>
+    barRow(d, assets.filter(a=>a.department===d).length, assignedTotal, COLORS[i % COLORS.length])
+  ).join("") : `<p class="text-sm" style="color:var(--ink-soft)">No assignments yet.</p>`;
+ 
+  // By request status
+  const rStatuses = ["Pending","Approved","Rejected"];
+  const rColors = { Pending:"#D68A1F", Approved:"#1BA24E", Rejected:"#DD4B4B" };
+  document.getElementById("byRequestStatus").innerHTML = requests.length ? rStatuses.map(s =>
+    barRow(s, requests.filter(r=>r.status===s).length, requests.length, rColors[s])
+  ).join("") : `<p class="text-sm" style="color:var(--ink-soft)">No requests yet.</p>`;
+}
+ 
+render();
+setInterval(render, 2000);
+window.addEventListener("storage", render);
+</script>
+</body>
+</html>
+ 

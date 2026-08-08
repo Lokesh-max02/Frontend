@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AssetHub — Settings</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111C33; --ink-soft:#5B6478; --line:#E7E9F0; --paper:#F4F5F9;
+    --sidebar:#0F1A30; --sidebar-soft:#8B96AE; --accent:#2F5CF2; --accent-soft:#EAEFFE;
+  }
+  body{ font-family:'Inter', sans-serif; background:var(--paper); color:var(--ink); }
+  h1,h2,h3,.display{ font-family:'Lexend', sans-serif; }
+  .nav-link{ color:var(--sidebar-soft); transition:.15s ease; }
+  .nav-link:hover{ background:rgba(255,255,255,.06); color:#fff; }
+  .nav-link.active{ background:var(--accent); color:#fff; }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:16px; }
+  .tag{ display:inline-flex; align-items:center; gap:6px; background:var(--accent-soft); color:var(--accent); font-size:13px; font-weight:500; padding:6px 10px; border-radius:999px; }
+  .tag button{ line-height:0; }
+  ::-webkit-scrollbar{ width:8px; height:8px; }
+  ::-webkit-scrollbar-thumb{ background:#D7DBE7; border-radius:8px; }
+</style>
+</head>
+<body class="text-[15px]">
+<div class="flex min-h-screen">
+ 
+  <aside class="w-64 shrink-0 flex flex-col" style="background:var(--sidebar)">
+    <div class="flex items-center gap-2.5 px-6 py-6">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:var(--accent)"><i class="fa-solid fa-cubes text-white text-sm"></i></div>
+      <span class="display text-white font-bold text-lg tracking-tight">AssetHub</span>
+    </div>
+    <nav class="flex-1 px-3 mt-2 space-y-1">
+      <p class="px-3 text-[11px] font-semibold tracking-wider uppercase mb-2" style="color:#5A6580">Overview</p>
+      <a href="../../admin_Dashboard.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-grid-2 w-4 text-center"></i> Dashboard</a>
+      <a href="../Admin/Assets.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-boxes-stacked w-4 text-center"></i> Assets</a>
+      <a href="../Admin/Employees.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-users w-4 text-center"></i> Employees</a>
+      <a href="../Admin/Assignment.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-clipboard-list w-4 text-center"></i> Assignments</a>
+      <a href="../Admin/Maintenance.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-screwdriver-wrench w-4 text-center"></i> Maintenance</a>
+      <p class="px-3 text-[11px] font-semibold tracking-wider uppercase mb-2 mt-5" style="color:#5A6580">System</p>
+      <a href="../Admin/Report.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-chart-simple w-4 text-center"></i> Reports</a>
+      <a href="../Admin/Notification.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-bell w-4 text-center"></i> Notifications</a>
+      <a href="#" class="nav-link active flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-gear w-4 text-center"></i> Settings</a>
+    </nav>
+    <div class="p-4 mx-3 mb-4 rounded-xl" style="background:rgba(255,255,255,.05)">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-semibold" style="background:var(--accent)">LK</div>
+        <div class="min-w-0"><p class="text-white text-sm font-medium truncate">Lokesh</p><p class="text-xs truncate" style="color:var(--sidebar-soft)">IT Administrator</p></div>
+      </div>
+    </div>
+  </aside>
+ 
+  <div class="flex-1 min-w-0 flex flex-col">
+    <header class="bg-white border-b flex items-center justify-between gap-6 px-8 py-4" style="border-color:var(--line)">
+      <h2 class="font-semibold">Settings</h2>
+    </header>
+ 
+    <main class="flex-1 px-8 py-6 space-y-6 max-w-3xl">
+      <div>
+        <h1 class="display text-2xl font-bold">Settings</h1>
+        <p class="text-sm mt-1" style="color:var(--ink-soft)">Configure the categories and departments used across AssetHub.</p>
+      </div>
+ 
+      <div class="card p-6">
+        <h2 class="font-semibold text-base mb-1">Company Info</h2>
+        <p class="text-sm mb-5" style="color:var(--ink-soft)">Shown across the app.</p>
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="font-medium text-sm">Company Name</label><input id="companyName" type="text" class="w-full border rounded-lg p-3 mt-2" placeholder="AssetHub Inc."></div>
+          <div><label class="font-medium text-sm">Currency Symbol</label><input id="currency" type="text" class="w-full border rounded-lg p-3 mt-2" placeholder="₹" maxlength="3"></div>
+        </div>
+        <button onclick="saveCompanyInfo()" class="mt-5 px-5 py-2.5 rounded-lg text-white text-sm font-semibold" style="background:var(--accent)">Save</button>
+        <span id="companySaved" class="hidden text-sm text-emerald-600 ml-3">Saved!</span>
+      </div>
+ 
+      <div class="card p-6">
+        <h2 class="font-semibold text-base mb-1">Asset Categories</h2>
+        <p class="text-sm mb-4" style="color:var(--ink-soft)">Used in the Add Asset and filter dropdowns on the Assets page.</p>
+        <div id="categoryTags" class="flex flex-wrap gap-2 mb-4"></div>
+        <div class="flex gap-2">
+          <input id="newCategory" type="text" class="flex-1 border rounded-lg p-2.5" placeholder="e.g. Tablet">
+          <button onclick="addCategory()" class="px-4 py-2.5 rounded-lg bg-gray-100 text-sm font-semibold">Add</button>
+        </div>
+      </div>
+ 
+      <div class="card p-6">
+        <h2 class="font-semibold text-base mb-1">Departments</h2>
+        <p class="text-sm mb-4" style="color:var(--ink-soft)">Used when assigning employees and assets.</p>
+        <div id="deptTags" class="flex flex-wrap gap-2 mb-4"></div>
+        <div class="flex gap-2">
+          <input id="newDept" type="text" class="flex-1 border rounded-lg p-2.5" placeholder="e.g. Operations">
+          <button onclick="addDept()" class="px-4 py-2.5 rounded-lg bg-gray-100 text-sm font-semibold">Add</button>
+        </div>
+      </div>
+ 
+      <div class="card p-6 border-rose-200" style="border-color:#FCA5A5">
+        <h2 class="font-semibold text-base mb-1 text-rose-600">Danger Zone</h2>
+        <p class="text-sm mb-4" style="color:var(--ink-soft)">Permanently clears all assets, employees, requests, and maintenance data from this browser.</p>
+        <button onclick="resetAllData()" class="px-5 py-2.5 rounded-lg bg-rose-600 text-white text-sm font-semibold">Reset All Data</button>
+      </div>
+    </main>
+  </div>
+</div>
+ 
+<script>
+const SETTINGS_KEY = "settings";
+const DEFAULTS = {
+  categories: ["Laptop","Desktop","Printer","Keyboard","Mouse","Monitor","Other"],
+  departments: ["IT Department","HR Department","Finance","Marketing"],
+  companyName: "AssetHub Inc.",
+  currency: "₹"
+};
+ 
+function getSettings(){ return { ...DEFAULTS, ...(JSON.parse(localStorage.getItem(SETTINGS_KEY)) || {}) }; }
+function setSettings(v){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(v)); }
+ 
+function renderTags(){
+  const s = getSettings();
+  document.getElementById("categoryTags").innerHTML = s.categories.map(c => `
+    <span class="tag">${c} <button onclick="removeCategory('${c}')"><i class="fa-solid fa-xmark text-xs"></i></button></span>
+  `).join("");
+  document.getElementById("deptTags").innerHTML = s.departments.map(d => `
+    <span class="tag">${d} <button onclick="removeDept('${d}')"><i class="fa-solid fa-xmark text-xs"></i></button></span>
+  `).join("");
+  document.getElementById("companyName").value = s.companyName;
+  document.getElementById("currency").value = s.currency;
+}
+ 
+function addCategory(){
+  const input = document.getElementById("newCategory");
+  const val = input.value.trim();
+  if(!val) return;
+  const s = getSettings();
+  if(!s.categories.includes(val)) s.categories.push(val);
+  setSettings(s);
+  input.value = "";
+  renderTags();
+}
+function removeCategory(c){
+  const s = getSettings();
+  s.categories = s.categories.filter(x=>x!==c);
+  setSettings(s);
+  renderTags();
+}
+function addDept(){
+  const input = document.getElementById("newDept");
+  const val = input.value.trim();
+  if(!val) return;
+  const s = getSettings();
+  if(!s.departments.includes(val)) s.departments.push(val);
+  setSettings(s);
+  input.value = "";
+  renderTags();
+}
+function removeDept(d){
+  const s = getSettings();
+  s.departments = s.departments.filter(x=>x!==d);
+  setSettings(s);
+  renderTags();
+}
+function saveCompanyInfo(){
+  const s = getSettings();
+  s.companyName = document.getElementById("companyName").value.trim() || DEFAULTS.companyName;
+  s.currency = document.getElementById("currency").value.trim() || DEFAULTS.currency;
+  setSettings(s);
+  const badge = document.getElementById("companySaved");
+  badge.classList.remove("hidden");
+  setTimeout(()=>badge.classList.add("hidden"), 1500);
+}
+function resetAllData(){
+  if(!confirm("This will permanently delete all assets, employees, requests, and maintenance tickets in this browser. Continue?")) return;
+  ["assets","assetRequests","employees","maintenanceLogs","settings","dismissedNotifications","assethub_current_user"].forEach(k => localStorage.removeItem(k));
+  alert("All data has been reset.");
+  renderTags();
+}
+ 
+/* ---------- init ---------- */
+renderTags();
+</script>
+</body>
+</html>
+ 

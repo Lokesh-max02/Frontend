@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AssetHub — Employees</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111C33; --ink-soft:#5B6478; --line:#E7E9F0; --paper:#F4F5F9;
+    --sidebar:#0F1A30; --sidebar-soft:#8B96AE; --accent:#2F5CF2; --accent-soft:#EAEFFE;
+  }
+  body{ font-family:'Inter', sans-serif; background:var(--paper); color:var(--ink); }
+  h1,h2,h3,.display{ font-family:'Lexend', sans-serif; }
+  .nav-link{ color:var(--sidebar-soft); transition:.15s ease; }
+  .nav-link:hover{ background:rgba(255,255,255,.06); color:#fff; }
+  .nav-link.active{ background:var(--accent); color:#fff; }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:16px; }
+  .icon-badge{ display:flex; align-items:center; justify-content:center; border-radius:12px; flex-shrink:0; }
+  .row-hover:hover{ background:#FAFBFD; }
+  .btn-mini{ font-size:11px; font-weight:600; padding:5px 10px; border-radius:8px; white-space:nowrap; }
+  ::-webkit-scrollbar{ width:8px; height:8px; }
+  ::-webkit-scrollbar-thumb{ background:#D7DBE7; border-radius:8px; }
+</style>
+</head>
+<body class="text-[15px]">
+<div class="flex min-h-screen">
+ 
+  <aside class="w-64 shrink-0 flex flex-col" style="background:var(--sidebar)">
+    <div class="flex items-center gap-2.5 px-6 py-6">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:var(--accent)"><i class="fa-solid fa-cubes text-white text-sm"></i></div>
+      <span class="display text-white font-bold text-lg tracking-tight">AssetHub</span>
+    </div>
+     <nav class="flex-1 px-3 mt-2 space-y-1">
+      <p class="px-3 text-[11px] font-semibold tracking-wider uppercase mb-2" style="color:#5A6580">Overview</p>
+      <a href="../../admin_Dashboard.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-grid-2 w-4 text-center"></i> Dashboard</a>
+      <a href="../Admin/Assets.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-boxes-stacked w-4 text-center"></i> Assets</a>
+      <a href="#" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-users w-4 text-center"></i> Employees</a>
+      <a href="../Admin/Assignment.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-clipboard-list w-4 text-center"></i> Assignments</a>
+      <a href="../Admin/Maintenance.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-screwdriver-wrench w-4 text-center"></i> Maintenance</a>
+      <p class="px-3 text-[11px] font-semibold tracking-wider uppercase mb-2 mt-5" style="color:#5A6580">System</p>
+      <a href="../Admin/Report.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-chart-simple w-4 text-center"></i> Reports</a>
+      <a href="../Admin/Notification.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-bell w-4 text-center"></i> Notifications</a>
+      <a href="../Admin/settings.html" class="nav-link active flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-gear w-4 text-center"></i> Settings</a>
+    </nav>
+    <div class="p-4 mx-3 mb-4 rounded-xl" style="background:rgba(255,255,255,.05)">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-semibold" style="background:var(--accent)">LK</div>
+        <div class="min-w-0"><p class="text-white text-sm font-medium truncate">Lokesh</p><p class="text-xs truncate" style="color:var(--sidebar-soft)">IT Administrator</p></div>
+      </div>
+    </div>
+  </aside>
+ 
+  <div class="flex-1 min-w-0 flex flex-col">
+    <header class="bg-white border-b flex items-center justify-between gap-6 px-8 py-4" style="border-color:var(--line)">
+      <div class="relative w-full max-w-md">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-sm" style="color:#A6ADBB"></i>
+        <input id="searchInput" type="text" placeholder="Search employees..."
+          class="w-full pl-11 pr-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2"
+          style="border-color:var(--line); --tw-ring-color:var(--accent-soft)">
+      </div>
+      <div class="flex items-center gap-5 shrink-0">
+        <a href="Notifications.html" class="relative w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100">
+          <i class="fa-regular fa-bell text-lg" style="color:var(--ink-soft)"></i>
+          <span id="notifDot" class="hidden absolute top-2 right-2.5 w-1.5 h-1.5 rounded-full bg-red-500"></span>
+        </a>
+        <button onclick="openEmployeeModal()" class="flex items-center gap-2 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm" style="background:var(--accent)">
+          <i class="fa-solid fa-plus"></i> Add Employee
+        </button>
+      </div>
+    </header>
+ 
+    <div id="employeeModal" class="hidden fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+      <div class="bg-white rounded-2xl w-[560px] p-8 shadow-2xl">
+        <div class="flex justify-between items-center mb-6">
+          <h2 id="modalTitle" class="text-2xl font-bold">Add Employee</h2>
+          <button onclick="closeEmployeeModal()"><i class="fa-solid fa-xmark text-xl"></i></button>
+        </div>
+        <input type="hidden" id="editingId">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="col-span-2"><label class="font-medium text-sm">Full Name</label><input id="fName" type="text" class="w-full border rounded-lg p-3 mt-2" placeholder="Rahul Kumar"></div>
+          <div class="col-span-2"><label class="font-medium text-sm">Email</label><input id="fEmail" type="email" class="w-full border rounded-lg p-3 mt-2" placeholder="rahul.kumar@company.com"></div>
+          <div><label class="font-medium text-sm">Department</label><select id="fDepartment" class="w-full border rounded-lg p-3 mt-2"></select></div>
+          <div><label class="font-medium text-sm">Designation</label><input id="fDesignation" type="text" class="w-full border rounded-lg p-3 mt-2" placeholder="Software Engineer"></div>
+          <div><label class="font-medium text-sm">Join Date</label><input id="fJoinDate" type="date" class="w-full border rounded-lg p-3 mt-2"></div>
+          <div><label class="font-medium text-sm">Status</label><select id="fStatus" class="w-full border rounded-lg p-3 mt-2"><option>Active</option><option>Inactive</option></select></div>
+        </div>
+        <div class="flex justify-end gap-4 mt-8">
+          <button onclick="closeEmployeeModal()" class="px-5 py-3 rounded-lg bg-gray-200 text-sm font-semibold">Cancel</button>
+          <button onclick="saveEmployeeForm()" class="px-6 py-3 rounded-lg text-white bg-blue-600 text-sm font-semibold">Save Employee</button>
+        </div>
+      </div>
+    </div>
+ 
+    <main class="flex-1 px-8 py-6 space-y-6">
+      <div>
+        <h1 class="display text-2xl font-bold">Employees</h1>
+        <p class="text-sm mt-1" style="color:var(--ink-soft)">Directory of everyone who can hold a company asset.</p>
+      </div>
+ 
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">Total Employees</p><p id="statTotal" class="display text-2xl font-bold mt-0.5">0</p></div>
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">Active</p><p id="statActive" class="display text-2xl font-bold mt-0.5 text-emerald-600">0</p></div>
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">Holding Assets</p><p id="statHolding" class="display text-2xl font-bold mt-0.5" style="color:var(--accent)">0</p></div>
+      </div>
+ 
+      <div class="card p-6">
+        <div class="flex flex-wrap gap-3 items-center justify-between mb-5">
+          <select id="filterDepartment" class="text-sm border rounded-lg px-3 py-2" style="border-color:var(--line)"><option value="">All Departments</option></select>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead><tr class="border-b" style="border-color:var(--line)">
+              <th class="py-3 text-left">Employee</th><th class="text-left">Department</th><th class="text-left">Designation</th>
+              <th class="text-left">Assets Held</th><th class="text-left">Status</th><th class="text-right pr-2">Actions</th>
+            </tr></thead>
+            <tbody id="employeesTableBody"></tbody>
+          </table>
+        </div>
+        <p id="employeesEmpty" class="hidden text-sm text-center py-10" style="color:var(--ink-soft)">No employees yet.</p>
+      </div>
+    </main>
+  </div>
+</div>
+ 
+<script>
+const EMPLOYEES_KEY = "employees";
+const ASSETS_KEY = "assets";
+const REQUESTS_KEY = "assetRequests";
+const SETTINGS_KEY = "settings";
+const DEFAULT_DEPARTMENTS = ["IT Department","HR Department","Finance","Marketing"];
+ 
+function getEmployees(){ return JSON.parse(localStorage.getItem(EMPLOYEES_KEY)) || []; }
+function setEmployees(v){ localStorage.setItem(EMPLOYEES_KEY, JSON.stringify(v)); }
+function getAssets(){ return JSON.parse(localStorage.getItem(ASSETS_KEY)) || []; }
+function getRequests(){ return JSON.parse(localStorage.getItem(REQUESTS_KEY)) || []; }
+function getSettings(){ return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || { departments: DEFAULT_DEPARTMENTS }; }
+ 
+function seedIfEmpty(){
+  if(localStorage.getItem(EMPLOYEES_KEY)) return;
+  setEmployees([
+    { id:"EMP001", name:"Rahul Kumar", email:"rahul.kumar@company.com", department:"IT Department", designation:"Software Engineer", joinDate:"2023-03-01", status:"Active" },
+    { id:"EMP002", name:"Priya Sharma", email:"priya.sharma@company.com", department:"HR Department", designation:"HR Executive", joinDate:"2022-07-14", status:"Active" },
+    { id:"EMP003", name:"Amit Verma", email:"amit.verma@company.com", department:"IT Department", designation:"DevOps Engineer", joinDate:"2023-11-20", status:"Active" },
+    { id:"EMP004", name:"Sneha Reddy", email:"sneha.reddy@company.com", department:"Finance", designation:"Financial Analyst", joinDate:"2021-05-09", status:"Active" }
+  ]);
+}
+ 
+function initials(name){ return name.trim().split(/\s+/).map(w=>w[0]).slice(0,2).join("").toUpperCase(); }
+ 
+function populateDeptSelects(){
+  const depts = getSettings().departments || DEFAULT_DEPARTMENTS;
+  document.getElementById("fDepartment").innerHTML = depts.map(d=>`<option>${d}</option>`).join("");
+  document.getElementById("filterDepartment").innerHTML = `<option value="">All Departments</option>` + depts.map(d=>`<option>${d}</option>`).join("");
+}
+ 
+function render(){
+  const employees = getEmployees();
+  const assets = getAssets();
+  const search = document.getElementById("searchInput").value.trim().toLowerCase();
+  const fd = document.getElementById("filterDepartment").value;
+ 
+  document.getElementById("statTotal").textContent = employees.length;
+  document.getElementById("statActive").textContent = employees.filter(e=>e.status==="Active").length;
+  const holdingNames = new Set(assets.filter(a=>a.status==="Assigned" && a.assignedTo).map(a=>a.assignedTo));
+  document.getElementById("statHolding").textContent = holdingNames.size;
+  document.getElementById("notifDot").classList.toggle("hidden", !getRequests().some(r=>r.status==="Pending"));
+ 
+  const filtered = employees.filter(e =>
+    (!search || e.name.toLowerCase().includes(search) || e.email.toLowerCase().includes(search)) &&
+    (!fd || e.department === fd)
+  );
+ 
+  const tbody = document.getElementById("employeesTableBody");
+  tbody.innerHTML = filtered.map(e => {
+    const heldCount = assets.filter(a=>a.status==="Assigned" && a.assignedTo===e.name).length;
+    const statusColor = e.status==="Active" ? "bg-emerald-50 text-emerald-600" : "bg-gray-100 text-gray-500";
+    return `
+      <tr class="row-hover border-b" style="border-color:var(--line)">
+        <td class="py-3">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-semibold" style="background:var(--accent)">${initials(e.name)}</div>
+            <div><p class="font-medium">${e.name}</p><p class="text-xs" style="color:var(--ink-soft)">${e.email}</p></div>
+          </div>
+        </td>
+        <td>${e.department}</td>
+        <td>${e.designation||"—"}</td>
+        <td>${heldCount}</td>
+        <td><span class="${statusColor} px-2.5 py-1 rounded-full text-xs font-medium">${e.status}</span></td>
+        <td class="text-right">
+          <div class="flex gap-1.5 justify-end">
+            <button onclick="openEmployeeModal('${e.id}')" class="btn-mini bg-gray-100 text-gray-700">Edit</button>
+            <button onclick="deleteEmployee('${e.id}')" class="btn-mini bg-red-50 text-red-600">Delete</button>
+          </div>
+        </td>
+      </tr>`;
+  }).join("");
+  document.getElementById("employeesEmpty").classList.toggle("hidden", filtered.length > 0);
+}
+ 
+function openEmployeeModal(id){
+  populateDeptSelects();
+  document.getElementById("editingId").value = id || "";
+  if(id){
+    const e = getEmployees().find(x=>x.id===id);
+    document.getElementById("modalTitle").textContent = "Edit Employee";
+    document.getElementById("fName").value = e.name;
+    document.getElementById("fEmail").value = e.email;
+    document.getElementById("fDepartment").value = e.department;
+    document.getElementById("fDesignation").value = e.designation||"";
+    document.getElementById("fJoinDate").value = e.joinDate||"";
+    document.getElementById("fStatus").value = e.status;
+  } else {
+    document.getElementById("modalTitle").textContent = "Add Employee";
+    ["fName","fEmail","fDesignation","fJoinDate"].forEach(id=>document.getElementById(id).value="");
+    document.getElementById("fStatus").value = "Active";
+  }
+  document.getElementById("employeeModal").classList.remove("hidden");
+  document.getElementById("employeeModal").classList.add("flex");
+}
+function closeEmployeeModal(){
+  document.getElementById("employeeModal").classList.add("hidden");
+  document.getElementById("employeeModal").classList.remove("flex");
+}
+function saveEmployeeForm(){
+  const editingId = document.getElementById("editingId").value;
+  const name = document.getElementById("fName").value.trim();
+  const email = document.getElementById("fEmail").value.trim();
+  const department = document.getElementById("fDepartment").value;
+  const designation = document.getElementById("fDesignation").value.trim();
+  const joinDate = document.getElementById("fJoinDate").value;
+  const status = document.getElementById("fStatus").value;
+ 
+  if(!name || !email){ alert("Please fill in at least Name and Email."); return; }
+ 
+  let employees = getEmployees();
+  if(editingId){
+    const idx = employees.findIndex(e=>e.id===editingId);
+    const oldName = employees[idx].name;
+    employees[idx] = { ...employees[idx], name, email, department, designation, joinDate, status };
+    if(oldName !== name){
+      const assets = getAssets();
+      assets.forEach(a=>{ if(a.assignedTo === oldName) a.assignedTo = name; });
+      localStorage.setItem(ASSETS_KEY, JSON.stringify(assets));
+    }
+  } else {
+    employees.push({ id:"EMP"+Date.now(), name, email, department, designation, joinDate, status });
+  }
+  setEmployees(employees);
+  closeEmployeeModal();
+  render();
+}
+function deleteEmployee(id){
+  if(!confirm("Remove this employee? Any assets currently assigned to them will stay assigned by name.")) return;
+  setEmployees(getEmployees().filter(e=>e.id!==id));
+  render();
+}
+ 
+/* ---------- init ---------- */
+seedIfEmpty();
+populateDeptSelects();
+render();
+document.getElementById("searchInput").addEventListener("input", render);
+document.getElementById("filterDepartment").addEventListener("change", render);
+setInterval(render, 2000);
+window.addEventListener("storage", render);
+</script>
+</body>
+</html>
+ 

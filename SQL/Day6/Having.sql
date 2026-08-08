@@ -73,4 +73,25 @@ select department ,max(salary) from Employees group by department;
 select department, count(id) from Employees group by department having count(id)>2;
 select location,avg(salary) from Employees group by location having avg(salary) > 50000;
 select department, sum(salary) from Employees group by department having sum(salary)>200000;
+-- task 13
+select name ,upper(name) AS upper_name from Employees;
+select name,lower(name) AS lower_name from Employees;
+select name ,length(name) AS length_ from Employees;
+select   concat(name,"-",location) AS details from Employees;
+select name ,substring(name,1,2) AS string__ from Employees;
+select location ,replace(location,"Madurai","Chennai") AS city from Employees;
+select name,left(name,4) AS left_ from Employees;
+select name,right(name,4) AS left_ from Employees;
+select name,reverse(name) AS Reverse_ from Employees;
+select trim(name) AS trim_ from Employees;
+-- task 14
+Alter TABLE Employees ADD join_date DATE;
 
+UPDATE Employees SET join_date = '2023-01-15' WHERE id = 1;
+UPDATE employees SET join_date = '2022-06-20' WHERE id = 2;
+UPDATE employees SET join_date = '2021-11-05' WHERE id = 3;
+UPDATE employees SET join_date = '2024-02-10' WHERE id = 4;
+UPDATE employees SET join_date = '2023-08-18' WHERE id = 5;
+SELECT NOW() AS current_datetime;
+select curdate() AS current__date ;
+SELECT year(join_date) AS current_year from Employees;

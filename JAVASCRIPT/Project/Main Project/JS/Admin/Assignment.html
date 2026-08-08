@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AssetHub — Assignments</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111C33; --ink-soft:#5B6478; --line:#E7E9F0; --paper:#F4F5F9;
+    --sidebar:#0F1A30; --sidebar-soft:#8B96AE; --accent:#2F5CF2; --accent-soft:#EAEFFE;
+  }
+  body{ font-family:'Inter', sans-serif; background:var(--paper); color:var(--ink); }
+  h1,h2,h3,.display{ font-family:'Lexend', sans-serif; }
+  .nav-link{ color:var(--sidebar-soft); transition:.15s ease; }
+  .nav-link:hover{ background:rgba(255,255,255,.06); color:#fff; }
+  .nav-link.active{ background:var(--accent); color:#fff; }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:16px; }
+  .row-hover:hover{ background:#FAFBFD; }
+  .btn-mini{ font-size:11px; font-weight:600; padding:5px 10px; border-radius:8px; white-space:nowrap; }
+  ::-webkit-scrollbar{ width:8px; height:8px; }
+  ::-webkit-scrollbar-thumb{ background:#D7DBE7; border-radius:8px; }
+</style>
+</head>
+<body class="text-[15px]">
+<div class="flex min-h-screen">
+ 
+  <aside class="w-64 shrink-0 flex flex-col" style="background:var(--sidebar)">
+    <div class="flex items-center gap-2.5 px-6 py-6">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:var(--accent)"><i class="fa-solid fa-cubes text-white text-sm"></i></div>
+      <span class="display text-white font-bold text-lg tracking-tight">AssetHub</span>
+    </div>
+     <nav class="flex-1 px-3 mt-2 space-y-1">
+      <p class="px-3 text-[11px] font-semibold tracking-wider uppercase mb-2" style="color:#5A6580">Overview</p>
+      <a href="../../admin_Dashboard.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-grid-2 w-4 text-center"></i> Dashboard</a>
+      <a href="../Admin/Assets.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-boxes-stacked w-4 text-center"></i> Assets</a>
+      <a href="../Admin/Employees.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-users w-4 text-center"></i> Employees</a>
+      <a href="#" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-clipboard-list w-4 text-center"></i> Assignments</a>
+      <a href="../Admin/Maintenance.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-screwdriver-wrench w-4 text-center"></i> Maintenance</a>
+      <p class="px-3 text-[11px] font-semibold tracking-wider uppercase mb-2 mt-5" style="color:#5A6580">System</p>
+      <a href="../Admin/Report.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-chart-simple w-4 text-center"></i> Reports</a>
+      <a href="../Admin/Notification.html" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-bell w-4 text-center"></i> Notifications</a>
+      <a href="../Admin/settings.html" class="nav-link active flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium"><i class="fa-solid fa-gear w-4 text-center"></i> Settings</a>
+    </nav>
+    <div class="p-4 mx-3 mb-4 rounded-xl" style="background:rgba(255,255,255,.05)">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-semibold" style="background:var(--accent)">LK</div>
+        <div class="min-w-0"><p class="text-white text-sm font-medium truncate">Lokesh</p><p class="text-xs truncate" style="color:var(--sidebar-soft)">IT Administrator</p></div>
+      </div>
+    </div>
+  </aside>
+ 
+  <div class="flex-1 min-w-0 flex flex-col">
+    <header class="bg-white border-b flex items-center justify-between gap-6 px-8 py-4" style="border-color:var(--line)">
+      <div class="relative w-full max-w-md">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-sm" style="color:#A6ADBB"></i>
+        <input id="searchInput" type="text" placeholder="Search assignments..."
+          class="w-full pl-11 pr-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2"
+          style="border-color:var(--line); --tw-ring-color:var(--accent-soft)">
+      </div>
+      <div class="flex items-center gap-5 shrink-0">
+        <a href="Notifications.html" class="relative w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100">
+          <i class="fa-regular fa-bell text-lg" style="color:var(--ink-soft)"></i>
+          <span id="notifDot" class="hidden absolute top-2 right-2.5 w-1.5 h-1.5 rounded-full bg-red-500"></span>
+        </a>
+        <button onclick="openAssignModal()" class="flex items-center gap-2 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm" style="background:var(--accent)">
+          <i class="fa-solid fa-plus"></i> New Assignment
+        </button>
+      </div>
+    </header>
+ 
+    <div id="assignModal" class="hidden fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+      <div class="bg-white rounded-2xl w-[480px] p-8 shadow-2xl">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold">New Assignment</h2>
+          <button onclick="closeAssignModal()"><i class="fa-solid fa-xmark text-xl"></i></button>
+        </div>
+        <label class="font-medium text-sm">Available Asset</label>
+        <select id="aAsset" class="w-full border rounded-lg p-3 mt-2 mb-4"></select>
+        <label class="font-medium text-sm">Employee</label>
+        <select id="aEmployee" class="w-full border rounded-lg p-3 mt-2"></select>
+        <div class="flex justify-end gap-4 mt-8">
+          <button onclick="closeAssignModal()" class="px-5 py-3 rounded-lg bg-gray-200 text-sm font-semibold">Cancel</button>
+          <button onclick="confirmAssign()" class="px-6 py-3 rounded-lg text-white bg-blue-600 text-sm font-semibold">Assign</button>
+        </div>
+      </div>
+    </div>
+ 
+    <main class="flex-1 px-8 py-6 space-y-6">
+      <div>
+        <h1 class="display text-2xl font-bold">Assignments</h1>
+        <p class="text-sm mt-1" style="color:var(--ink-soft)">Every asset currently checked out to an employee.</p>
+      </div>
+ 
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-5">
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">Total Assignments</p><p id="statTotal" class="display text-2xl font-bold mt-0.5">0</p></div>
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">IT Department</p><p id="statIT" class="display text-2xl font-bold mt-0.5" style="color:var(--accent)">0</p></div>
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">HR Department</p><p id="statHR" class="display text-2xl font-bold mt-0.5 text-emerald-600">0</p></div>
+        <div class="card p-5"><p class="text-xs font-medium" style="color:var(--ink-soft)">Other Depts</p><p id="statOther" class="display text-2xl font-bold mt-0.5 text-amber-600">0</p></div>
+      </div>
+ 
+      <div class="card p-6">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead><tr class="border-b" style="border-color:var(--line)">
+              <th class="py-3 text-left">Asset</th><th class="text-left">Assigned To</th><th class="text-left">Department</th>
+              <th class="text-left">Assigned Date</th><th class="text-right pr-2">Actions</th>
+            </tr></thead>
+            <tbody id="assignTableBody"></tbody>
+          </table>
+        </div>
+        <p id="assignEmpty" class="hidden text-sm text-center py-10" style="color:var(--ink-soft)">No active assignments. Approve a request or create one manually.</p>
+      </div>
+    </main>
+  </div>
+</div>
+ 
+<script>
+const ASSETS_KEY = "assets";
+const EMPLOYEES_KEY = "employees";
+const REQUESTS_KEY = "assetRequests";
+ 
+function getAssets(){ return JSON.parse(localStorage.getItem(ASSETS_KEY)) || []; }
+function setAssets(v){ localStorage.setItem(ASSETS_KEY, JSON.stringify(v)); }
+function getEmployees(){ return JSON.parse(localStorage.getItem(EMPLOYEES_KEY)) || []; }
+function getRequests(){ return JSON.parse(localStorage.getItem(REQUESTS_KEY)) || []; }
+ 
+function render(){
+  const assets = getAssets();
+  const search = document.getElementById("searchInput").value.trim().toLowerCase();
+  const assigned = assets.filter(a => a.status === "Assigned" &&
+    (!search || a.assetName.toLowerCase().includes(search) || (a.assignedTo||"").toLowerCase().includes(search)));
+ 
+  document.getElementById("statTotal").textContent = assets.filter(a=>a.status==="Assigned").length;
+  document.getElementById("statIT").textContent = assets.filter(a=>a.status==="Assigned" && a.department==="IT Department").length;
+  document.getElementById("statHR").textContent = assets.filter(a=>a.status==="Assigned" && a.department==="HR Department").length;
+  document.getElementById("statOther").textContent = assets.filter(a=>a.status==="Assigned" && a.department!=="IT Department" && a.department!=="HR Department").length;
+  document.getElementById("notifDot").classList.toggle("hidden", !getRequests().some(r=>r.status==="Pending"));
+ 
+  const tbody = document.getElementById("assignTableBody");
+  tbody.innerHTML = assigned.map(a => `
+    <tr class="row-hover border-b" style="border-color:var(--line)">
+      <td class="py-3"><p class="font-medium">${a.assetName}</p><p class="text-xs" style="color:var(--ink-soft)">${a.assetId}</p></td>
+      <td>${a.assignedTo || "—"}</td>
+      <td><span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full text-xs font-medium">${a.department || "—"}</span></td>
+      <td>${a.assignedDate || "—"}</td>
+      <td class="text-right"><button onclick="unassign('${a.assetId}')" class="btn-mini bg-gray-100 text-gray-700">Return</button></td>
+    </tr>`).join("");
+  document.getElementById("assignEmpty").classList.toggle("hidden", assigned.length > 0);
+}
+ 
+function unassign(id){
+  const assets = getAssets();
+  const a = assets.find(x=>x.assetId===id);
+  if(!a) return;
+  a.status = "Available"; a.assignedTo=""; a.department=""; a.assignedDate="";
+  setAssets(assets);
+  render();
+}
+ 
+function openAssignModal(){
+  const assets = getAssets().filter(a=>a.status==="Available");
+  const employees = getEmployees();
+  if(assets.length === 0){ alert("No available assets to assign. Add or return one first."); return; }
+  if(employees.length === 0){ alert("No employees found. Add one on the Employees page first."); return; }
+  document.getElementById("aAsset").innerHTML = assets.map(a=>`<option value="${a.assetId}">${a.assetName} (${a.assetId})</option>`).join("");
+  document.getElementById("aEmployee").innerHTML = employees.map(e=>`<option value="${e.name}" data-dept="${e.department}">${e.name} — ${e.department}</option>`).join("");
+  document.getElementById("assignModal").classList.remove("hidden");
+  document.getElementById("assignModal").classList.add("flex");
+}
+function closeAssignModal(){
+  document.getElementById("assignModal").classList.add("hidden");
+  document.getElementById("assignModal").classList.remove("flex");
+}
+function confirmAssign(){
+  const assetId = document.getElementById("aAsset").value;
+  const empSelect = document.getElementById("aEmployee");
+  const empName = empSelect.value;
+  const dept = empSelect.selectedOptions[0]?.dataset.dept || "";
+ 
+  const assets = getAssets();
+  const a = assets.find(x=>x.assetId===assetId);
+  if(!a) return;
+  a.status = "Assigned"; a.assignedTo = empName; a.department = dept; a.assignedDate = new Date().toISOString().slice(0,10);
+  setAssets(assets);
+  closeAssignModal();
+  render();
+}
+ 
+/* ---------- init ---------- */
+render();
+document.getElementById("searchInput").addEventListener("input", render);
+setInterval(render, 2000);
+window.addEventListener("storage", render);
+</script>
+</body>
+</html>
+ 
