@@ -176,3 +176,37 @@ select m.movie_name,g.genre_name from Movies m  inner join Genres g  on m.genre_
 -- task 2
 select m.movie_name,d.director_name name from Movies m inner join Directors d on m.director_id=d.director_id;
 -- task 3
+SELECT m.movie_name,a.actor_name FROM Movies m INNER JOIN MovieActors ma ON m.movie_id = ma.movie_id INNER JOIN Actors a ON ma.actor_id = a.actor_id;
+-- task 4
+SELECT
+    Customers.customer_name,
+    Movies.movie_name,
+    Theaters.theater_name
+FROM Customers
+INNER JOIN Bookings
+    ON Customers.customer_id = Bookings.customer_id
+INNER JOIN Shows
+    ON Bookings.show_id = Shows.show_id
+INNER JOIN Movies
+    ON Shows.movie_id = Movies.movie_id
+INNER JOIN Screens
+    ON Shows.screen_id = Screens.screen_id
+INNER JOIN Theaters
+    ON Screens.theater_id = Theaters.theater_id;
+    -- Task 5
+SELECT
+    Customers.customer_name,
+    Movies.movie_name,
+    Tickets.ticket_price,
+    Tickets.seat_number
+FROM Customers
+INNER JOIN Bookings
+    ON Customers.customer_id = Bookings.customer_id
+INNER JOIN Tickets
+    ON Bookings.booking_id = Tickets.booking_id
+INNER JOIN Shows
+    ON Bookings.show_id = Shows.show_id
+INNER JOIN Movies
+    ON Shows.movie_id = Movies.movie_id;
+DESC Movies;
+desc Actors;

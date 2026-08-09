@@ -1,4 +1,4 @@
-                                                            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,117 +6,228 @@
     <title>Office Assets Management - Login</title>
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+            --ink:#111C33;
+            --ink-soft:#5B6478;
+            --sidebar:#0F1A30;
+            --sidebar-soft:#8B96AE;
+            --accent:#2F5CF2;
+            --accent-soft:#EAEFFE;
+            --tag:#D68A1F;
+        }
+        body{ font-family:'Inter', sans-serif; background:var(--sidebar); }
+        .display{ font-family:'Lexend', sans-serif; }
+        .mono{ font-family:'JetBrains Mono', monospace; }
+
+        /* faint blueprint grid, evokes a floor-plan / inventory audit sheet */
+        .blueprint{
+            background-image:
+                linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+            background-size: 42px 42px;
+        }
+        .glow{
+            background: radial-gradient(circle at 30% 20%, rgba(47,92,242,.35), transparent 55%),
+                        radial-gradient(circle at 80% 80%, rgba(214,138,31,.15), transparent 45%);
+        }
+
+        .field{
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.14);
+            color:#fff;
+        }
+        .field::placeholder{ color: rgba(255,255,255,.4); }
+        .field:focus{ outline:none; border-color:var(--accent); background:rgba(255,255,255,.09); }
+
+        /* the asset-tag signature element */
+        .asset-tag{
+            background: linear-gradient(155deg, #16223F 0%, #101A34 100%);
+            border: 1px solid rgba(255,255,255,.12);
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,.6);
+        }
+        .tag-hole{
+            width:14px; height:14px; border-radius:999px;
+            background: var(--sidebar);
+            border: 1px solid rgba(255,255,255,.25);
+        }
+        .perforation{
+            background-image: repeating-linear-gradient(90deg, rgba(255,255,255,.35) 0 6px, transparent 6px 12px);
+            height:1px;
+        }
+        .barcode{
+            display:flex; align-items:flex-end; gap:3px; height:34px;
+        }
+        .barcode span{ background:rgba(255,255,255,.55); width:3px; }
+
+        @keyframes floatTag{
+            0%,100%{ transform: rotate(-3deg) translateY(0px); }
+            50%{ transform: rotate(-3deg) translateY(-10px); }
+        }
+        .float{ animation: floatTag 6s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce){ .float{ animation:none; } }
+    </style>
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-purple-900 via-violet-700 to-pink-500">
-    <!-- Background Blur -->
-    <div class="absolute w-72 h-72 bg-cyan-300 rounded-full blur-3xl opacity-20 top-10 left-10"></div>
+<body class="min-h-screen relative overflow-y-auto blueprint glow">
 
-    <div class="absolute w-96 h-96 bg-blue-500 rounded-full blur-3xl opacity-20 bottom-10 right-10"></div>
+    <div class="relative flex items-center justify-center min-h-screen px-10 py-16">
 
-    <div class="relative flex items-center justify-center min-h-screen px-10">
+        <div class="w-full max-w-6xl grid lg:grid-cols-2 gap-16 items-center">
 
-        <!-- LEFT SIDE -->
-        <div class="w-1/2 text-white pr-20">
+            <!-- LEFT SIDE -->
+            <div class="text-white hidden lg:block">
 
-            <h1 class="text-6xl font-bold mb-5">
-                Office Assets
-            </h1>
+                <div class="flex items-center gap-2.5 mb-8">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:var(--accent)">
+                        <i class="fa-solid fa-cubes text-white text-sm"></i>
+                    </div>
+                    <span class="mono text-xs tracking-[0.25em] uppercase" style="color:var(--sidebar-soft)">Asset Management Platform</span>
+                </div>
 
-            <h2 class="text-4xl font-semibold mb-8">
-                Management System
-            </h2>
+                <h1 class="display text-6xl font-bold leading-[1.05]">
+                    Every asset,<br>
+                    <span style="color:var(--accent)">accounted for.</span>
+                </h1>
 
-            <p class="text-xl text-blue-100 mb-10">
-                Manage your organization's assets efficiently with a secure,
-                modern and intelligent asset management platform.
-            </p>
+                <p class="text-lg mt-6 max-w-md" style="color:var(--sidebar-soft)">
+                    Track, assign, and maintain your organization's equipment from one
+                    secure dashboard built for IT and operations teams.
+                </p>
 
-            <div class="space-y-5 text-xl">
+                <div class="mt-10 space-y-3 max-w-sm">
+                    <div class="flex items-center gap-4 rounded-xl px-4 py-3" style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08)">
+                        <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style="background:var(--accent-soft)">
+                            <i class="fa-solid fa-location-crosshairs text-sm" style="color:var(--accent)"></i>
+                        </div>
+                        <span class="text-sm font-medium">Real-time asset tracking</span>
+                    </div>
+                    <div class="flex items-center gap-4 rounded-xl px-4 py-3" style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08)">
+                        <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style="background:#EAF7EF">
+                            <i class="fa-solid fa-user-tag text-sm" style="color:#1BA24E"></i>
+                        </div>
+                        <span class="text-sm font-medium">Employee asset allocation</span>
+                    </div>
+                    <div class="flex items-center gap-4 rounded-xl px-4 py-3" style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08)">
+                        <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style="background:#FDF3E7">
+                            <i class="fa-solid fa-screwdriver-wrench text-sm" style="color:var(--tag)"></i>
+                        </div>
+                        <span class="text-sm font-medium">Maintenance management</span>
+                    </div>
+                    <div class="flex items-center gap-4 rounded-xl px-4 py-3" style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08)">
+                        <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style="background:#F3EAFB">
+                            <i class="fa-solid fa-chart-simple text-sm" style="color:#8A3FD6"></i>
+                        </div>
+                        <span class="text-sm font-medium">Reports &amp; analytics</span>
+                    </div>
+                </div>
 
-                <p>✅ Asset Tracking</p>
-
-                <p>✅ Employee Asset Allocation</p>
-
-                <p>✅ Maintenance Management</p>
-
-                <p>✅ Reports & Analytics</p>
+                <!-- signature element: a physical asset tag -->
+                <div class="float asset-tag rounded-2xl p-5 w-72 mt-12 relative">
+                    <div class="flex justify-between items-start">
+                        <span class="mono text-[10px] tracking-[0.2em] uppercase" style="color:var(--sidebar-soft)">Asset Tag</span>
+                        <div class="tag-hole"></div>
+                    </div>
+                    <p class="mono text-xl font-semibold text-white mt-2">AST&#8209;0001</p>
+                    <div class="perforation my-4"></div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full" style="background:#3DD68C"></span>
+                            <span class="mono text-[11px] uppercase tracking-wide" style="color:var(--sidebar-soft)">Active</span>
+                        </div>
+                        <div class="barcode">
+                            <span style="height:100%"></span><span style="height:60%"></span><span style="height:90%"></span>
+                            <span style="height:40%"></span><span style="height:80%"></span><span style="height:55%"></span>
+                            <span style="height:100%"></span><span style="height:70%"></span><span style="height:45%"></span>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
-            <div class="mt-12 text-8xl">
-                💻🏢
-            </div>
+            <!-- RIGHT SIDE -->
+            <div class="w-full max-w-[430px] mx-auto lg:mx-0 lg:ml-auto">
 
-        </div>
+                <div class="lg:hidden flex items-center gap-2.5 mb-6 text-white">
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:var(--accent)">
+                        <i class="fa-solid fa-cubes text-white text-sm"></i>
+                    </div>
+                    <span class="display font-bold text-lg">AssetHub</span>
+                </div>
 
-        <!-- RIGHT SIDE -->
+                <div class="asset-tag rounded-3xl p-9">
 
-        <div class="w-[430px]">
-
-            <div class="backdrop-blur-xl bg-white/15 border border-white/30 rounded-3xl shadow-2xl p-10">
-
-                <div class="text-center">
-
-                    <div class="w-24 h-24 bg-white rounded-full mx-auto flex items-center justify-center text-5xl shadow-lg">
-                        🏢
+                    <div class="text-center mb-8">
+                        <span class="mono text-[10px] tracking-[0.25em] uppercase" style="color:var(--sidebar-soft)">Employee &amp; Admin Access</span>
+                        <h2 class="display text-3xl font-bold text-white mt-3">
+                            Welcome back
+                        </h2>
+                        <p class="text-sm mt-2" style="color:var(--sidebar-soft)">
+                            Sign in to manage your organization's assets
+                        </p>
                     </div>
 
-                    <h2 class="text-4xl font-bold text-white mt-6">
-                        Welcome Back
-                    </h2>
+                    <label class="mono text-[11px] tracking-wider uppercase block mb-2" style="color:var(--sidebar-soft)">Email</label>
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="you@company.com"
+                        class="field w-full p-4 rounded-xl mb-5 text-sm">
 
-                    <p class="text-blue-100 mt-2 mb-8">
-                        Sign in to continue
+                    <label class="mono text-[11px] tracking-wider uppercase block mb-2" style="color:var(--sidebar-soft)">Password</label>
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="••••••••"
+                        class="field w-full p-4 rounded-xl mb-5 text-sm">
+
+                    <div class="flex justify-between items-center text-sm mb-8" style="color:var(--sidebar-soft)">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" class="rounded" style="accent-color:var(--accent)">
+                            Remember Me
+                        </label>
+                        <a href="#" class="hover:text-white duration-150">
+                            Forgot Password?
+                        </a>
+                    </div>
+
+                    <button
+                        class="w-full text-white py-4 rounded-xl font-semibold text-sm tracking-wide hover:brightness-110 duration-200 shadow-lg"
+                        style="background:var(--accent); box-shadow:0 12px 24px -8px rgba(47,92,242,.55)"
+                        onclick="login()">
+                        LOG IN
+                    </button>
+
+                    <div class="flex items-center gap-3 my-6">
+                        <div class="flex-1 h-px" style="background:rgba(255,255,255,.12)"></div>
+                        <span class="mono text-[10px] uppercase tracking-wider" style="color:var(--sidebar-soft)">or</span>
+                        <div class="flex-1 h-px" style="background:rgba(255,255,255,.12)"></div>
+                    </div>
+
+                    <button class="w-full flex items-center justify-center gap-3 border py-4 rounded-xl text-sm font-medium text-white duration-200 hover:bg-white hover:text-[#111C33]" style="border-color:rgba(255,255,255,.2)">
+                        <i class="fa-brands fa-google"></i>
+                        Continue with Google
+                    </button>
+
+                    <p class="text-center text-sm mt-7" style="color:var(--sidebar-soft)">
+                        Don't have an account?
+                        <a href="../Main Project/Regiser.html" class="font-semibold" style="color:var(--accent)">
+                            Register
+                        </a>
                     </p>
 
                 </div>
-
-                <input
-                id="email"
-                    type="email"
-                    placeholder="Email"
-                    class="w-full p-4 rounded-xl mb-5 outline-none">
-
-                <input
-                id="password"
-                    type="password"
-                    placeholder="Password"
-                    class="w-full p-4 rounded-xl mb-5 outline-none">
-
-                <div class="flex justify-between text-white text-sm mb-8">
-
-                    <label>
-                        <input type="checkbox">
-                        Remember Me
-                    </label>
-
-                    <a href="#">
-                        Forgot Password?
-                    </a>
-
-                </div>
-
-                <button class="w-full bg-gradient-to-r from-blue-600 to-cyan-500 py-4 rounded-xl font-bold text-white hover:scale-105 duration-300" onclick="login()">
-                    LOGIN
-                </button>
-
-                <button class="w-full mt-5 border border-white text-white py-4 rounded-xl hover:bg-white hover:text-blue-700 duration-300">
-                    Continue with Google
-                </button>
-
-                <p class="text-center text-white mt-6">
-                    Don't have an account?
-                    <a href="../Main Project/Regiser.html" class="font-bold text-cyan-300">
-                        Register
-                    </a>
-                </p>
 
             </div>
 
         </div>
 
     </div>
+
     <script>
         const login = () => {
 

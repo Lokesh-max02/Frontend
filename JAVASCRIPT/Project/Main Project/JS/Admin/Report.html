@@ -98,7 +98,116 @@
     </main>
   </div>
 </div>
- 
+ <!-- =========================================================
+     EMPLOYEE ISSUE REPORTS
+========================================================= -->
+
+<div class="card p-6 mt-6">
+
+    <!-- Header -->
+
+    <div class="flex items-center justify-between mb-6">
+
+        <div>
+
+            <h2 class="display text-lg font-semibold">
+                Employee Issue Reports
+            </h2>
+
+            <p
+                class="text-sm mt-1"
+                style="color:var(--ink-soft)"
+            >
+                Reports submitted by employees that need admin attention.
+            </p>
+
+        </div>
+
+
+        <!-- Report Count -->
+
+        <div
+            id="issueReportCount"
+            class="px-3 py-1.5 rounded-full bg-red-50 text-red-600 text-sm font-semibold"
+        >
+            0 Open
+        </div>
+
+    </div>
+
+
+    <!-- Filter -->
+
+    <div class="flex flex-wrap gap-3 mb-5">
+
+        <select
+            id="issueStatusFilter"
+            class="border rounded-lg px-4 py-2 text-sm"
+            style="border-color:var(--line)"
+        >
+
+            <option value="All">
+                All Reports
+            </option>
+
+            <option value="Open">
+                Open
+            </option>
+
+            <option value="In Progress">
+                In Progress
+            </option>
+
+            <option value="Resolved">
+                Resolved
+            </option>
+
+            <option value="Rejected">
+                Rejected
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- Reports -->
+
+    <div
+        id="employeeIssueReports"
+        class="space-y-4"
+    ></div>
+
+
+    <!-- Empty -->
+
+    <div
+        id="noIssueReports"
+        class="hidden text-center py-12"
+    >
+
+        <div
+            class="w-14 h-14 mx-auto rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4"
+        >
+
+            <i class="fa-solid fa-check text-xl"></i>
+
+        </div>
+
+        <h3 class="font-semibold text-gray-800">
+            No issue reports
+        </h3>
+
+        <p
+            class="text-sm mt-1"
+            style="color:var(--ink-soft)"
+        >
+            There are no employee reports to display.
+        </p>
+
+    </div>
+
+</div>
 <script>
 const ASSETS_KEY = "assets";
 const REQUESTS_KEY = "assetRequests";
@@ -168,6 +277,586 @@ function render(){
 render();
 setInterval(render, 2000);
 window.addEventListener("storage", render);
+
+
+/* =========================================================
+   ADMIN EMPLOYEE ISSUE REPORTS
+========================================================= */
+
+const ISSUE_REPORTS_KEY = "issueReports";
+
+
+/* Get reports from Employee Report page */
+
+function getIssueReports() {
+
+    return JSON.parse(
+        localStorage.getItem(ISSUE_REPORTS_KEY)
+    ) || [];
+
+}
+
+
+/* Save reports */
+
+function saveIssueReports(reports) {
+
+    localStorage.setItem(
+        ISSUE_REPORTS_KEY,
+        JSON.stringify(reports)
+    );
+
+}
+
+
+/* Status badge */
+
+function issueStatusBadge(status) {
+
+    const styles = {
+
+        "Open":
+            "bg-red-50 text-red-600",
+
+        "In Progress":
+            "bg-blue-50 text-blue-600",
+
+        "Resolved":
+            "bg-emerald-50 text-emerald-600",
+
+        "Rejected":
+            "bg-gray-100 text-gray-600"
+
+    };
+
+
+    return `
+        <span
+            class="px-3 py-1 rounded-full text-xs font-semibold
+            ${styles[status] || "bg-gray-100 text-gray-600"}"
+        >
+            ${status}
+        </span>
+    `;
+
+}
+
+
+/* Priority badge */
+
+function priorityBadge(priority) {
+
+    const styles = {
+
+        "High":
+            "bg-red-50 text-red-600",
+
+        "Medium":
+            "bg-orange-50 text-orange-600",
+
+        "Low":
+            "bg-green-50 text-green-600"
+
+    };
+
+
+    return `
+        <span
+            class="px-2.5 py-1 rounded-full text-xs font-semibold
+            ${styles[priority] || "bg-gray-100 text-gray-600"}"
+        >
+            ${priority || "Normal"}
+        </span>
+    `;
+
+}
+
+
+/* Render reports */
+
+function renderEmployeeIssueReports() {
+
+    const container =
+        document.getElementById("employeeIssueReports");
+
+    const empty =
+        document.getElementById("noIssueReports");
+
+    const count =
+        document.getElementById("issueReportCount");
+
+    const filter =
+        document.getElementById("issueStatusFilter");
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    const reports = getIssueReports();
+
+
+    const selectedStatus =
+        filter ? filter.value : "All";
+
+
+    const filteredReports =
+        reports.filter(function(report) {
+
+            if (selectedStatus === "All") {
+
+                return true;
+
+            }
+
+            return report.status === selectedStatus;
+
+        });
+
+
+    /* Open count */
+
+    const openCount =
+        reports.filter(function(report) {
+
+            return report.status === "Open";
+
+        }).length;
+
+
+    if (count) {
+
+        count.textContent =
+            openCount + " Open";
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    if (filteredReports.length === 0) {
+
+        empty.classList.remove("hidden");
+
+        return;
+
+    }
+
+
+    empty.classList.add("hidden");
+
+
+    filteredReports.forEach(function(report) {
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "border rounded-xl p-5 hover:shadow-md transition";
+
+
+        card.style.borderColor =
+            "var(--line)";
+
+
+        card.innerHTML = `
+
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+
+
+                <!-- LEFT -->
+
+                <div class="flex items-start gap-4 flex-1">
+
+
+                    <!-- Icon -->
+
+                    <div
+                        class="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0"
+                    >
+
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                    </div>
+
+
+                    <!-- Details -->
+
+                    <div class="min-w-0">
+
+                        <div class="flex flex-wrap items-center gap-2">
+
+                            <h3
+                                class="font-semibold text-gray-800"
+                            >
+                                ${report.asset || "Unknown Asset"}
+                            </h3>
+
+                            ${issueStatusBadge(report.status)}
+
+                            ${priorityBadge(report.priority)}
+
+                        </div>
+
+
+                        <p
+                            class="text-sm text-gray-500 mt-1"
+                        >
+
+                            Report ID:
+                            <span class="font-medium">
+                                ${report.id || "-"}
+                            </span>
+
+                            · ${report.date || "-"}
+
+                        </p>
+
+
+                        <p
+                            class="text-sm text-gray-600 mt-3"
+                        >
+
+                            <span class="font-semibold">
+                                Issue:
+                            </span>
+
+                            ${report.type || "General Issue"}
+
+                        </p>
+
+
+                        <p
+                            class="text-sm text-gray-500 mt-1 line-clamp-2"
+                        >
+
+                            ${report.description || "No description provided."}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div
+                    class="flex flex-wrap gap-2 lg:justify-end"
+                >
+
+                    <button
+                        onclick="viewEmployeeIssue('${report.id}')"
+                        class="px-4 py-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 text-sm font-semibold"
+                    >
+
+                        <i class="fa-solid fa-eye mr-1"></i>
+                        View
+
+                    </button>
+
+
+                    ${
+                        report.status === "Open"
+                        ?
+                        `
+                        <button
+                            onclick="startEmployeeIssue('${report.id}')"
+                            class="px-4 py-2 rounded-lg bg-orange-50 hover:bg-orange-100 text-orange-600 text-sm font-semibold"
+                        >
+
+                            <i class="fa-solid fa-play mr-1"></i>
+                            Start Work
+
+                        </button>
+                        `
+                        :
+                        ""
+                    }
+
+
+                    ${
+                        report.status === "In Progress"
+                        ?
+                        `
+                        <button
+                            onclick="resolveEmployeeIssue('${report.id}')"
+                            class="px-4 py-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-600 text-sm font-semibold"
+                        >
+
+                            <i class="fa-solid fa-check mr-1"></i>
+                            Resolve
+
+                        </button>
+                        `
+                        :
+                        ""
+                    }
+
+
+                    ${
+                        report.status === "Open"
+                        ?
+                        `
+                        <button
+                            onclick="rejectEmployeeIssue('${report.id}')"
+                            class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 text-sm font-semibold"
+                        >
+
+                            <i class="fa-solid fa-xmark mr-1"></i>
+                            Reject
+
+                        </button>
+                        `
+                        :
+                        ""
+                    }
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================================================
+   VIEW
+========================================================= */
+
+function viewEmployeeIssue(id) {
+
+    const reports = getIssueReports();
+
+
+    const report =
+        reports.find(function(item) {
+
+            return item.id === id;
+
+        });
+
+
+    if (!report) {
+
+        alert("Report not found.");
+
+        return;
+
+    }
+
+
+    let message =
+
+        "REPORT DETAILS\\n\\n" +
+
+        "Report ID: " + (report.id || "-") + "\\n" +
+
+        "Asset: " + (report.asset || "-") + "\\n" +
+
+        "Issue Type: " + (report.type || "-") + "\\n" +
+
+        "Priority: " + (report.priority || "-") + "\\n" +
+
+        "Status: " + (report.status || "-") + "\\n" +
+
+        "Date: " + (report.date || "-") + "\\n\\n" +
+
+        "Description:\\n" +
+
+        (report.description || "-");
+
+
+    alert(message);
+
+}
+
+
+/* =========================================================
+   START WORK
+========================================================= */
+
+function startEmployeeIssue(id) {
+
+    const reports = getIssueReports();
+
+
+    const report =
+        reports.find(function(item) {
+
+            return item.id === id;
+
+        });
+
+
+    if (!report) {
+
+        return;
+
+    }
+
+
+    report.status = "In Progress";
+
+
+    saveIssueReports(reports);
+
+
+    renderEmployeeIssueReports();
+
+
+    alert(
+        "Admin has started working on this issue."
+    );
+
+}
+
+
+/* =========================================================
+   RESOLVE
+========================================================= */
+
+function resolveEmployeeIssue(id) {
+
+    const reports = getIssueReports();
+
+
+    const report =
+        reports.find(function(item) {
+
+            return item.id === id;
+
+        });
+
+
+    if (!report) {
+
+        return;
+
+    }
+
+
+    report.status = "Resolved";
+
+
+    saveIssueReports(reports);
+
+
+    renderEmployeeIssueReports();
+
+
+    alert(
+        "Issue marked as resolved."
+    );
+
+}
+
+
+/* =========================================================
+   REJECT
+========================================================= */
+
+function rejectEmployeeIssue(id) {
+
+    const confirmReject =
+        confirm(
+            "Are you sure you want to reject this issue?"
+        );
+
+
+    if (!confirmReject) {
+
+        return;
+
+    }
+
+
+    const reports = getIssueReports();
+
+
+    const report =
+        reports.find(function(item) {
+
+            return item.id === id;
+
+        });
+
+
+    if (!report) {
+
+        return;
+
+    }
+
+
+    report.status = "Rejected";
+
+
+    saveIssueReports(reports);
+
+
+    renderEmployeeIssueReports();
+
+
+    alert(
+        "Issue report rejected."
+    );
+
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+const issueFilter =
+    document.getElementById("issueStatusFilter");
+
+
+if (issueFilter) {
+
+    issueFilter.addEventListener(
+        "change",
+        renderEmployeeIssueReports
+    );
+
+}
+
+
+/* =========================================================
+   INITIAL LOAD
+========================================================= */
+
+renderEmployeeIssueReports();
+
+
+/* Automatically refresh */
+
+setInterval(
+    renderEmployeeIssueReports,
+    2000
+);
+
+
+/* Update when another page changes localStorage */
+
+window.addEventListener(
+    "storage",
+    renderEmployeeIssueReports
+);
+
+
 </script>
 </body>
 </html>
