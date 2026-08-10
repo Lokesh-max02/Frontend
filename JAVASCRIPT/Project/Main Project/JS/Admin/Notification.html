@@ -229,6 +229,14 @@
             </button>
 
             <button
+                id="rejectRequestBtn"
+                class="px-5 py-2.5 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 font-medium"
+            >
+                <i class="fa-solid fa-xmark mr-2"></i>
+                Reject
+            </button>
+
+            <button
                 id="approveRequestBtn"
                 class="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium"
             >
@@ -246,6 +254,7 @@ const REQUESTS_KEY = "assetRequests";
 const MAINTENANCE_KEY = "maintenanceLogs";
 const RETURNS_KEY = "returnRequests";
 const DISMISSED_KEY = "dismissedNotifications";
+const ASSETS_KEY = "assets";
 
 function getRequests(){ return JSON.parse(localStorage.getItem(REQUESTS_KEY)) || []; }
 function setRequests(v){ localStorage.setItem(REQUESTS_KEY, JSON.stringify(v)); }
@@ -253,6 +262,8 @@ function getMaintenance(){ return JSON.parse(localStorage.getItem(MAINTENANCE_KE
 function getReturns(){ return JSON.parse(localStorage.getItem(RETURNS_KEY)) || []; }
 function getDismissed(){ return JSON.parse(localStorage.getItem(DISMISSED_KEY)) || []; }
 function setDismissed(v){ localStorage.setItem(DISMISSED_KEY, JSON.stringify(v)); }
+function getAssets(){ return JSON.parse(localStorage.getItem(ASSETS_KEY)) || []; }
+function setAssets(v){ localStorage.setItem(ASSETS_KEY, JSON.stringify(v)); }
 
 function buildFeed(){
   const requests = getRequests();
@@ -300,7 +311,11 @@ function colorClasses(c){
 function render(){
   const feed = buildFeed();
   const list = document.getElementById("notifList");
-  list.innerHTML = feed.map(n => `
+  list.innerHTML = feed.map(n => {
+    const viewAction = n.type === "request"
+      ? `<button onclick="openRequestModal('${n.refId}')" class="btn-mini bg-blue-50" style="color:var(--accent)">View</button>`
+      : `<a href="${n.link}" class="btn-mini bg-blue-50" style="color:var(--accent)">View</a>`;
+    return `
     <div class="row-hover flex justify-between items-center py-3.5 -mx-2 px-2 rounded-lg">
       <div class="flex items-center gap-3.5 min-w-0">
         <div class="icon-badge w-11 h-11 ${colorClasses(n.color)}"><i class="fa-solid ${n.icon}"></i></div>
@@ -310,10 +325,11 @@ function render(){
         </div>
       </div>
       <div class="flex gap-2 items-center shrink-0">
-        <a href="${n.link}" class="btn-mini bg-blue-50" style="color:var(--accent)">View</a>
+        ${viewAction}
         <button onclick="dismiss('${n.id}')" class="btn-mini bg-gray-100 text-gray-600">Dismiss</button>
       </div>
-    </div>`).join("");
+    </div>`;
+  }).join("");
   document.getElementById("notifEmpty").classList.toggle("hidden", feed.length > 0);
 }
 
@@ -330,6 +346,96 @@ function dismissAll(){
   setDismissed([...d]);
   render();
 }
+
+/* ============================================================
+   Notification Details Modal — this existed in the HTML already
+   but had nothing driving it: View didn't open it, and the
+   Approve button did nothing on click. Wired up below.
+   ============================================================ */
+let currentRequestId = null;
+
+function openRequestModal(requestId){
+  const req = getRequests().find(r => r.id === requestId);
+  if(!req) return;
+  currentRequestId = requestId;
+
+  document.getElementById("modalAssetName").textContent = req.asset;
+  document.getElementById("modalRequestType").textContent = req.category + " Request";
+  document.getElementById("modalRequestedBy").textContent = req.requestedBy || req.employeeName || "—";
+  document.getElementById("modalRequestDate").textContent = req.date;
+  document.getElementById("modalRequestStatus").textContent = req.status;
+  document.getElementById("modalReason").textContent = req.reason || "No reason provided.";
+
+  const statusMap = { Pending:"bg-yellow-100 text-yellow-700", Approved:"bg-emerald-100 text-emerald-700", Rejected:"bg-red-100 text-red-600" };
+  document.getElementById("modalRequestStatus").className = "px-3 py-1 rounded-full text-xs font-semibold " + (statusMap[req.status] || "bg-gray-100 text-gray-600");
+
+  // Only pending requests can still be approved/rejected from here
+  const stillPending = req.status === "Pending";
+  document.getElementById("approveRequestBtn").classList.toggle("hidden", !stillPending);
+  document.getElementById("rejectRequestBtn").classList.toggle("hidden", !stillPending);
+
+  document.getElementById("notificationModal").classList.remove("hidden");
+}
+
+function closeNotificationModal(){
+  document.getElementById("notificationModal").classList.add("hidden");
+  currentRequestId = null;
+}
+
+/* Same approve logic used on the Admin Dashboard / Assignments pages:
+   match an Available asset first, otherwise auto-provision one so the
+   request always resolves to something the employee can see as Assigned. */
+function approveCurrentRequest(){
+  if(!currentRequestId) return;
+  const requests = getRequests();
+  const assets = getAssets();
+  const req = requests.find(r => r.id === currentRequestId);
+  if(!req) return;
+
+  let match = assets.find(a => a.status === "Available" && a.assetName === req.asset)
+           || assets.find(a => a.status === "Available" && a.category === req.category);
+
+  if(match){
+    match.status = "Assigned";
+    match.assignedTo = req.requestedBy || req.employeeName;
+    match.department = req.department || match.department || "";
+    match.assignedDate = new Date().toISOString().slice(0,10);
+  } else {
+    assets.push({
+      assetId: "AST" + Date.now(),
+      assetName: req.asset,
+      category: req.category,
+      brand: "",
+      purchase: "",
+      price: "",
+      description: "Auto-provisioned from " + req.id,
+      status: "Assigned",
+      assignedTo: req.requestedBy || req.employeeName,
+      department: req.department || "",
+      assignedDate: new Date().toISOString().slice(0,10)
+    });
+  }
+
+  req.status = "Approved";
+  setAssets(assets);
+  setRequests(requests);
+  closeNotificationModal();
+  render();
+}
+
+function rejectCurrentRequest(){
+  if(!currentRequestId) return;
+  const requests = getRequests();
+  const req = requests.find(r => r.id === currentRequestId);
+  if(!req) return;
+  req.status = "Rejected";
+  setRequests(requests);
+  closeNotificationModal();
+  render();
+}
+
+document.getElementById("approveRequestBtn").addEventListener("click", approveCurrentRequest);
+document.getElementById("rejectRequestBtn").addEventListener("click", rejectCurrentRequest);
 
 /* ---------- init ---------- */
 render();

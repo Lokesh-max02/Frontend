@@ -17,6 +17,8 @@
         body {
             font-family: Inter, sans-serif;
         }
+        .step-dot{ width:32px; height:32px; border-radius:999px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; }
+        .step-line{ flex:1; height:3px; margin:0 8px; }
     </style>
 
 </head>
@@ -517,6 +519,27 @@
                             Request Details
                         </h2>
 
+                        <!-- Process tracker: shows exactly where this request stands -->
+                        <div class="mb-8">
+                            <div class="flex items-center">
+                                <div class="flex flex-col items-center">
+                                    <div class="step-dot bg-blue-600 text-white"><i class="fa-solid fa-check"></i></div>
+                                    <span class="text-xs mt-1.5 text-gray-500">Submitted</span>
+                                </div>
+                                <div id="stepLine1" class="step-line bg-gray-200"></div>
+                                <div class="flex flex-col items-center">
+                                    <div id="stepReviewDot" class="step-dot bg-gray-200 text-gray-500">2</div>
+                                    <span class="text-xs mt-1.5 text-gray-500">Reviewed</span>
+                                </div>
+                                <div id="stepLine2" class="step-line bg-gray-200"></div>
+                                <div class="flex flex-col items-center">
+                                    <div id="stepAssignDot" class="step-dot bg-gray-200 text-gray-500">3</div>
+                                    <span class="text-xs mt-1.5 text-gray-500">Assigned</span>
+                                </div>
+                            </div>
+                            <p id="processNote" class="text-sm text-center mt-4 text-gray-500"></p>
+                        </div>
+
                         <div class="space-y-4">
 
                             <div class="flex justify-between">
@@ -569,6 +592,16 @@
 
                             </div>
 
+                            <div id="assignedRow" class="hidden flex justify-between">
+
+                                <span class="font-semibold">
+                                    Assigned Asset
+                                </span>
+
+                                <span id="assignedAssetId" class="font-medium text-emerald-600"></span>
+
+                            </div>
+
                         </div>
 
                         <button onclick="closeModal()"
@@ -601,10 +634,12 @@
         /* Shared bridge with the admin side: same "assetRequests" key
            used by Assets.html, Assignments.html, Reports.html, Notifications.html */
         const REQUESTS_KEY = "assetRequests";
+        const ASSETS_KEY = "assets";
         const CATEGORY_EMOJI = { Laptop: "💻", Monitor: "🖥", Keyboard: "⌨️", Mouse: "🖱", Printer: "🖨️" };
 
         function getRequests() { return JSON.parse(localStorage.getItem(REQUESTS_KEY)) || []; }
         function setRequests(v) { localStorage.setItem(REQUESTS_KEY, JSON.stringify(v)); }
+        function getAssets() { return JSON.parse(localStorage.getItem(ASSETS_KEY)) || []; }
 
         function seedIfEmpty() {
             if (localStorage.getItem(REQUESTS_KEY)) return;
@@ -613,6 +648,14 @@
                 { id: "REQ002", category: "Mouse", asset: "Logitech Wireless Mouse", priority: "Medium", qty: "1", date: "15 Jul 2026", reason: "Old mouse is not working properly.", status: "Approved", requestedBy: employee.name, department: employee.department },
                 { id: "REQ003", category: "Monitor", asset: "Dell 24 Inch Monitor", priority: "Low", qty: "1", date: "10 Jul 2026", reason: "Need second monitor.", status: "Rejected", requestedBy: employee.name, department: employee.department }
             ]);
+        }
+
+        /* Find the real asset (if any) that fulfilled an approved request,
+           so we can show "Assigned" vs "Approved but not yet assigned". */
+        function findAssignedAsset(request) {
+            const assets = getAssets();
+            return assets.find(a => a.status === "Assigned" && a.assignedTo === employee.name &&
+                (a.assetName === request.asset || a.category === request.category)) || null;
         }
 
         function priorityBadge(priority) {
@@ -636,13 +679,21 @@
             const mine = requests.filter(r => r.requestedBy === employee.name);
             const tbody = document.getElementById("requestsTableBody");
 
-            tbody.innerHTML = mine.slice().reverse().map(r => `
+            tbody.innerHTML = mine.slice().reverse().map(r => {
+                let assignNote = "";
+                if (r.status === "Approved") {
+                    const asset = findAssignedAsset(r);
+                    assignNote = asset
+                        ? `<div class="text-xs mt-1 text-emerald-600 font-medium"><i class="fa-solid fa-circle-check mr-1"></i>Assigned · ${asset.assetId}</div>`
+                        : `<div class="text-xs mt-1 text-gray-400"><i class="fa-solid fa-hourglass-half mr-1"></i>Awaiting assignment</div>`;
+                }
+                return `
                 <tr class="border-b hover:bg-slate-50">
                     <td class="py-5">${r.id}</td>
                     <td class="font-medium">${CATEGORY_EMOJI[r.category] || "📦"} ${r.category}</td>
                     <td>${r.date}</td>
                     <td>${priorityBadge(r.priority)}</td>
-                    <td>${statusBadge(r.status)}</td>
+                    <td>${statusBadge(r.status)}${assignNote}</td>
                     <td>
                         <button onclick="viewRequestById('${r.id}')" class="text-blue-600 hover:underline">
                             <i class="fa-solid fa-eye"></i>
@@ -650,10 +701,22 @@
                         </button>
                     </td>
                 </tr>
-            `).join("");
+            `;
+            }).join("");
 
             document.getElementById("requestsEmpty").classList.toggle("hidden", mine.length > 0);
             renderStats(mine);
+        }
+
+        function setStep(el, state) {
+            // state: "done" | "current" | "pending" | "rejected"
+            const styles = {
+                done: "bg-blue-600 text-white",
+                current: "bg-amber-400 text-white",
+                pending: "bg-gray-200 text-gray-500",
+                rejected: "bg-red-500 text-white"
+            };
+            el.className = "step-dot " + styles[state];
         }
 
         function viewRequestById(id) {
@@ -668,6 +731,54 @@
             document.getElementById("date").innerHTML = req.date;
             document.getElementById("reason").innerHTML = req.reason;
             document.getElementById("status").innerHTML = req.status;
+
+            const reviewDot = document.getElementById("stepReviewDot");
+            const assignDot = document.getElementById("stepAssignDot");
+            const line1 = document.getElementById("stepLine1");
+            const line2 = document.getElementById("stepLine2");
+            const note = document.getElementById("processNote");
+            const assignedRow = document.getElementById("assignedRow");
+            const assignedAssetId = document.getElementById("assignedAssetId");
+
+            line1.className = "step-line bg-blue-600";
+
+            if (req.status === "Pending") {
+                setStep(reviewDot, "current");
+                reviewDot.innerHTML = "2";
+                line2.className = "step-line bg-gray-200";
+                setStep(assignDot, "pending");
+                assignDot.innerHTML = "3";
+                note.textContent = "Waiting for your admin to review this request.";
+                assignedRow.classList.add("hidden");
+
+            } else if (req.status === "Rejected") {
+                setStep(reviewDot, "rejected");
+                reviewDot.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                line2.className = "step-line bg-gray-200";
+                setStep(assignDot, "pending");
+                assignDot.innerHTML = "3";
+                note.textContent = "This request was rejected — no asset will be assigned.";
+                assignedRow.classList.add("hidden");
+
+            } else if (req.status === "Approved") {
+                setStep(reviewDot, "done");
+                reviewDot.innerHTML = '<i class="fa-solid fa-check"></i>';
+                line2.className = "step-line bg-blue-600";
+
+                const asset = findAssignedAsset(req);
+                if (asset) {
+                    setStep(assignDot, "done");
+                    assignDot.innerHTML = '<i class="fa-solid fa-check"></i>';
+                    note.textContent = "Approved and assigned to you. Check My Assets for details.";
+                    assignedRow.classList.remove("hidden");
+                    assignedAssetId.textContent = `${asset.assetName} (${asset.assetId})`;
+                } else {
+                    setStep(assignDot, "current");
+                    assignDot.innerHTML = "3";
+                    note.textContent = "Approved — your admin is preparing the asset for handover.";
+                    assignedRow.classList.add("hidden");
+                }
+            }
 
             document.getElementById("requestModal").classList.remove("hidden");
             document.getElementById("requestModal").classList.add("flex");
@@ -738,7 +849,7 @@
         seedIfEmpty();
         renderTable();
 
-        // Pick up status changes made from the admin side (Approve/Reject)
+        // Pick up status changes made from the admin side (Approve/Reject/Assign)
         setInterval(renderTable, 2000);
         window.addEventListener("storage", renderTable);
     </script>

@@ -21,9 +21,7 @@
 
 </head>
 
-<body class="bg-slate-100">
-
-    <body class="bg-slate-100 font-[Inter]">
+<body class="bg-slate-100 font-[Inter]">
 
         <!-- ================= NAVBAR ================= -->
 
@@ -125,7 +123,7 @@
 
                     <li>
 
-                        <a href="../Main Project/employee_Dashboard.html" class="mx-3 rounded-xl bg-blue-600 flex items-center gap-4 px-6 py-4">
+                        <a href="../Main Project/employee_Dashboard.html" class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800 duration-300">
 
                             <i class="fa-solid fa-house"></i>
 
@@ -175,7 +173,7 @@
 
                     <li>
 
-                        <a href="../Main Project/Report.html" class="mx-3 rounded-xl flex items-center gap-4 px-6 py-4 hover:bg-slate-800">
+                        <a href="../Main Project/Report.html" class="mx-3 rounded-xl bg-blue-600 flex items-center gap-4 px-6 py-4">
 
                             <i class="fa-solid fa-screwdriver-wrench"></i>
 
@@ -247,8 +245,8 @@
                     Open Issues
                 </p>
 
-                <h2 class="text-5xl font-bold text-red-600">
-                    3
+                <h2 id="openCount" class="text-5xl font-bold text-red-600">
+                    0
                 </h2>
 
             </div>
@@ -271,8 +269,8 @@
                     In Progress
                 </p>
 
-                <h2 class="text-5xl font-bold text-yellow-500">
-                    2
+                <h2 id="progressCount" class="text-5xl font-bold text-yellow-500">
+                    0
                 </h2>
 
             </div>
@@ -295,8 +293,8 @@
                     Resolved
                 </p>
 
-                <h2 class="text-5xl font-bold text-green-600">
-                    8
+                <h2 id="resolvedCount" class="text-5xl font-bold text-green-600">
+                    0
                 </h2>
 
             </div>
@@ -453,12 +451,13 @@
 
                 </h2>
 
-                <select class="border rounded-lg px-4 py-2">
+                <select id="issueTableFilter" class="border rounded-lg px-4 py-2">
 
-                    <option>All Status</option>
+                    <option value="">All Status</option>
                     <option>Open</option>
                     <option>In Progress</option>
                     <option>Resolved</option>
+                    <option>Rejected</option>
 
                 </select>
 
@@ -486,148 +485,15 @@
     </thead>
 
     <tbody id="issueTable">
-
-        <tr class="border-b">
-
-            <td class="py-5">
-
-                ISS001
-
-            </td>
-
-            <td>
-
-                💻 Dell Laptop
-
-            </td>
-
-            <td>
-
-                30 Jul 2026
-
-            </td>
-
-            <td>
-
-                <span class="bg-yellow-100 text-yellow-700 px-4 py-1 rounded-full">
-
-                    Open
-
-                </span>
-
-            </td>
-
-            <td>
-
-                <button
-                    onclick="openIssueModal()"
-                    class="text-blue-600 hover:text-blue-800">
-
-                    <i class="fa-solid fa-eye mr-1"></i>
-
-                    View
-
-                </button>
-
-            </td>
-
-        </tr>
-
-        <tr class="border-b">
-
-            <td class="py-5">
-
-                ISS002
-
-            </td>
-
-            <td>
-
-                🖥 HP Monitor
-
-            </td>
-
-            <td>
-
-                27 Jul 2026
-
-            </td>
-
-            <td>
-
-                <span class="bg-green-100 text-green-700 px-4 py-1 rounded-full">
-
-                    Resolved
-
-                </span>
-
-            </td>
-
-            <td>
-
-                <button
-                    onclick="openIssueModal()"
-                    class="text-blue-600 hover:text-blue-800">
-
-                    <i class="fa-solid fa-eye mr-1"></i>
-
-                    View
-
-                </button>
-
-            </td>
-
-        </tr>
-
-        <tr>
-
-            <td class="py-5">
-
-                ISS003
-
-            </td>
-
-            <td>
-
-                ⌨ Keyboard
-
-            </td>
-
-            <td>
-
-                25 Jul 2026
-
-            </td>
-
-            <td>
-
-                <span class="bg-red-100 text-red-600 px-4 py-1 rounded-full">
-
-                    Rejected
-
-                </span>
-
-            </td>
-
-            <td>
-
-                <button
-                    onclick="openIssueModal()"
-                    class="text-blue-600 hover:text-blue-800">
-
-                    <i class="fa-solid fa-eye mr-1"></i>
-
-                    View
-
-                </button>
-
-            </td>
-
-        </tr>
-
+        <!-- rows rendered by JS -->
     </tbody>
 
 </table>
+
+    <p id="issueTableEmpty" class="hidden text-center text-gray-400 py-10">
+        You haven't reported any issues yet.
+    </p>
+
         </div>
 
     </div>
@@ -747,7 +613,6 @@ class="fixed inset-0 hidden bg-black/50 flex justify-center items-center z-50">
 
                 <h3 id="modalIssueId"
                 class="font-bold text-lg">
-                    ISS001
                 </h3>
 
             </div>
@@ -758,7 +623,6 @@ class="fixed inset-0 hidden bg-black/50 flex justify-center items-center z-50">
 
                 <h3 id="modalAsset"
                 class="font-bold text-lg">
-                    Dell Laptop
                 </h3>
 
             </div>
@@ -768,7 +632,6 @@ class="fixed inset-0 hidden bg-black/50 flex justify-center items-center z-50">
                 <p class="text-gray-500">Issue Type</p>
 
                 <h3 id="modalType">
-                    Hardware
                 </h3>
 
             </div>
@@ -778,7 +641,6 @@ class="fixed inset-0 hidden bg-black/50 flex justify-center items-center z-50">
                 <p class="text-gray-500">Priority</p>
 
                 <h3 id="modalPriority">
-                    High
                 </h3>
 
             </div>
@@ -787,9 +649,7 @@ class="fixed inset-0 hidden bg-black/50 flex justify-center items-center z-50">
 
                 <p class="text-gray-500">Status</p>
 
-                <span class="bg-yellow-100 text-yellow-700 px-4 py-1 rounded-full">
-
-                    Open
+                <span id="modalStatus" class="bg-yellow-100 text-yellow-700 px-4 py-1 rounded-full">
 
                 </span>
 
@@ -800,8 +660,6 @@ class="fixed inset-0 hidden bg-black/50 flex justify-center items-center z-50">
                 <p class="text-gray-500">Reported Date</p>
 
                 <h3 id="modalDate">
-
-                    30 Jul 2026
 
                 </h3>
 
@@ -819,8 +677,6 @@ class="fixed inset-0 hidden bg-black/50 flex justify-center items-center z-50">
 
             <div id="modalDescription"
             class="bg-slate-100 rounded-xl p-4">
-
-                Laptop screen flickering.
 
             </div>
 
@@ -847,6 +703,30 @@ class="fixed inset-0 hidden bg-black/50 flex justify-center items-center z-50">
 </main>
 <script>
 
+/* ============================================================
+   Same "employee" object your Dashboard, Request, and
+   Return Request pages read — keeps "My Reported Issues"
+   scoped to whoever is logged in.
+   ============================================================ */
+const employee = JSON.parse(localStorage.getItem("employee")) || {
+    name: "Lokesh", id: "EMP001", department: "IT", email: "lokesh@gmail.com"
+};
+
+const ISSUE_REPORTS_KEY = "issueReports";
+
+function getIssueReports(){ return JSON.parse(localStorage.getItem(ISSUE_REPORTS_KEY)) || []; }
+function setIssueReports(v){ localStorage.setItem(ISSUE_REPORTS_KEY, JSON.stringify(v)); }
+
+function statusBadgeClass(status){
+    const map = {
+        "Open": "bg-yellow-100 text-yellow-700",
+        "In Progress": "bg-blue-100 text-blue-700",
+        "Resolved": "bg-green-100 text-green-700",
+        "Rejected": "bg-red-100 text-red-600"
+    };
+    return map[status] || "bg-gray-100 text-gray-600";
+}
+
 const preview=document.getElementById("preview");
 
 document.getElementById("issueImage").addEventListener("change",function(){
@@ -870,16 +750,6 @@ reader.readAsDataURL(file);
 }
 
 });
-
-
-document.getElementById("issueForm").addEventListener("submit",function(e){
-
-e.preventDefault();
-
-alert("Issue Report Submitted Successfully.");
-
-});
-
 
 function openIssueModal(){
 
@@ -908,25 +778,89 @@ closeIssueModal();
 }
 
 }
+
+/* ---------- view a specific issue (was showing the same static
+   content for every row before — now it's data-driven) ---------- */
+function viewIssueById(id){
+    const report = getIssueReports().find(r => r.id === id);
+    if(!report) return;
+
+    document.getElementById("modalIssueId").textContent = report.id;
+    document.getElementById("modalAsset").textContent = report.asset;
+    document.getElementById("modalType").textContent = report.type;
+    document.getElementById("modalPriority").textContent = report.priority;
+    document.getElementById("modalStatus").textContent = report.status;
+    document.getElementById("modalStatus").className = statusBadgeClass(report.status) + " px-4 py-1 rounded-full";
+    document.getElementById("modalDate").textContent = report.date;
+    document.getElementById("modalDescription").textContent = report.description || "No description provided.";
+    document.getElementById("modalImage").src = report.image && report.image !== "" ? report.image : "https://placehold.co/700x300";
+
+    openIssueModal();
+}
+
+/* ---------- render "My Reported Issues" + stat cards ---------- */
+function render(){
+    const all = getIssueReports();
+    const mine = all.filter(r => r.employeeName === employee.name);
+    const filterVal = document.getElementById("issueTableFilter").value;
+    const filtered = filterVal ? mine.filter(r => r.status === filterVal) : mine;
+
+    document.getElementById("openCount").textContent = mine.filter(r => r.status === "Open").length;
+    document.getElementById("progressCount").textContent = mine.filter(r => r.status === "In Progress").length;
+    document.getElementById("resolvedCount").textContent = mine.filter(r => r.status === "Resolved").length;
+
+    const tbody = document.getElementById("issueTable");
+    tbody.innerHTML = filtered.slice().reverse().map(r => `
+        <tr class="border-b hover:bg-slate-50">
+            <td class="py-5">${r.id}</td>
+            <td>${r.asset}</td>
+            <td>${r.date}</td>
+            <td><span class="${statusBadgeClass(r.status)} px-4 py-1 rounded-full">${r.status}</span></td>
+            <td>
+                <button onclick="viewIssueById('${r.id}')" class="text-blue-600 hover:text-blue-800">
+                    <i class="fa-solid fa-eye mr-1"></i>
+                    View
+                </button>
+            </td>
+        </tr>
+    `).join("");
+
+    document.getElementById("issueTableEmpty").classList.toggle("hidden", filtered.length > 0);
+}
+
+document.getElementById("issueTableFilter").addEventListener("change", render);
+
+/* ---------- submit: single handler (the original file had two
+   stacked submit listeners on the same form, which fired two
+   alerts per click — merged into one) ---------- */
 document.getElementById("issueForm").addEventListener("submit",function(e){
 
 e.preventDefault();
 
-const reports=JSON.parse(localStorage.getItem("issueReports"))||[];
+const asset = document.getElementById("asset").value;
+const issueType = document.getElementById("issueType").value;
+
+if(!asset || asset === "Select Asset"){ alert("Please select an asset."); return; }
+if(!issueType || issueType === "Select Issue"){ alert("Please select an issue type."); return; }
+
+const reports=getIssueReports();
 
 const report={
 
 id:"ISS"+Date.now(),
 
-asset:document.getElementById("asset").value,
+employeeName: employee.name,
+department: employee.department,
 
-type:document.getElementById("issueType").value,
+asset: asset,
+
+type: issueType,
 
 priority:document.getElementById("priority").value,
 
 description:document.getElementById("description").value,
 
-image:preview.src,
+image:preview.src && !preview.classList.contains("hidden") ? preview.src : "",
 
 status:"Open",
 
@@ -936,15 +870,19 @@ date:new Date().toLocaleDateString()
 
 reports.push(report);
 
-localStorage.setItem("issueReports",JSON.stringify(reports));
+setIssueReports(reports);
 
-alert("Issue Report Submitted Successfully!");
+alert("Issue Report Submitted Successfully! Your admin will review it shortly.");
 
 this.reset();
 
 preview.classList.add("hidden");
+preview.src = "";
+
+render();
 
 });
+
 function logout() {
 
     const confirmLogout = confirm("Are you sure you want to logout?");
@@ -963,6 +901,15 @@ function logout() {
     }
 
 }
+
+/* ---------- init ---------- */
+document.getElementById("employeeName").textContent = employee.name;
+render();
+
+// Pick up status changes the admin makes (Start Work / Resolve / Reject)
+setInterval(render, 2000);
+window.addEventListener("storage", render);
+
 </script>
     </body>
     </html>

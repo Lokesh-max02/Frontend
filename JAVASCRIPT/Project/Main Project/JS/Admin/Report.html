@@ -513,6 +513,11 @@ function renderEmployeeIssueReports() {
                                 ${report.id || "-"}
                             </span>
 
+                            · Reported by
+                            <span class="font-medium">
+                                ${report.employeeName || "Unknown"}
+                            </span>
+
                             · ${report.date || "-"}
 
                         </p>
@@ -662,6 +667,8 @@ function viewEmployeeIssue(id) {
         "REPORT DETAILS\\n\\n" +
 
         "Report ID: " + (report.id || "-") + "\\n" +
+
+        "Reported By: " + (report.employeeName || "-") + "\\n" +
 
         "Asset: " + (report.asset || "-") + "\\n" +
 
@@ -860,4 +867,3 @@ window.addEventListener(
 </script>
 </body>
 </html>
- 
