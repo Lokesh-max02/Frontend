@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .mark{
+        #mark{
             background-color: red;
         }
     </style>
@@ -105,6 +105,72 @@
                  <td>90% </td>
         </tr>
   </table>
+  <script>
+    //Count word
+    let sen="Learning Javascript is fun";
+    let count=0
+    let inword=false;
+    for(let i=0;i<sen.length;i++){
+        if(sen[i]!==" "&&inword==false){
+        count++;
+    inword=true;
+        }
+        if(sen[i]===" "){
+            inword=false
+        }
+    }
+    console.log("Length:"+count);
+    //second largest element
+    let arr=[25,67,12,89,45,90]
+     let largest=-Infinity
+     let second=-Infinity
+     for(let  i=0;i<arr.length;i++){
+     if(arr[i]> largest){
+        second=largest
+        largest=arr[i]
+     }
+      else if (arr[i] > second && arr[i] != largest) {
+        second = arr[i];
+    }
+     }
+     console.log(second);
+     
+     //reverse a string
+     let input="Javascript"
+     let rev=""
+     for(let i=input.length-1;i>=0;i--){
+     rev=rev+input[i]
+     }
+     console.log(rev);
+     //reverse a number
+     let num=[2,3,4,5,6,7]
+     let rev_num=[]
+     for(let i=num.length-1;i>=0;i--){
+        rev_num=rev_num+num[i]
+     }
+     console.log(rev_num);
+     //palindrrome
+     let num1 = 221;
+let temp = num1;
+let reverse = 0;
+
+while (num1 > 0) {
+    let digit = num1 % 10;
+    reverse = reverse * 10 + digit;
+    num1 = Math.floor(num1 / 10);
+   
+    
+}
+
+if (temp === reverse) {
+    console.log("Palindrome");
+} else {
+    console.log("Not Palindrome");
+}
+     
+     
+     </script>
+     
 </body>
 </html>
 </html>
